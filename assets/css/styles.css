@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css");
+
 :root {
   --paper: #e5e5e5;
   --paper-deep: #ffffff;
@@ -9,8 +11,8 @@
   --white: #ffffff;
   --max: 1280px;
   --gutter: clamp(20px, 4vw, 56px);
-  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif SC", "Noto Serif CJK SC", "Yu Mincho", "Hiragino Mincho ProN", serif;
-  --sans: "Inter", "Helvetica Neue", "Avenir Next", "Noto Sans SC", "Noto Sans JP", "Segoe UI", sans-serif;
+  --serif: "LXGW WenKai Screen", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif SC", "Noto Serif CJK SC", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --sans: "LXGW WenKai Screen", "Inter", "Helvetica Neue", "Avenir Next", "Noto Sans SC", "Noto Sans JP", "Segoe UI", sans-serif;
 }
 
 * {
@@ -848,6 +850,181 @@ figcaption {
   line-height: 1.7;
 }
 
+.article-page {
+  max-width: 1120px;
+}
+
+.article-shell {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.article-back {
+  grid-column: 1 / 4;
+  align-self: start;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.article-back:hover {
+  color: var(--accent);
+}
+
+.article-header {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px 24px;
+  padding-bottom: clamp(36px, 6vw, 72px);
+  border-bottom: 1px solid var(--ink);
+}
+
+.article-header .issue-label {
+  grid-column: 1 / 4;
+}
+
+.article-header h1 {
+  grid-column: 1 / 13;
+  margin: 0;
+  font-size: clamp(48px, 7.2vw, 112px);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.article-page-zh .article-header h1 {
+  white-space: nowrap;
+}
+
+.article-subtitle {
+  grid-column: 6 / 13;
+  align-self: end;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(21px, 2.5vw, 32px);
+  line-height: 1.45;
+}
+
+.article-page-zh .article-subtitle {
+  white-space: nowrap;
+}
+
+.article-page-en .article-header h1 {
+  font-size: clamp(42px, 5vw, 84px);
+}
+
+.article-page-en .article-subtitle {
+  font-size: clamp(19px, 2vw, 27px);
+}
+
+.article-header .meta-line {
+  grid-column: 6 / 13;
+  margin: 0;
+  color: var(--accent);
+  font-size: 12px;
+  text-align: right;
+}
+
+.article-body {
+  grid-column: 3 / 11;
+  padding-top: clamp(36px, 6vw, 72px);
+}
+
+.article-body section + section {
+  margin-top: clamp(48px, 7vw, 86px);
+}
+
+.article-body h2 {
+  margin: 0 0 22px;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.14;
+}
+
+.article-body h3 {
+  margin: 34px 0 12px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.article-body p {
+  margin: 0 0 1.12em;
+}
+
+.article-body strong {
+  font-weight: 800;
+}
+
+.article-body blockquote {
+  margin: 28px 0;
+  padding: 22px 0 22px 24px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+.article-body ol {
+  margin: 18px 0 0;
+  padding-left: 1.35em;
+}
+
+.article-body li {
+  margin: 0 0 14px;
+  padding-left: 0.18em;
+}
+
+.article-table-wrap {
+  width: 100%;
+  margin: 28px 0;
+  overflow-x: auto;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--faint);
+}
+
+.article-body table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.article-body th,
+.article-body td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--faint);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-body th {
+  color: var(--accent);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.article-references {
+  padding-top: 28px;
+  border-top: 1px solid var(--ink);
+}
+
+.article-references p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .work-ledger {
   margin-top: clamp(54px, 9vw, 116px);
 }
@@ -1222,6 +1399,36 @@ figcaption {
   .contact-directory {
     grid-template-columns: 1fr;
   }
+
+  .article-shell,
+  .article-header {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .article-back {
+    grid-column: 1 / 4;
+  }
+
+  .article-header {
+    grid-column: 1 / 9;
+  }
+
+  .article-header .issue-label {
+    grid-column: 1 / 6;
+  }
+
+  .article-header h1 {
+    grid-column: 1 / 9;
+  }
+
+  .article-subtitle,
+  .article-header .meta-line {
+    grid-column: 5 / 9;
+  }
+
+  .article-body {
+    grid-column: 2 / 8;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1432,6 +1639,46 @@ figcaption {
 
   .site-footer p + p {
     margin-top: 8px;
+  }
+
+  .article-shell,
+  .article-header {
+    display: block;
+  }
+
+  .article-header {
+    margin-top: 24px;
+  }
+
+  .article-page-zh .article-header h1 {
+    font-size: clamp(42px, 16vw, 72px);
+    white-space: normal;
+  }
+
+  .article-subtitle,
+  .article-header .meta-line {
+    margin-top: 18px;
+  }
+
+  .article-page-zh .article-subtitle {
+    white-space: normal;
+  }
+
+  .article-header .meta-line {
+    text-align: left;
+  }
+
+  .article-body {
+    padding-top: 38px;
+  }
+
+  .article-body blockquote {
+    padding-left: 16px;
+    font-size: 18px;
+  }
+
+  .article-body table {
+    min-width: 560px;
   }
 }
 

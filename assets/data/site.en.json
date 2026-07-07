@@ -15,7 +15,7 @@
   "about": {
     "title": "About",
     "lead": "What are you feeling right now?",
-    "body": "Agawa, an ENFJ-T, highly extroverted, sword-in-hand idealist. I’m passionate, sensitive, and deeply attached to the people I care about. My mind is full of wild philosophical universes, and my heart carries a quiet knight’s oath. Right now, I’m carving my way through job hunting in Japan and graduate research. My greatest gift is keeping people close to my heart. My biggest challenge is not letting perfectionism freeze me on the loading screen. 🦉⚔️",
+    "body": "Hello, I’m Agawa.\n\nI am currently studying in Japan and pursuing a master’s degree in philosophy. My research focuses on the relationship between psychological ownership and AI: when people create something together with AI, why do we feel that “this is mine”? Where does that feeling come from, and how does it shape the way we understand ourselves, technology, and creativity?\n\nBeyond research, I am also learning web development, AI applications, and project design. I enjoy taking a vague idea and slowly turning it into something that can be used, experienced, and discussed. To me, technology is not only a tool. It is also a way of connecting people: helping us express ideas, organize experience, and make mutual understanding a little easier.\n\nIn everyday life, I like talking with people, listening to music, playing games, and observing relationships. Often, I find new inspiration in an ordinary conversation, a game mechanic, a melody, or someone’s story. Rather than giving standard answers, I prefer exploring what truly matters behind a question.\n\nI do not think a person needs to be complete from the beginning. We all become clearer through continuous attempts, revisions, and the process of understanding ourselves and the world. This website is the same: it is not a perfectly finished product, but a place where I collect traces of my research, creation, thinking, and everyday life.\n\nIf you find an idea here that makes you pause for a moment, or a feeling that resembles your own, then that connection itself is already meaningful.",
     "quote": "Throughout my life, I will follow the path I choose, unwavering until the end.",
     "timeline": [{
         "year": "2020",
@@ -82,10 +82,17 @@
     "topics": [
       "AI and human-AI co-creation",
       "Web and tool-making",
+      "Psychology and relationships",
       "Research notes",
       "Everyday observations"
     ],
-    "posts": []
+    "posts": [{
+      "title": "From Sensitivity to Perceptiveness",
+      "date": "2026/07/07",
+      "category": "Psychology / Relationships",
+      "excerpt": "An essay on turning high sensitivity into sharper perception by separating observed facts from automatic negative interpretations.",
+      "url": "blog-sensitive-to-perceptive-en.html"
+    }]
   },
   "contact": {
     "title": "Contact",

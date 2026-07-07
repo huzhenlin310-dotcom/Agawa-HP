@@ -1,5 +1,6 @@
 const SUPPORTED_LANGS = ["zh", "en", "ja"];
 const PAGE = document.body.dataset.page || "home";
+const ARTICLE_LANG = document.body.dataset.articleLang;
 
 const UI = {
   zh: {
@@ -149,6 +150,7 @@ function normalizeLang(value) {
 }
 
 function getInitialLang() {
+  if (SUPPORTED_LANGS.includes(ARTICLE_LANG)) return ARTICLE_LANG;
   const stored = localStorage.getItem("magazine-lang");
   if (SUPPORTED_LANGS.includes(stored)) return stored;
   const browserLang = navigator.language.slice(0, 2);
@@ -429,7 +431,14 @@ function updateProgress() {
 
 async function init() {
   $all("[data-lang]").forEach((button) => {
-    button.addEventListener("click", () => switchLanguage(button.dataset.lang));
+    button.addEventListener("click", () => {
+      if (button.dataset.langTarget) {
+        localStorage.setItem("magazine-lang", normalizeLang(button.dataset.lang));
+        window.location.href = button.dataset.langTarget;
+        return;
+      }
+      switchLanguage(button.dataset.lang);
+    });
   });
   window.addEventListener("scroll", updateProgress, { passive: true });
   window.addEventListener("resize", updateProgress);
