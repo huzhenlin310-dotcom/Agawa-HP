@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "works": "WORKS",
+    "blog": "BLOG",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "title": "阿川 ",
+    "subtitle": "删除我一生中任何一个瞬间，\n我都不能成为今天的自己",
+    "intro": "欢迎访问HUZHENLIN（阿川）的个人网站\n",
+    "featuredWorksTitle": "精选作品"
+  },
+  "about": {
+    "title": "关于我",
+    "lead": " What are you feeling right now?",
+    "body": "",
+    "quote": "终我一生，行我所志，至死不渝",
+    "timeline": [{
+        "year": "2020",
+        "text": "进入郑州大学体育学院学习体育教育"
+      },
+      {
+        "year": "2024",
+        "text": "初次来到日本，广岛大学研究生"
+      },
+      {
+        "year": "2025",
+        "text": "进入JAIST知识科学"
+      },
+      {
+        "year": "Now",
+        "text": "持续研究人机共创、AI交互设计。"
+      }
+    ],
+    "notes": [
+      "关键词：AI、哲学、阅读、创造、ENFJ",
+      "语言：中文、日本語",
+      "关注：AI，心理学，人格分析，存在主义哲学，人际关系",
+      "地点：日本 / 石川県 / JAIST"
+    ]
+  },
+  "works": [{
+      "id": "heart-haven",
+      "title": "Heart Haven",
+      "year": "2026/06/29",
+      "medium": "情绪陪伴 Web 应用 / 心理自助工具 / React 体验/ 中文",
+      "summary": "一个面向日常情绪整理与自我照顾的网页应用，通过温柔的界面、记录入口和陪伴式互动，帮助用户安放当下的感受。",
+      "image": "assets/images/work-heart-haven.png",
+      "caption": "Heart Haven 的首页与情绪陪伴界面",
+      "body": "Heart Haven 围绕“把情绪放在一个安全的地方”这一想法展开。项目将情绪记录、心理陪伴和柔和的视觉氛围结合在一起，让用户可以在压力、犹豫或需要整理内心时进入一个更安静的空间。界面重点不是复杂功能堆叠，而是通过清晰的入口、低刺激的配色和轻量互动，降低用户开始表达感受的门槛。",
+      "quote": "为难以说出口的感受，留下一处可以慢慢停靠的地方。",
+      "links": [{
+        "label": "查看项目",
+        "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
+      }]
+    },
+    {
+      "id": "jaist-shuttle-next",
+      "title": "JAIST Shuttle Next",
+      "year": "2026/05/10",
+      "medium": "PWA 应用 / 三语界面 / 校园交通工具",
+      "summary": "一个面向 JAIST 学生与访客的班车查询 PWA，支持日语、英语、中文三语切换，快速查看鶴来线下一班车与完整时刻表。",
+      "image": "assets/images/JAIST Shuttle Next.png",
+      "caption": "JAIST Shuttle Next 的下一班车查询界面",
+      "body": "项目围绕 JAIST Shuttle 的日常使用场景设计，将下一班车、常用站点、运行日判断和完整时刻表集中在一个轻量网页应用中。用户可以保存常用停留所与方向，系统根据当前时间自动显示即将到站的班次，并提供平日、周末与假日运行模式切换。界面同时支持日语、英语和中文，方便不同语言背景的学生与访客快速理解班车信息。",
+      "quote": "把复杂的时刻表变成出发前一眼就能看懂的信息。",
+      "links": [{
+        "label": "查看项目",
+        "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
+      }]
+    }
+  ],
+  "blog": {
+    "title": "Blog",
+    "lead": "这里会收录我后续撰写的 Web 記事：关于 AI、设计、研究、生活观察与工具实践。",
+    "indexTitle": "記事索引",
+    "emptyTitle": "文章准备中",
+    "emptyText": "新的 Web 記事发布后，会按时间顺序出现在这里。",
+    "topics": [
+      "AI 与人机共创",
+      "Web / 工具制作",
+      "研究札记",
+      "生活观察"
+    ],
+    "posts": []
+  },
+  "contact": {
+    "title": "联系我",
+    "intro": "如果你有任何建议、新的想法，或想讨论合作，哪怕只是简单交流，也欢迎随时联系我。",
+    "email": "huzhenlin@jaist.ac.jp",
+    "socials": [{
+        "label": "Portfolio archive",
+        "url": "#"
+      },
+      {
+        "label": "GitHub",
+        "url": "#"
+      },
+      {
+        "label": "Instagram",
+        "url": "#"
+      }
+    ],
+    "location": "日本 / 石川県 / JAIST",
+    "collaboration": [
+      "个性化网站的设计与搭建",
+      "AI Agent 的相关应用",
+      "AI 实验哲学",
+      "AI 伦理"
+    ]
+  },
+  "footer": {
+    "text": "Personal Magazine / Issue 01",
+    "copyright": "© 2026 Agawa. All rights reserved."
+  }
+}

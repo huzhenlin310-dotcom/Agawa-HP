@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Works page for a trilingual personal magazine website.">
+    <title>Works · 阿川</title>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/styles.css?v=works-grid-20260629">
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body data-page="works">
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-mark">+1</span>
+        <span class="brand-text">Lab</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" data-nav="home">HOME</a>
+        <a href="about.html" data-nav="about">ABOUT</a>
+        <a href="works.html" data-nav="works" aria-current="page">WORKS</a>
+        <a href="blog.html" data-nav="blog">BLOG</a>
+        <a href="contact.html" data-nav="contact">CONTACT</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <button type="button" data-lang="zh" aria-pressed="true">中</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+      </div>
+    </header>
+
+    <main id="content" class="page-shell works-page">
+      <section class="works-intro reveal">
+        <p class="issue-label" data-ui="portfolioKicker">Portfolio notes</p>
+        <h1 class="page-title" data-works-title>作品展示</h1>
+        <p class="page-lead" data-ui="portfolioLead"></p>
+      </section>
+      <section class="work-ledger" data-works-list></section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-footer-text></p>
+      <p data-footer-copyright></p>
+    </footer>
+  </body>
+</html>

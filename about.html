@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="About page for a trilingual personal magazine website.">
+    <title>About · 阿川</title>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body data-page="about">
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-mark">+1</span>
+        <span class="brand-text">Lab</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" data-nav="home">HOME</a>
+        <a href="about.html" data-nav="about" aria-current="page">ABOUT</a>
+        <a href="works.html" data-nav="works">WORKS</a>
+        <a href="blog.html" data-nav="blog">BLOG</a>
+        <a href="contact.html" data-nav="contact">CONTACT</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <button type="button" data-lang="zh" aria-pressed="true">中</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+      </div>
+    </header>
+
+    <main id="content" class="page-shell about-page">
+      <section class="interview-grid reveal">
+        <p class="issue-label" data-ui="profileKicker">Profile</p>
+        <h1 class="page-title" data-about-title>关于我</h1>
+        <p class="page-lead" data-about-lead></p>
+        <figure class="portrait-figure">
+          <img src="assets/images/me.png" alt="" width="1400" height="1800" loading="lazy">
+          <figcaption data-ui="portraitCaption">A quiet studio note in image form.</figcaption>
+        </figure>
+        <article class="prose dropcap" data-about-body></article>
+        <aside class="side-notes">
+          <p class="section-kicker" data-ui="marginalia">Marginalia</p>
+          <ul data-about-notes></ul>
+        </aside>
+      </section>
+
+      <section class="quote-band reveal" aria-label="Quote">
+        <blockquote data-about-quote></blockquote>
+      </section>
+
+      <section class="timeline-section reveal" aria-labelledby="timeline-title">
+        <div class="section-rule"></div>
+        <p class="section-kicker" data-ui="chronologyKicker">Chronology</p>
+        <h2 id="timeline-title" data-ui="chronologyTitle">时间线</h2>
+        <ol class="timeline" data-about-timeline></ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-footer-text></p>
+      <p data-footer-copyright></p>
+    </footer>
+  </body>
+</html>

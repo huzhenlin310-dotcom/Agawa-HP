@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A trilingual personal magazine website.">
+    <title>阿川 · Personal Magazine</title>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body data-page="home">
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-mark">+1</span>
+        <span class="brand-text">Lab</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" data-nav="home" aria-current="page">HOME</a>
+        <a href="about.html" data-nav="about">ABOUT</a>
+        <a href="works.html" data-nav="works">WORKS</a>
+        <a href="blog.html" data-nav="blog">BLOG</a>
+        <a href="contact.html" data-nav="contact">CONTACT</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <button type="button" data-lang="zh" aria-pressed="true">中</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+      </div>
+    </header>
+
+    <main id="content" class="page-shell home-page">
+      <section class="lab-hero reveal" aria-labelledby="lab-title">
+        <div class="lab-accent" aria-hidden="true"></div>
+        <p class="lab-kicker" data-ui="issue">Issue 01 / Notes from Agawa</p>
+        <h1 id="lab-title" class="lab-title">lab.</h1>
+        <p class="lab-copy" data-home-subtitle>把观察、语言与界面写成可以阅读的视觉叙事。</p>
+        <figure class="lab-portrait">
+          <img src="assets/images/hero-techwear-lab.png" alt="Black and white techwear editorial portrait" width="1024" height="1024" fetchpriority="high">
+        </figure>
+        <div class="lab-number" aria-hidden="true">100</div>
+        <p class="lab-edge-text" aria-hidden="true">X-LAB MATERIALS OF CREATION 2019</p>
+        <aside class="lab-note" aria-label="Editorial note">
+          <span data-ui="folio">Vol. 01</span>
+          <span data-ui="season">Spring issue</span>
+          <span data-ui="format">Trilingual edition</span>
+        </aside>
+      </section>
+
+      <section class="toc-section reveal" aria-labelledby="toc-title">
+        <div class="section-rule"></div>
+        <p class="section-kicker" data-ui="contentsKicker">Contents</p>
+        <h2 id="toc-title" data-ui="contentsTitle">目录</h2>
+        <div class="toc-list" data-toc></div>
+      </section>
+
+      <section class="featured-section reveal" aria-labelledby="featured-title">
+        <div class="section-rule"></div>
+        <p class="section-kicker" data-ui="selectedKicker">Selected works</p>
+        <h2 id="featured-title" data-home-featured-title>精选作品</h2>
+        <div class="featured-grid" data-featured-works></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-footer-text></p>
+      <p data-footer-copyright></p>
+    </footer>
+  </body>
+</html>

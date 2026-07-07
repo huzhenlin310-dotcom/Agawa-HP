@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "works": "WORKS",
+    "blog": "BLOG",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "title": "Agawa",
+    "subtitle": "Remove even one moment from my life,\n and I would not be the person I am today.",
+    "intro": "Welcome to HUZHENLIN (Achuan)’s personal website.",
+    "featuredWorksTitle": "Selected Works"
+  },
+  "about": {
+    "title": "About",
+    "lead": "What are you feeling right now?",
+    "body": "Agawa, an ENFJ-T, highly extroverted, sword-in-hand idealist. I’m passionate, sensitive, and deeply attached to the people I care about. My mind is full of wild philosophical universes, and my heart carries a quiet knight’s oath. Right now, I’m carving my way through job hunting in Japan and graduate research. My greatest gift is keeping people close to my heart. My biggest challenge is not letting perfectionism freeze me on the loading screen. 🦉⚔️",
+    "quote": "Throughout my life, I will follow the path I choose, unwavering until the end.",
+    "timeline": [{
+        "year": "2020",
+        "text": "Entered the School of Physical Education at Zhengzhou University, majoring in Physical Education"
+      },
+      {
+        "year": "2024",
+        "text": "Came to Japan for the first time as a research student at Hiroshima University"
+      },
+      {
+        "year": "2025",
+        "text": "Joined the School of Knowledge Science at JAIST"
+      },
+      {
+        "year": "Present",
+        "text": "Continuing research on human-AI co-creation and AI interaction design"
+      }
+    ],
+    "notes": [
+      "Keywords: AI, Philosophy, Reading, Creation, ENFJ",
+      "Languages: Chinese, Japanese",
+      "Interests: AI, Psychology, Personality Analysis, Existential Philosophy, Interpersonal Relationships",
+      "Location: Japan / Ishikawa / JAIST"
+
+    ]
+  },
+  "works": [{
+      "id": "heart-haven",
+      "title": "Heart Haven",
+      "year": "2026/06/29",
+      "medium": "Emotional Care Web App / Self-support Tool / React Experience /  Chinese",
+      "summary": "A web app for daily emotional reflection and self-care, using a gentle interface, journaling entry points, and companion-like interactions to help users hold what they feel.",
+      "image": "assets/images/work-heart-haven.png",
+      "caption": "Home and emotional care interface of Heart Haven",
+      "body": "Heart Haven is built around the idea of giving emotions a safe place to stay. The project combines mood reflection, psychological companionship, and a soft visual atmosphere, creating a calmer space for moments of pressure, hesitation, or inner sorting. Instead of stacking complex features, the interface focuses on clear entry points, low-stimulation colors, and lightweight interaction so users can begin expressing their feelings more easily.",
+      "quote": "A quiet place for feelings that are not easy to say out loud.",
+      "links": [{
+        "label": "View project",
+        "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
+      }]
+    },
+    {
+      "id": "jaist-shuttle-next",
+      "title": "JAIST Shuttle Next",
+      "year": "2026/05/10",
+      "medium": "PWA App / Trilingual Interface / Campus Transit Tool",
+      "summary": "A shuttle bus lookup PWA for JAIST students and visitors, supporting Japanese, English, and Chinese. It lets users quickly check the next bus and full timetable for the Tsurugi Line.",
+      "image": "assets/images/JAIST Shuttle Next.png",
+      "caption": "Next bus lookup screen of JAIST Shuttle Next",
+      "body": "This project is designed around the everyday use of JAIST Shuttle. It brings together next-bus lookup, favorite stops, service-day detection, and the full timetable in a lightweight web app. Users can save frequently used stops and directions, while the system automatically shows upcoming departures based on the current time. It also supports switching between weekday, weekend, and holiday service modes. The interface is available in Japanese, English, and Chinese, helping students and visitors from different language backgrounds understand shuttle information quickly.",
+      "quote": "Turning a complex timetable into information you can understand at a glance before departure.",
+      "links": [{
+        "label": "View project",
+        "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
+      }]
+    }
+  ],
+  "blog": {
+    "title": "Blog",
+    "lead": "A place for future web articles on AI, design, research notes, everyday observations, and tool-making practice.",
+    "indexTitle": "Article Index",
+    "emptyTitle": "Articles in progress",
+    "emptyText": "New web articles will appear here in reverse chronological order after publication.",
+    "topics": [
+      "AI and human-AI co-creation",
+      "Web and tool-making",
+      "Research notes",
+      "Everyday observations"
+    ],
+    "posts": []
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "If you have any suggestions, new ideas, collaboration opportunities, or just want to say hello, feel free to reach out.",
+    "email": "huzhenlin@jaist.ac.jp",
+    "socials": [{
+        "label": "Portfolio archive",
+        "url": "#"
+      },
+      {
+        "label": "GitHub",
+        "url": "#"
+      },
+      {
+        "label": "Instagram",
+        "url": "#"
+      }
+    ],
+    "location": "日本 / 石川県 / JAIST",
+    "collaboration": [
+      "Design and Development of Personalized Websites",
+      "Applications of AI Agents",
+      "Experimental Philosophy of AI",
+      "AI Ethics"
+    ]
+  },
+  "footer": {
+    "text": "Personal Magazine / Issue 01",
+    "copyright": "© 2026  Agawa. All rights reserved."
+  }
+}

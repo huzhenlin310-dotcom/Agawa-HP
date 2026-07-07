@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "works": "WORKS",
+    "blog": "BLOG",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "title": "阿川",
+    "subtitle": "人生のどの一瞬が欠けても、\n私は今の私にはなれなかった",
+    "intro": "HUZHENLIN（阿川）の個人サイトへようこそ。",
+    "featuredWorksTitle": "選出作品"
+  },
+  "about": {
+    "title": "About",
+    "lead": " What are you feeling right now?",
+    "body": "阿川です。ENFJ-Tで、かなり外向型の“大剣タイプ”理想主義者です。熱量があって、繊細で、人とのつながりを大事にするタイプ。頭の中には自由すぎる哲学の宇宙があって、心の中にはひそかに騎士の誓いを持っています。今は日本での就活と研究のあいだで、剣を振りながら道を切り開いているところです。いちばんの強みは、人をちゃんと心に置いておけること。いちばんの課題は、完璧を求めすぎて自分を「読み込み中」のまま止めないことです。🦉⚔️",
+    "quote": "この生涯をかけて、自らの志を貫き、死ぬまで揺らがない。",
+    "timeline": [{
+        "year": "2020",
+        "text": "鄭州大学体育学院に入学し、体育教育を学ぶ"
+      },
+      {
+        "year": "2024",
+        "text": "初めて日本へ渡り、広島大学の研究生となる"
+      },
+      {
+        "year": "2025",
+        "text": "JAISTの知識科学系に進学"
+      },
+      {
+        "year": "現在",
+        "text": "人間とAIの共創、AIインタラクションデザインについて研究を続けている"
+      }
+    ],
+    "notes": [
+      "キーワード：AI、哲学、読書、創作、ENFJ",
+      "言語：中国語、日本語",
+      "関心：AI、心理学、人格分析、実存主義哲学、人間関係",
+      "所在地：日本 / 石川県 / JAIST"
+    ]
+  },
+  "works": [{
+    "id": "heart-haven",
+    "title": "Heart Haven",
+    "year": "2026/06/29",
+    "medium": "感情ケアWebアプリ / セルフサポートツール / React体験 / 中国語",
+    "summary": "日々の感情整理とセルフケアのためのWebアプリ。やわらかな画面、記録の入口、寄り添うようなインタラクションで、今の気持ちをそっと置ける場所をつくります。",
+    "image": "assets/images/work-heart-haven.png",
+    "caption": "Heart Haven のホーム画面と感情ケアのインターフェース",
+    "body": "Heart Haven は、「感情を安心して置ける場所をつくる」という考えから設計されたプロジェクトです。感情の記録、心理的な寄り添い、やわらかな視覚表現を組み合わせ、ストレスや迷い、心を整理したい瞬間に入れる静かな空間を目指しています。複雑な機能を増やすよりも、わかりやすい入口、刺激の少ない色づかい、軽やかな操作感によって、ユーザーが自分の気持ちを表現し始めやすくすることを重視しました。",
+    "quote": "言葉にしにくい感情が、ゆっくり停まれる場所をつくる。",
+    "links": [{
+      "label": "プロジェクトを見る",
+      "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
+    }]
+  },
+  {
+    "id": "jaist-shuttle-next",
+    "title": "JAIST Shuttle Next",
+    "year": "2026/05/10",
+    "medium": "PWAアプリ / 3言語インターフェース / キャンパス交通ツール",
+    "summary": "JAISTの学生と訪問者向けのシャトルバス検索PWA。日本語・英語・中国語の3言語切り替えに対応し、鶴来線の次のバスや全時刻表をすばやく確認できます。",
+    "image": "assets/images/JAIST Shuttle Next.png",
+    "caption": "JAIST Shuttle Next の次のバス検索画面",
+    "body": "このプロジェクトは、JAIST Shuttleの日常的な利用シーンを中心に設計されています。次のバス、よく使う停留所、運行日の自動判定、全時刻表を軽量なWebアプリにまとめました。ユーザーはよく使う停留所と方面を保存でき、システムは現在時刻に基づいて次に出発する便を自動で表示します。また、平日・土日祝の運行モード切り替えにも対応しています。インターフェースは日本語・英語・中国語に対応しており、異なる言語背景を持つ学生や訪問者でもバス情報をすばやく理解できます。",
+    "quote": "複雑な時刻表を、出発前にひと目でわかる情報へ。",
+    "links": [{
+      "label": "プロジェクトを見る",
+      "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
+    }]
+  }],
+  "blog": {
+    "title": "Blog",
+    "lead": "これから書いていく Web 記事を収録する場所です。AI、デザイン、研究メモ、日々の観察、ツール制作について書いていきます。",
+    "indexTitle": "記事索引",
+    "emptyTitle": "記事準備中",
+    "emptyText": "新しい Web 記事は公開後、時系列でここに追加されます。",
+    "topics": [
+      "AIと人間・AIの共創",
+      "Web / ツール制作",
+      "研究メモ",
+      "日々の観察"
+    ],
+    "posts": []
+  },
+  "contact": {
+    "title": "連絡先",
+    "intro": "ご提案や新しいアイデア、コラボのご相談などがあれば、ちょっとしたお話だけでもお気軽にご連絡ください。",
+    "email": "huzhenlin@jaist.ac.jp",
+    "socials": [{
+        "label": "Portfolio archive",
+        "url": "#"
+      },
+      {
+        "label": "GitHub",
+        "url": "#"
+      },
+      {
+        "label": "Instagram",
+        "url": "#"
+      }
+    ],
+    "location": "日本 / 石川県 / JAIST",
+    "collaboration": [
+      "個性的なWebサイトのデザイン・構築",
+      "AIエージェント関連の応用",
+      "AIに関する実験哲学",
+      "AI倫理"
+    ]
+  },
+  "footer": {
+    "text": "Personal Magazine / Issue 01",
+    "copyright": "© 2026 Agawa. All rights reserved."
+  }
+}
