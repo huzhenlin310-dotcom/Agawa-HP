@@ -159,7 +159,7 @@ function getInitialLang() {
 
 function updateChrome(data, lang) {
   document.documentElement.lang = lang;
-  document.title = `${data.nav[PAGE]} · Achuan`;
+  if (!ARTICLE_LANG) document.title = `${data.nav[PAGE]} · Achuan`;
   $all("[data-nav]").forEach((item) => {
     const key = item.dataset.nav;
     item.textContent = data.nav[key];
