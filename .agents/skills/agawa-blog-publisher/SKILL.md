@@ -1,6 +1,6 @@
 ---
 name: agawa-blog-publisher
-description: Publish a user-provided blog post to the Agawa-HP website when the user asks to add, publish, or put that post on the site. Generate a relevant original header image, produce Chinese, English, and Japanese editions, update all three blog indexes, validate locally, and push the isolated blog change to GitHub. Do not use for copyediting, translation-only requests, or unrelated websites.
+description: Publish a user-provided blog post to the Agawa-HP website when the user asks to add, publish, or put that post on the site. Generate an original header image, produce Chinese, English, and Japanese editions, add complete article SEO and sitemap entries, update all three blog indexes, validate locally, and push the isolated change to GitHub. Do not use for copyediting, translation-only requests, or unrelated websites.
 ---
 
 # Agawa Blog Publisher
@@ -40,6 +40,24 @@ Each page must:
 - Reuse the same image in all languages unless the image contains language-specific text.
 - Preserve semantic HTML and keep wide tables inside the existing horizontal-scroll wrapper.
 
+## SEO publication contract
+
+Treat search metadata as part of the article, not as optional cleanup. Follow the current site-wide SEO pattern when it exists; otherwise establish the minimum static baseline below as part of the scoped blog release.
+
+Each language page must include directly in `<head>`:
+
+- A self-referencing absolute canonical URL on `https://www.agawa5642.com/`.
+- Reciprocal `rel="alternate"` links for `hreflang="zh"`, `en`, `ja`, and `x-default`; every edition lists all four, with the Chinese edition as `x-default`.
+- Localized Open Graph fields for `og:type=article`, title, description, canonical URL, site name, locale, and an absolute image URL. Include the two alternate locales.
+- A localized large-image Twitter Card with title, description, and the same absolute image URL.
+- Valid JSON-LD `BlogPosting` data whose visible title, description, image, language, publication date, modification date, author, and canonical URL match the page. Do not claim credentials or properties that the visible article does not support.
+
+Update the root `sitemap.xml` so all three canonical article URLs are present. Preserve existing URLs and significant `lastmod` values. When the sitemap does not yet exist, generate it from every public root HTML page rather than creating a blog-only sitemap. Ensure root `robots.txt` points to the production sitemap and allows public pages to be crawled.
+
+Check `.github/workflows/static.yml` when creating the SEO baseline. `sitemap.xml` and `robots.txt` must be copied into the GitHub Pages artifact. Do not repeatedly edit the workflow once it already deploys both files.
+
+Do not rely on `assets/js/main.js` to inject canonical, hreflang, social metadata, or JSON-LD. These signals must exist in the delivered HTML source. Do not add article URLs to the sitemap until all three pages exist and validate.
+
 ## Content and translation
 
 Detect whether the supplied source is Chinese, English, or Japanese, then create natural editions in the other two languages. The three pages must carry the same substantive content and section structure.
@@ -68,10 +86,12 @@ Use the available `imagegen` skill and its built-in generation workflow to make 
 2. Choose the stable article stem, localized titles, categories, excerpts, and image concept.
 3. Generate and save the image.
 4. Build the three complete HTML pages and reciprocal language switching.
-5. Add newest-first entries to all three blog indexes.
-6. Add only narrowly scoped CSS when the existing article styles cannot handle the content. Long English titles may receive a page-specific responsive rule.
-7. Run the validation and local preview gates below.
-8. If publishing is authorized, stage only the files belonging to this article, review the staged diff, commit, and push.
+5. Add canonical, reciprocal hreflang, social metadata, and `BlogPosting` JSON-LD to all three pages.
+6. Add the three canonical URLs to `sitemap.xml`; establish `robots.txt` and deployment inclusion only when the SEO baseline is absent.
+7. Add newest-first entries to all three blog indexes.
+8. Add only narrowly scoped CSS when the existing article styles cannot handle the content. Long English titles may receive a page-specific responsive rule.
+9. Run the validation and local preview gates below.
+10. If publishing is authorized, stage only the files belonging to this article, review the staged diff, commit, and push.
 
 ## Validation gates
 
@@ -82,6 +102,8 @@ powershell -ExecutionPolicy Bypass -File ".agents/skills/agawa-blog-publisher/sc
 ```
 
 Then start the repository’s local server on an available loopback port and check all three article URLs, their shared image, CSS, JavaScript, and language JSON files return HTTP 200. Stop the server after testing.
+
+Also request `robots.txt` and `sitemap.xml` over that server, verify all three production article URLs are present in the sitemap, and confirm the HTML source contains the expected canonical, reciprocal hreflang, social image, and `BlogPosting` data. Use a structured-data validator when one is available without requiring unrelated account changes.
 
 Visually inspect at least one desktop viewport and one narrow mobile viewport when a title is unusually long, the article adds a new content pattern, or CSS changed. Confirm:
 
@@ -99,6 +121,7 @@ Before staging, inspect `git status --short`, the current branch, its upstream, 
 
 - Never use `git add .` or `git add -A`.
 - Stage the three article files, generated image, three JSON index files, and only the CSS or JavaScript hunks required by this article.
+- Stage the article’s sitemap change and, only when newly established or required, `robots.txt`, the deployment-workflow change, and any dedicated social-card asset.
 - Review `git diff --cached --check` and `git diff --cached` before committing.
 - Use a concise commit message such as `Add trilingual FDE blog post`.
 - Push the current commit to its normal upstream. Never force-push.
@@ -108,4 +131,4 @@ Before staging, inspect `git status --short`, the current branch, its upstream, 
 
 ## Completion report
 
-Provide clickable paths to the three local article files and the generated image. Report the local checks, commit hash, pushed remote and branch, or the precise reason a push did not occur.
+Provide clickable paths to the three local article files and the generated image. Report SEO validation, sitemap/robots HTTP checks, the local checks, commit hash, pushed remote and branch, or the precise reason a push did not occur.

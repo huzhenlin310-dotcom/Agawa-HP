@@ -1,5 +1,5 @@
 interface:
   display_name: "Agawa Blog Publisher"
-  short_description: "Publish illustrated trilingual posts to Agawa HP"
+  short_description: "Publish SEO-ready trilingual posts to Agawa HP"
   brand_color: "#C65F3B"
-  default_prompt: "Use $agawa-blog-publisher to turn this blog draft into an illustrated Chinese, English, and Japanese post and publish it to the Agawa website."
+  default_prompt: "Use $agawa-blog-publisher to turn this draft into an illustrated, SEO-ready Chinese, English, and Japanese post, update the sitemap, validate it, and publish it to the Agawa website."
