@@ -38,12 +38,6 @@ body {
   hyphens: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  opacity: 0;
-  transition: opacity 260ms ease;
-}
-
-body.is-ready {
-  opacity: 1;
 }
 
 body.is-switching main {
@@ -88,9 +82,12 @@ button {
 
 .reading-progress span {
   display: block;
-  width: 0;
+  width: 100%;
   height: 100%;
   background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .site-header {
@@ -315,6 +312,13 @@ figcaption,
   margin: 0;
   z-index: 2;
   mix-blend-mode: multiply;
+}
+
+.lab-portrait picture,
+.portrait-figure picture,
+.article-hero-figure picture {
+  display: block;
+  width: 100%;
 }
 
 .lab-portrait img {

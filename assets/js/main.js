@@ -211,7 +211,7 @@ function renderHome(data, lang) {
       item.className = "featured-item";
       item.href = `works.html#${work.id}`;
       item.innerHTML = `
-        <img src="${work.image}" alt="" width="1200" height="1500" loading="${index === 0 ? "eager" : "lazy"}">
+        <img src="${work.image}" alt="" width="1200" height="1500" loading="lazy" fetchpriority="low" decoding="async">
         <div>
           <p class="meta-line">No. ${String(index + 1).padStart(2, "0")} / ${work.year} / ${work.medium}</p>
           <h3>${work.title}</h3>
@@ -392,13 +392,30 @@ function renderPage(data, lang) {
   if (PAGE === "contact") renderContact(data);
 }
 
+let languageSwitchId = 0;
+let switchingTimer = 0;
+
 async function switchLanguage(lang) {
+  const requestId = ++languageSwitchId;
   const nextLang = normalizeLang(lang);
   document.body.classList.add("is-switching");
-  const data = await getData(nextLang);
-  renderPage(data, nextLang);
-  localStorage.setItem("magazine-lang", nextLang);
-  window.setTimeout(() => document.body.classList.remove("is-switching"), 120);
+  window.clearTimeout(switchingTimer);
+  switchingTimer = window.setTimeout(() => {
+    if (requestId === languageSwitchId) document.body.classList.remove("is-switching");
+  }, 240);
+  try {
+    const data = await getData(nextLang);
+    if (requestId !== languageSwitchId) return;
+    renderPage(data, nextLang);
+    localStorage.setItem("magazine-lang", nextLang);
+  } finally {
+    if (requestId === languageSwitchId) {
+      window.clearTimeout(switchingTimer);
+      switchingTimer = window.setTimeout(() => {
+        if (requestId === languageSwitchId) document.body.classList.remove("is-switching");
+      }, 120);
+    }
+  }
 }
 
 function observeReveals() {
@@ -421,12 +438,21 @@ function observeReveals() {
   });
 }
 
+let progressFrame = 0;
+
 function updateProgress() {
+  progressFrame = 0;
   const progress = $(".reading-progress span");
   if (!progress) return;
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const value = max <= 0 ? 0 : (window.scrollY / max) * 100;
-  progress.style.width = `${Math.min(100, Math.max(0, value))}%`;
+  const ratio = Math.min(100, Math.max(0, value)) / 100;
+  progress.style.transform = `scaleX(${ratio})`;
+}
+
+function scheduleProgressUpdate() {
+  if (progressFrame) return;
+  progressFrame = window.requestAnimationFrame(updateProgress);
 }
 
 async function init() {
@@ -440,16 +466,18 @@ async function init() {
       switchLanguage(button.dataset.lang);
     });
   });
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
+  window.addEventListener("scroll", scheduleProgressUpdate, { passive: true });
+  window.addEventListener("resize", scheduleProgressUpdate);
 
-  await switchLanguage(getInitialLang());
   observeReveals();
-  updateProgress();
   document.body.classList.add("is-ready");
+  await switchLanguage(getInitialLang());
+  scheduleProgressUpdate();
 }
 
 init().catch((error) => {
   console.error(error);
   document.body.classList.add("is-ready");
+  observeReveals();
+  scheduleProgressUpdate();
 });

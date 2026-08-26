@@ -41,7 +41,10 @@
         </header>
 
         <figure class="article-hero-figure">
-          <img src="assets/images/blog-fde-field-deployment.png" alt="前线部署工程师在工业现场与客户团队共同讨论系统部署的编辑插画" width="1536" height="1024" loading="eager">
+          <picture>
+            <source type="image/webp" srcset="assets/images/blog-fde-field-deployment-480.webp 480w, assets/images/blog-fde-field-deployment-768.webp 768w, assets/images/blog-fde-field-deployment-1536.webp 1536w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 64px), 1024px">
+            <img src="assets/images/blog-fde-field-deployment.png" alt="前线部署工程师在工业现场与客户团队共同讨论系统部署的编辑插画" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
           <figcaption>从系统架构到业务现场，FDE 负责让技术真正进入生产环境。</figcaption>
         </figure>
 

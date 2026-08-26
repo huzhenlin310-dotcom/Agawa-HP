@@ -36,7 +36,10 @@
         <h1 class="page-title" data-about-title>关于我</h1>
         <p class="page-lead" data-about-lead></p>
         <figure class="portrait-figure">
-          <img src="assets/images/me.png" alt="" width="1400" height="1800" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="assets/images/me-480.webp 480w, assets/images/me-768.webp 768w, assets/images/me-1122.webp 1122w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 42vw">
+            <img src="assets/images/me.png" alt="" width="1122" height="1402" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
           <figcaption data-ui="portraitCaption">A quiet studio note in image form.</figcaption>
         </figure>
         <article class="prose dropcap" data-about-body></article>
