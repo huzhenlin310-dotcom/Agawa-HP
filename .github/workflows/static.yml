@@ -36,7 +36,7 @@ jobs:
       - name: Prepare site artifact
         run: |
           mkdir -p _site
-          cp ./*.html ./CNAME ./_site/
+          cp ./*.html ./CNAME ./sitemap.xml ./robots.txt ./_site/
           cp -R ./assets ./_site/assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

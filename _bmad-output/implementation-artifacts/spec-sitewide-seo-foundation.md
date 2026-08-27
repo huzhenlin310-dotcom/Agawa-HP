@@ -2,8 +2,9 @@
 title: '全站技术 SEO 基础与可持续博客发布'
 type: 'feature'
 created: '2026-08-26'
-status: 'draft'
+status: 'implemented'
 review_loop_iteration: 0
+approved: '2026-08-27'
 context:
   - '{project-root}/docs/project-overview.md'
 ---
@@ -47,20 +48,22 @@ context:
 ## Tasks & Acceptance
 
 **Execution:**
-- [ ] `assets/images/og-default.jpg` -- 生成 1200×630 默认分享图。
-- [ ] 根目录 `*.html` -- 11 页写 canonical、description、OG/Twitter、JSON-LD；博客补 hreflang。
-- [ ] `sitemap.xml`、`robots.txt`、`.github/workflows/static.yml` -- 建立并发布抓取入口。
-- [ ] `.agents/skills/agawa-blog-publisher/` -- 完成发布契约与全站/文章/XML/部署门禁。
-- [ ] `docs/project-overview.md`、`docs/technical-seo-baseline.md` -- 更新发布边界并记录决策、验证、效果与限制。
-- [ ] 本地 HTTP -- 检查公开资源 200、源码 SEO、三语切换和控制台。
+- [x] `assets/images/og-default.jpg` -- 生成 1200×630 默认分享图。
+- [x] 根目录 `*.html` -- 14 页写 canonical、description、OG/Twitter、JSON-LD；博客补 hreflang。
+- [x] `sitemap.xml`、`robots.txt`、`.github/workflows/static.yml` -- 建立并发布抓取入口。
+- [x] `.agents/skills/agawa-blog-publisher/` -- 发布契约执行全站/文章/XML/部署门禁。
+- [x] `docs/project-overview.md`、`docs/technical-seo-baseline.md` -- 更新发布边界并记录决策、验证、效果与限制。
+- [x] 本地 HTTP -- 检查公开资源 200、源码 SEO、三语切换和控制台。
 
 **Acceptance Criteria:**
-- Given 11 页，when 静态解析，then canonical 唯一，title/description 非空且 OG URL 一致。
+- Given 14 页，when 静态解析，then canonical 唯一，title/description 非空且 OG URL 一致。
 - Given 博客语言组，when 校验，then 四组 hreflang 互惠且 BlogPosting 与页面一致。
-- Given 部署产物，when 解析请求，then 11 个 canonical 无重复且 200，开发文件不在 `_site`。
+- Given 部署产物，when 解析请求，then 14 个 canonical 无重复且 200，开发文件不在 `_site`。
 - Given 现有博客 stem，when 运行门禁，then SEO、三语、抓取入口、JS 与 diff 全通过。
 
 ## Spec Change Log
+
+- 2026-08-27：用户选择 `[A] Approve`；随 PROSE 三语博客完成实施与验证，公开 HTML 增至 14 页。
 
 ## Design Notes
 

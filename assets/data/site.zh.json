@@ -86,6 +86,12 @@
       "生活观察"
     ],
     "posts": [{
+      "title": "别再给 AI 塞几千字 Prompt：一文读懂 PROSE Agent 开发框架",
+      "date": "2026/08/27",
+      "category": "AI / Agent Engineering",
+      "excerpt": "从渐进式披露、缩小范围、编排组合、安全边界与显式层级出发，设计可控且可验证的 Coding Agent 工作环境。",
+      "url": "blog-prose-agent-framework.html"
+    }, {
       "title": "亚马逊、微软重金押注的 FDE，究竟是何方神圣？",
       "date": "2026/08/25",
       "category": "AI / 职业发展",

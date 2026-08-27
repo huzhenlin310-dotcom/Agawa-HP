@@ -27,7 +27,14 @@ Agawa-HP 是阿川的个人表达网站。它用于介绍阿川本人、展示�
 
 https://www.agawa5642.com/
 
-Pages 部署产物只应包含访客访问网站所需的 HTML、`assets/` 和 `CNAME`。项目文档、BMAD 文件、开发工具、日志和视觉检查产物不属于公开网站文件。
+Pages 部署产物只应包含访客访问网站所需的 HTML、`assets/`、`CNAME`、`sitemap.xml` 和 `robots.txt`。项目文档、BMAD 文件、开发工具、日志和视觉检查产物不属于公开网站文件。
+
+## SEO 与语言 URL
+
+- 普通页面继续使用一个 HTML URL，通过三份语言 JSON 切换内容；这些页面使用一个 canonical，不创建虚假的 hreflang。
+- 博客文章使用中文、英文、日文三个独立 URL，必须配置 self-canonical 和互惠的 `zh`、`en`、`ja`、`x-default` hreflang。
+- canonical、社交分享信息与 JSON-LD 必须直接写入 HTML；`sitemap.xml` 与 `robots.txt` 随 Pages 产物部署。
+- 新博客只有在三语页面、索引、图片、SEO、站点地图与本地验证全部通过后才能发布。
 
 ## 文档维护
 

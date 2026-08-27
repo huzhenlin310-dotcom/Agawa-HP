@@ -85,6 +85,12 @@
       "日々の観察"
     ],
     "posts": [{
+      "title": "AIに数千字のPromptを詰め込まない：PROSE Agent開発フレームワーク入門",
+      "date": "2026/08/27",
+      "category": "AI / Agent Engineering",
+      "excerpt": "段階的開示、範囲縮小、編成、安全境界、明示的階層によって、制御可能で検証可能なCoding Agent環境を設計します。",
+      "url": "blog-prose-agent-framework-ja.html"
+    }, {
       "title": "AmazonとMicrosoftが巨額投資するFDEとは何者か？",
       "date": "2026/08/25",
       "category": "AI / キャリア",

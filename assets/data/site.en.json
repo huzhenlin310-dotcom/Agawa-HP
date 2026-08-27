@@ -87,6 +87,12 @@
       "Everyday observations"
     ],
     "posts": [{
+      "title": "Stop Stuffing AI with Thousand-Word Prompts: The PROSE Agent Development Framework",
+      "date": "2026/08/27",
+      "category": "AI / Agent Engineering",
+      "excerpt": "Use progressive disclosure, reduced scope, orchestration, safety boundaries, and explicit hierarchy to build controlled and verifiable coding-agent environments.",
+      "url": "blog-prose-agent-framework-en.html"
+    }, {
       "title": "What Exactly Is an FDE, the Role Amazon and Microsoft Are Betting Billions On?",
       "date": "2026/08/25",
       "category": "AI / Career Development",
