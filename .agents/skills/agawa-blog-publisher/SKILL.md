@@ -23,7 +23,7 @@ For a new article stem such as `blog-forward-deployed-engineer`, create:
 - Chinese: `<stem>.html`
 - English: `<stem>-en.html`
 - Japanese: `<stem>-ja.html`
-- One descriptive original image under `assets/images/`
+- One original header-image concept under `assets/images/`; when the design contains language-specific text, create matching Chinese, English, and Japanese variants from the same composition
 - One newest-first post entry in each of:
   - `assets/data/site.zh.json`
   - `assets/data/site.en.json`
@@ -72,13 +72,17 @@ Detect whether the supplied source is Chinese, English, or Japanese, then create
 
 ## Image generation
 
-Use the available `imagegen` skill and its built-in generation workflow to make one publication-quality blog header related to the article’s central idea.
+Use the available `imagegen` skill and its built-in generation workflow to create the publication-quality blog header.
 
-- Match the site’s restrained editorial palette: off-white, charcoal, cool gray, and the existing orange accent unless the current design has changed.
-- Prefer a wide editorial illustration or natural editorial photograph that survives desktop and mobile cropping.
-- Do not include text, logos, trademarks, watermarks, fake interfaces, or imagery that implies official endorsement.
-- Save the final selected image inside `assets/images/` before referencing it from HTML.
-- Report the final image path and prompt summary in the handoff.
+Before prompting the image model, read [references/hand-drawn-knowledge-infographic-prompt.md](references/hand-drawn-knowledge-infographic-prompt.md) completely and use it as the required visual and prompt-design baseline. Do not paste the article into the image prompt unchanged: first distill its central question, 3–6 essential modules, their real relationship, and one takeaway. The image must communicate the article’s knowledge structure at a glance.
+
+- Default to a 4:3 landscape hand-drawn educational infographic with a clear reading path, warm paper texture, restrained navy/charcoal linework, mustard-yellow emphasis, and only minimal muted orange or gray-blue accents.
+- Preserve the reference’s knowledge-first composition, editorial doodle character, visual hierarchy, and anti-clutter constraints even when the user requests a related stylistic variation. Follow an explicitly conflicting user direction, but do not silently fall back to a generic decorative illustration.
+- Keep in-image copy short and intentional. Provide every required label verbatim to the image model; reject pseudo-text, garbled characters, invented labels, logos, trademarks, watermarks, fake interfaces, or imagery that implies official endorsement.
+- When the infographic contains language-specific text, generate localized Chinese, English, and Japanese variants with the same structure and meaning, and reference the matching image from each article edition. A text-free image may be shared across all three editions.
+- Inspect the result at full size and at the approximate mobile-rendered width. If important text is malformed, iterate with one targeted correction at a time; do not publish a version with unreadable required labels.
+- Save every final selected image inside `assets/images/` before referencing it from HTML. Use web-appropriate compression while preserving readability.
+- Report the final image path(s), dimensions, and prompt summary in the handoff.
 
 ## Implementation sequence
 
