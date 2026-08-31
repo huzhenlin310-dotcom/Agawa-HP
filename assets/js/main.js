@@ -1,4 +1,5 @@
 const SUPPORTED_LANGS = ["zh", "en", "ja"];
+const DATA_VERSION = "works-sakura-20260831";
 const PAGE = document.body.dataset.page || "home";
 const ARTICLE_LANG = document.body.dataset.articleLang;
 
@@ -138,7 +139,7 @@ function createEl(tag, className, text) {
 
 async function getData(lang) {
   if (dataCache.has(lang)) return dataCache.get(lang);
-  const response = await fetch(`assets/data/site.${lang}.json`);
+  const response = await fetch(`assets/data/site.${lang}.json?v=${DATA_VERSION}`);
   if (!response.ok) throw new Error(`Could not load language data: ${lang}`);
   const data = await response.json();
   dataCache.set(lang, data);
@@ -287,6 +288,7 @@ function renderWorks(data) {
         <aside class="work-meta">
           <p>${work.year}</p>
           <p>${work.medium}</p>
+          ${work.credits ? `<p>${work.credits}</p>` : ""}
           <p>${work.id}</p>
         </aside>
       </div>

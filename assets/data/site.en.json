@@ -71,6 +71,22 @@
         "label": "View project",
         "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
       }]
+    },
+    {
+      "id": "sakura-festival-website",
+      "title": "Sakura Festival Website",
+      "year": "2026/04",
+      "medium": "Campus Event Website / Information Architecture / Responsive Frontend / Three-person Team",
+      "summary": "A website for Sakura Festival, an April welcome event organized by JAIST students, using a relaxed visual atmosphere and clear information structure to help newcomers understand the event and feel comfortable joining it.",
+      "image": "assets/images/work-sakura-festival.png",
+      "caption": "Spring campus visual for the Sakura Festival website and its three-person production team",
+      "body": "Sakura Festival is an April welcome event planned and operated by JAIST students. As a member of the Public Relations Department's website production team, I worked with two other members to plan and create the site. We treated newcomers as the primary audience and placed the desire to attend ahead of simply listing information: a light spring atmosphere introduces the event first, followed by layered access to the event overview, schedule and venue information, programs, directions, and frequently asked questions. The structure prioritizes essential information while considering Japanese and English browsing, mobile access, and maintenance for future editions, turning scattered event details into an experience that newcomers can understand with confidence.",
+      "quote": "Let newcomers feel welcomed first, then help them find what they need with ease.",
+      "credits": "Website Production: HU, YANG, LIN",
+      "links": [{
+        "label": "View project",
+        "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
+      }]
     }
   ],
   "blog": {

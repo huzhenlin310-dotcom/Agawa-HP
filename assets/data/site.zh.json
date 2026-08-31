@@ -70,6 +70,22 @@
         "label": "查看项目",
         "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
       }]
+    },
+    {
+      "id": "sakura-festival-website",
+      "title": "桜祭り Website",
+      "year": "2026/04",
+      "medium": "校园活动网站 / 信息架构设计 / 响应式前端 / 三人团队协作",
+      "summary": "为 JAIST 学生自发组织的四月新生欢迎活动“桜祭り”制作的网站，通过轻松的视觉氛围与清晰的信息结构，帮助新生了解活动并降低初次参与的心理门槛。",
+      "image": "assets/images/work-sakura-festival.png",
+      "caption": "桜祭り网站与三人制作团队的春季校园视觉",
+      "body": "“桜祭り”是由 JAIST 学生自主策划和运营的四月新生欢迎活动。我作为广报部 Website 制作组的成员，与另外两名成员共同负责网站的规划与制作。我们将新生视为最重要的用户，把“让人愿意参加”放在单纯罗列信息之前：先以轻松的春日视觉传递活动氛围，再分层提供活动介绍、举办信息、企划、交通方式与常见问题。项目采用重点信息优先的页面结构，并考虑了日语与英语浏览、移动端访问和后续年度维护，让分散的活动信息成为新生能够安心理解和使用的体验。",
+      "quote": "让新生先感受到欢迎，再轻松找到参加活动所需的信息。",
+      "credits": "Website 制作：HU, YANG, LIN",
+      "links": [{
+        "label": "查看项目",
+        "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
+      }]
     }
   ],
   "blog": {
