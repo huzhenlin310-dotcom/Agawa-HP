@@ -1075,8 +1075,7 @@ figcaption {
 .article-hero-figure img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  height: auto;
 }
 
 .article-hero-figure figcaption {
@@ -1861,10 +1860,6 @@ figcaption {
 
   .article-hero-figure {
     margin-top: 38px;
-  }
-
-  .article-hero-figure img {
-    aspect-ratio: 4 / 3;
   }
 
   .article-table-wide {
