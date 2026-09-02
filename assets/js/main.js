@@ -2,6 +2,9 @@ const SUPPORTED_LANGS = ["zh", "en", "ja"];
 const DATA_VERSION = "works-sakura-20260831";
 const PAGE = document.body.dataset.page || "home";
 const ARTICLE_LANG = document.body.dataset.articleLang;
+const PRIVATE_BLOG_PASSWORD_HASH = "8e0c19142ee61342e1f8b09a6fccbcf5867db1542444474ed37ad11bd08eb062";
+const PRIVATE_BLOG_SESSION_KEY = "agawa-private-blog-unlocked";
+const PRIVATE_BLOG_TRIGGER_WINDOW = 1000;
 
 const UI = {
   zh: {
@@ -108,7 +111,41 @@ const LINK_LABELS = {
   ja: "プロジェクトを見る"
 };
 
+const PRIVATE_BLOG_UI = {
+  zh: {
+    title: "隐藏文章",
+    description: "请输入密码以显示当前标签页中的隐藏博客。",
+    passwordLabel: "密码",
+    submit: "解锁",
+    cancel: "取消",
+    incorrect: "密码不正确，请重试。",
+    unavailable: "当前浏览器无法完成密码验证。"
+  },
+  en: {
+    title: "Hidden articles",
+    description: "Enter the password to show hidden blog posts in this tab.",
+    passwordLabel: "Password",
+    submit: "Unlock",
+    cancel: "Cancel",
+    incorrect: "Incorrect password. Please try again.",
+    unavailable: "This browser cannot verify the password."
+  },
+  ja: {
+    title: "非公開記事",
+    description: "このタブで非公開ブログを表示するには、パスワードを入力してください。",
+    passwordLabel: "パスワード",
+    submit: "ロック解除",
+    cancel: "キャンセル",
+    incorrect: "パスワードが正しくありません。もう一度お試しください。",
+    unavailable: "このブラウザではパスワードを確認できません。"
+  }
+};
+
 const dataCache = new Map();
+let currentPageData = null;
+let currentPageLang = "zh";
+let privateBlogDialog = null;
+let privateBlogDialogReturnFocus = null;
 
 function $(selector, root = document) {
   return root.querySelector(selector);
@@ -148,6 +185,159 @@ async function getData(lang) {
 
 function normalizeLang(value) {
   return SUPPORTED_LANGS.includes(value) ? value : "zh";
+}
+
+function isPrivateBlogUnlocked() {
+  try {
+    return sessionStorage.getItem(PRIVATE_BLOG_SESSION_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function storePrivateBlogUnlock() {
+  try {
+    sessionStorage.setItem(PRIVATE_BLOG_SESSION_KEY, "true");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function hashPrivateBlogPassword(value) {
+  if (!window.crypto?.subtle) throw new Error("Web Crypto unavailable");
+  const bytes = new TextEncoder().encode(value);
+  const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function updatePrivateBlogDialog(lang) {
+  if (!privateBlogDialog) return;
+  const copy = PRIVATE_BLOG_UI[normalizeLang(lang)];
+  setText("[data-private-dialog-title]", copy.title, privateBlogDialog);
+  setText("[data-private-dialog-description]", copy.description, privateBlogDialog);
+  setText("[data-private-dialog-label]", copy.passwordLabel, privateBlogDialog);
+  setText("[data-private-dialog-submit]", copy.submit, privateBlogDialog);
+  setText("[data-private-dialog-cancel]", copy.cancel, privateBlogDialog);
+  privateBlogDialog.querySelector("input").setAttribute("aria-label", copy.passwordLabel);
+}
+
+function closePrivateBlogDialog() {
+  if (privateBlogDialog?.open) privateBlogDialog.close();
+}
+
+function openPrivateBlogDialog() {
+  if (!privateBlogDialog || isPrivateBlogUnlocked()) return;
+  updatePrivateBlogDialog(currentPageLang);
+  privateBlogDialogReturnFocus = document.activeElement;
+  if (!privateBlogDialog.open) privateBlogDialog.showModal();
+  window.requestAnimationFrame(() => privateBlogDialog.querySelector("input")?.focus());
+}
+
+function createPrivateBlogDialog() {
+  const dialog = document.createElement("dialog");
+  dialog.className = "private-blog-dialog";
+  dialog.setAttribute("aria-labelledby", "private-blog-dialog-title");
+  dialog.setAttribute("aria-describedby", "private-blog-dialog-description");
+  dialog.innerHTML = `
+    <form class="private-blog-form">
+      <p class="section-kicker">Private access</p>
+      <h2 id="private-blog-dialog-title" data-private-dialog-title></h2>
+      <p id="private-blog-dialog-description" class="private-blog-description" data-private-dialog-description></p>
+      <label for="private-blog-password" data-private-dialog-label></label>
+      <input id="private-blog-password" name="password" type="password" autocomplete="off" required>
+      <p class="private-blog-error" data-private-dialog-error role="alert" aria-live="polite"></p>
+      <div class="private-blog-actions">
+        <button type="button" data-private-dialog-cancel></button>
+        <button type="submit" data-private-dialog-submit></button>
+      </div>
+    </form>
+  `;
+
+  const form = dialog.querySelector("form");
+  const input = dialog.querySelector("input");
+  const error = dialog.querySelector("[data-private-dialog-error]");
+  const submit = dialog.querySelector("[data-private-dialog-submit]");
+
+  dialog.querySelector("[data-private-dialog-cancel]").addEventListener("click", closePrivateBlogDialog);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closePrivateBlogDialog();
+  });
+  dialog.addEventListener("close", () => {
+    form.reset();
+    error.textContent = "";
+    submit.disabled = false;
+    if (privateBlogDialogReturnFocus instanceof HTMLElement) privateBlogDialogReturnFocus.focus();
+    privateBlogDialogReturnFocus = null;
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    error.textContent = "";
+    submit.disabled = true;
+    const copy = PRIVATE_BLOG_UI[currentPageLang];
+
+    try {
+      const digest = await hashPrivateBlogPassword(input.value);
+      if (digest !== PRIVATE_BLOG_PASSWORD_HASH) {
+        error.textContent = copy.incorrect;
+        input.select();
+        return;
+      }
+
+      storePrivateBlogUnlock();
+      document.body.classList.add("is-private-unlocked");
+      closePrivateBlogDialog();
+      if (PAGE === "blog" && !ARTICLE_LANG && currentPageData) renderBlog(currentPageData);
+    } catch {
+      error.textContent = copy.unavailable;
+    } finally {
+      submit.disabled = false;
+    }
+  });
+
+  document.body.append(dialog);
+  privateBlogDialog = dialog;
+  updatePrivateBlogDialog(currentPageLang);
+}
+
+function initPrivateBlogAccess(lang) {
+  currentPageLang = normalizeLang(lang);
+  createPrivateBlogDialog();
+
+  if (isPrivateBlogUnlocked()) {
+    document.body.classList.add("is-private-unlocked");
+  } else if (document.body.dataset.private === "true") {
+    openPrivateBlogDialog();
+  }
+
+  let triggerTimes = [];
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const isEditable = target instanceof Element && Boolean(
+      target.closest("input, textarea, select, [contenteditable='true'], [contenteditable='']")
+    );
+    const isPlainB = event.key.toLowerCase() === "b"
+      && !event.altKey
+      && !event.ctrlKey
+      && !event.metaKey
+      && !event.shiftKey;
+
+    if (isEditable || !isPlainB) {
+      triggerTimes = [];
+      return;
+    }
+
+    const now = performance.now();
+    triggerTimes = triggerTimes.filter((time) => now - time <= PRIVATE_BLOG_TRIGGER_WINDOW);
+    triggerTimes.push(now);
+    if (triggerTimes.length < 3) return;
+
+    triggerTimes = [];
+    event.preventDefault();
+    openPrivateBlogDialog();
+  });
 }
 
 function getInitialLang() {
@@ -321,7 +511,11 @@ function renderBlog(data) {
   if (!list) return;
   list.replaceChildren();
 
-  if (!Array.isArray(data.blog.posts) || data.blog.posts.length === 0) {
+  const posts = Array.isArray(data.blog.posts)
+    ? data.blog.posts.filter((post) => !post.private || isPrivateBlogUnlocked())
+    : [];
+
+  if (posts.length === 0) {
     const empty = document.createElement("article");
     empty.className = "blog-empty";
     empty.innerHTML = `
@@ -335,7 +529,7 @@ function renderBlog(data) {
     return;
   }
 
-  data.blog.posts.forEach((post, index) => {
+  posts.forEach((post, index) => {
     const item = document.createElement(post.url ? "a" : "article");
     item.className = "blog-entry reveal";
     if (post.url) item.href = post.url;
@@ -408,6 +602,9 @@ async function switchLanguage(lang) {
   try {
     const data = await getData(nextLang);
     if (requestId !== languageSwitchId) return;
+    currentPageData = data;
+    currentPageLang = nextLang;
+    updatePrivateBlogDialog(nextLang);
     renderPage(data, nextLang);
     localStorage.setItem("magazine-lang", nextLang);
   } finally {
@@ -458,6 +655,7 @@ function scheduleProgressUpdate() {
 }
 
 async function init() {
+  if (PAGE === "blog") initPrivateBlogAccess(getInitialLang());
   $all("[data-lang]").forEach((button) => {
     button.addEventListener("click", () => {
       if (button.dataset.langTarget) {

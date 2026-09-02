@@ -36,6 +36,15 @@ Pages 部署产物只应包含访客访问网站所需的 HTML、`assets/`、`CN
 - canonical、社交分享信息与 JSON-LD 必须直接写入 HTML；`sitemap.xml` 与 `robots.txt` 随 Pages 产物部署。
 - 新博客只有在三语页面、索引、图片、SEO、站点地图与本地验证全部通过后才能发布。
 
+## 私密博客约定
+
+网站支持面向非技术访客的轻量前端门禁。它用于避免身边的人偶然看到隐私内容，不是服务端访问控制；文章正文仍存在于公开的静态文件和仓库中。
+
+- 私密博客必须在三份 `assets/data/site.{lang}.json` 的对应 post 中同时设置 `"private": true`，并在三个文章页面的 `<body>` 上设置 `data-private="true"`。
+- 私密博客不加入 `sitemap.xml`，并在每个语言版本的 HTML 中设置 `<meta name="robots" content="noindex, nofollow, noarchive">`。
+- 私密文章不配置会泄露标题或摘要的公开 Open Graph、Twitter Card、`BlogPosting` JSON-LD 或 hreflang 关系；公开博客原有 SEO 规则不变。
+- 访客在博客页连续按三次 `B` 可打开密码框。解锁只对当前标签页有效，关闭标签页后自动失效。
+
 ## 文档维护
 
 `docs/` 用于保存稳定的项目背景、产品决策和设计说明。快速变化且可以直接从代码判断的实现细节不在这里重复记录。
