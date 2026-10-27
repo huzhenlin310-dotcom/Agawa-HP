@@ -1,7 +1,10 @@
 param(
   [Parameter(Mandatory = $true)]
   [ValidatePattern('^blog-[a-z0-9]+(?:-[a-z0-9]+)*$')]
-  [string]$Stem
+  [string]$Stem,
+
+  [ValidateSet('Public', 'Private')]
+  [string]$Mode = 'Public'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -72,76 +75,108 @@ foreach ($edition in $editions) {
     }
   }
 
-  $expectedCanonical = "$siteOrigin/$($edition.Page)"
-  $canonicalTag = [regex]::Match($html, '<link\b[^>]*\brel="canonical"[^>]*>', 'IgnoreCase').Value
-  $canonicalHref = if ($canonicalTag) { Get-TagAttributeValue -Tag $canonicalTag -Attribute 'href' } else { '' }
-  if ($canonicalHref -ne $expectedCanonical) {
-    throw "Missing or incorrect canonical URL in $($edition.Page): expected $expectedCanonical"
+  $bodyTag = [regex]::Match($html, '<body\b[^>]*>', 'IgnoreCase').Value
+  $hasPrivateGate = $bodyTag -match '\bdata-private="true"'
+  if ($Mode -eq 'Private' -and -not $hasPrivateGate) {
+    throw "Missing data-private=true gate in $($edition.Page)"
+  }
+  if ($Mode -eq 'Public' -and $hasPrivateGate) {
+    throw "Public article unexpectedly has data-private=true in $($edition.Page)"
   }
 
-  $alternateLinks = @{}
-  foreach ($tagMatch in [regex]::Matches($html, '<link\b[^>]*\brel="alternate"[^>]*>', 'IgnoreCase')) {
-    $hreflang = Get-TagAttributeValue -Tag $tagMatch.Value -Attribute 'hreflang'
-    $href = Get-TagAttributeValue -Tag $tagMatch.Value -Attribute 'href'
-    if ($hreflang) {
-      $alternateLinks[$hreflang] = $href
-    }
-  }
-
-  foreach ($languageCode in @('zh', 'en', 'ja', 'x-default')) {
-    $expectedAlternate = "$siteOrigin/$($pageByLang[$languageCode])"
-    if ($alternateLinks[$languageCode] -ne $expectedAlternate) {
-      throw "Missing reciprocal hreflang '$languageCode' in $($edition.Page): expected $expectedAlternate"
-    }
-  }
-
-  $ogType = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:type'
-  $ogTitle = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:title'
-  $ogDescription = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:description'
-  $ogUrl = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:url'
-  $ogImage = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:image'
-  if ($ogType -ne 'article' -or -not $ogTitle -or -not $ogDescription -or $ogUrl -ne $expectedCanonical -or $ogImage -notmatch '^https://') {
-    throw "Incomplete or inconsistent Open Graph article metadata in $($edition.Page)"
-  }
-
-  $twitterCard = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:card'
-  $twitterTitle = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:title'
-  $twitterDescription = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:description'
-  $twitterImage = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:image'
-  if ($twitterCard -ne 'summary_large_image' -or -not $twitterTitle -or -not $twitterDescription -or $twitterImage -ne $ogImage) {
-    throw "Incomplete or inconsistent Twitter Card metadata in $($edition.Page)"
-  }
-
-  $blogPosting = $null
-  foreach ($jsonMatch in [regex]::Matches($html, '<script\b[^>]*type="application/ld\+json"[^>]*>([\s\S]*?)</script>', 'IgnoreCase')) {
-    try {
-      $structuredData = $jsonMatch.Groups[1].Value | ConvertFrom-Json
-      if ($structuredData.'@type' -eq 'BlogPosting') {
-        $blogPosting = $structuredData
-        break
+  if ($Mode -eq 'Private') {
+    $robotsDirective = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'robots'
+    $robotsTokens = @($robotsDirective.ToLowerInvariant().Split(',') | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+    foreach ($requiredDirective in @('noindex', 'nofollow', 'noarchive')) {
+      if ($robotsTokens -notcontains $requiredDirective) {
+        throw "Missing robots directive '$requiredDirective' in $($edition.Page)"
       }
     }
-    catch {
-      throw "Invalid JSON-LD in $($edition.Page): $($_.Exception.Message)"
+
+    foreach ($forbiddenPattern in @(
+      '<link\b[^>]*\brel="canonical"',
+      '<link\b[^>]*\brel="alternate"',
+      '<meta\b[^>]*\bproperty="og:',
+      '<meta\b[^>]*\bname="twitter:',
+      '"@type"\s*:\s*"BlogPosting"'
+    )) {
+      if ($html -match $forbiddenPattern) {
+        throw "Private article contains public discovery metadata '$forbiddenPattern' in $($edition.Page)"
+      }
     }
   }
+  else {
+    $expectedCanonical = "$siteOrigin/$($edition.Page)"
+    $canonicalTag = [regex]::Match($html, '<link\b[^>]*\brel="canonical"[^>]*>', 'IgnoreCase').Value
+    $canonicalHref = if ($canonicalTag) { Get-TagAttributeValue -Tag $canonicalTag -Attribute 'href' } else { '' }
+    if ($canonicalHref -ne $expectedCanonical) {
+      throw "Missing or incorrect canonical URL in $($edition.Page): expected $expectedCanonical"
+    }
 
-  if (-not $blogPosting) {
-    throw "Missing BlogPosting JSON-LD in $($edition.Page)"
-  }
+    $alternateLinks = @{}
+    foreach ($tagMatch in [regex]::Matches($html, '<link\b[^>]*\brel="alternate"[^>]*>', 'IgnoreCase')) {
+      $hreflang = Get-TagAttributeValue -Tag $tagMatch.Value -Attribute 'hreflang'
+      $href = Get-TagAttributeValue -Tag $tagMatch.Value -Attribute 'href'
+      if ($hreflang) {
+        $alternateLinks[$hreflang] = $href
+      }
+    }
 
-  $structuredUrl = if ($blogPosting.url) { $blogPosting.url } else { $blogPosting.mainEntityOfPage.'@id' }
-  if (
-    -not $blogPosting.headline -or
-    -not $blogPosting.description -or
-    -not $blogPosting.image -or
-    -not $blogPosting.datePublished -or
-    -not $blogPosting.dateModified -or
-    -not $blogPosting.author -or
-    $blogPosting.inLanguage -ne $edition.Lang -or
-    $structuredUrl -ne $expectedCanonical
-  ) {
-    throw "Incomplete or inconsistent BlogPosting JSON-LD in $($edition.Page)"
+    foreach ($languageCode in @('zh', 'en', 'ja', 'x-default')) {
+      $expectedAlternate = "$siteOrigin/$($pageByLang[$languageCode])"
+      if ($alternateLinks[$languageCode] -ne $expectedAlternate) {
+        throw "Missing reciprocal hreflang '$languageCode' in $($edition.Page): expected $expectedAlternate"
+      }
+    }
+
+    $ogType = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:type'
+    $ogTitle = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:title'
+    $ogDescription = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:description'
+    $ogUrl = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:url'
+    $ogImage = Get-MetaContent -Html $html -KeyAttribute 'property' -Key 'og:image'
+    if ($ogType -ne 'article' -or -not $ogTitle -or -not $ogDescription -or $ogUrl -ne $expectedCanonical -or $ogImage -notmatch '^https://') {
+      throw "Incomplete or inconsistent Open Graph article metadata in $($edition.Page)"
+    }
+
+    $twitterCard = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:card'
+    $twitterTitle = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:title'
+    $twitterDescription = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:description'
+    $twitterImage = Get-MetaContent -Html $html -KeyAttribute 'name' -Key 'twitter:image'
+    if ($twitterCard -ne 'summary_large_image' -or -not $twitterTitle -or -not $twitterDescription -or $twitterImage -ne $ogImage) {
+      throw "Incomplete or inconsistent Twitter Card metadata in $($edition.Page)"
+    }
+
+    $blogPosting = $null
+    foreach ($jsonMatch in [regex]::Matches($html, '<script\b[^>]*type="application/ld\+json"[^>]*>([\s\S]*?)</script>', 'IgnoreCase')) {
+      try {
+        $structuredData = $jsonMatch.Groups[1].Value | ConvertFrom-Json
+        if ($structuredData.'@type' -eq 'BlogPosting') {
+          $blogPosting = $structuredData
+          break
+        }
+      }
+      catch {
+        throw "Invalid JSON-LD in $($edition.Page): $($_.Exception.Message)"
+      }
+    }
+
+    if (-not $blogPosting) {
+      throw "Missing BlogPosting JSON-LD in $($edition.Page)"
+    }
+
+    $structuredUrl = if ($blogPosting.url) { $blogPosting.url } else { $blogPosting.mainEntityOfPage.'@id' }
+    if (
+      -not $blogPosting.headline -or
+      -not $blogPosting.description -or
+      -not $blogPosting.image -or
+      -not $blogPosting.datePublished -or
+      -not $blogPosting.dateModified -or
+      -not $blogPosting.author -or
+      $blogPosting.inLanguage -ne $edition.Lang -or
+      $structuredUrl -ne $expectedCanonical
+    ) {
+      throw "Incomplete or inconsistent BlogPosting JSON-LD in $($edition.Page)"
+    }
   }
 
   if ($html -match '<button[^>]+data-lang[^>]+disabled') {
@@ -176,6 +211,12 @@ foreach ($edition in $editions) {
   if (-not $post) {
     throw "Article is not indexed in $($edition.Data): $($edition.Page)"
   }
+  if ($Mode -eq 'Private' -and $post.private -ne $true) {
+    throw "Private article is missing private=true in $($edition.Data): $($edition.Page)"
+  }
+  if ($Mode -eq 'Public' -and $post.private -eq $true) {
+    throw "Public article unexpectedly has private=true in $($edition.Data): $($edition.Page)"
+  }
 }
 
 if (($sectionCounts | Select-Object -Unique).Count -ne 1) {
@@ -189,8 +230,12 @@ if (-not (Test-Path -LiteralPath $sitemapPath)) {
 $sitemap = Get-Content -Raw -LiteralPath $sitemapPath
 foreach ($languageCode in @('zh', 'en', 'ja')) {
   $expectedUrl = "$siteOrigin/$($pageByLang[$languageCode])"
-  if ($sitemap -notmatch "<loc>\s*$([regex]::Escape($expectedUrl))\s*</loc>") {
-    throw "Article URL is missing from sitemap.xml: $expectedUrl"
+  $isInSitemap = $sitemap -match "<loc>\s*$([regex]::Escape($expectedUrl))\s*</loc>"
+  if ($Mode -eq 'Public' -and -not $isInSitemap) {
+    throw "Public article URL is missing from sitemap.xml: $expectedUrl"
+  }
+  if ($Mode -eq 'Private' -and $isInSitemap) {
+    throw "Private article URL must not appear in sitemap.xml: $expectedUrl"
   }
 }
 
@@ -228,4 +273,4 @@ finally {
   Pop-Location
 }
 
-Write-Output "OK: validated zh/en/ja pages, reciprocal language links, article SEO, sitemap, robots, deployment inclusion, hero image, JSON indexes, JavaScript, and Git diff for '$Stem'."
+Write-Output "OK: validated $Mode zh/en/ja pages, language links, matching SEO/privacy metadata, sitemap policy, robots, deployment inclusion, hero image, JSON indexes, JavaScript, and Git diff for '$Stem'."
