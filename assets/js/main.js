@@ -36,7 +36,8 @@ const UI = {
       about: "",
       works: "",
       blog: "",
-      contact: ""
+      contact: "",
+      notes: ""
     }
   },
   en: {
@@ -68,7 +69,8 @@ const UI = {
       about: "",
       works: "",
       blog: "",
-      contact: ""
+      contact: "",
+      notes: ""
     }
   },
   ja: {
@@ -100,7 +102,8 @@ const UI = {
       about: "",
       works: "",
       blog: "",
-      contact: ""
+      contact: "",
+      notes: ""
     }
   }
 };
@@ -381,7 +384,7 @@ function renderHome(data, lang) {
   const toc = $("[data-toc]");
   if (toc) {
     toc.replaceChildren();
-    ["home", "about", "works", "blog", "contact"].forEach((key, index) => {
+    ["home", "about", "works", "blog", "contact", "notes"].forEach((key, index) => {
       const item = document.createElement("a");
       item.className = "toc-item";
       item.href = key === "home" ? "index.html" : `${key}.html`;
@@ -546,6 +549,52 @@ function renderBlog(data) {
   observeReveals();
 }
 
+function renderNotes(data) {
+  const notes = data.notes;
+  if (!notes) return;
+
+  setText("[data-notes-title]", notes.title);
+  setText("[data-notes-lead]", notes.lead);
+  setText("[data-notes-signature]", notes.signature);
+
+  const list = $("[data-notes-list]");
+  if (!list) return;
+  list.replaceChildren();
+
+  const entries = Array.isArray(notes.entries) ? notes.entries : [];
+
+  if (entries.length === 0) {
+    const empty = document.createElement("article");
+    empty.className = "blog-empty";
+    empty.innerHTML = `
+      <span class="blog-number">00</span>
+      <div>
+        <p>${notes.emptyText}</p>
+      </div>
+    `;
+    list.append(empty);
+    return;
+  }
+
+  entries.forEach((entry, index) => {
+    const item = document.createElement("article");
+    item.className = "blog-entry reveal";
+    const bili = entry.bv
+      ? `<p class="meta-line"><a href="https://www.bilibili.com/video/${entry.bv}/" rel="noreferrer" target="_blank">${entry.bv} ↗</a></p>`
+      : "";
+    item.innerHTML = `
+      <span class="blog-number">${String(index + 1).padStart(2, "0")}</span>
+      <div>
+        <p class="meta-line">${entry.date} / ${entry.source}</p>
+        <p>${entry.note}</p>
+        ${bili}
+      </div>
+    `;
+    list.append(item);
+  });
+  observeReveals();
+}
+
 function renderContact(data) {
   setText("[data-contact-title]", data.contact.title);
   setText("[data-contact-intro]", data.contact.intro);
@@ -586,6 +635,7 @@ function renderPage(data, lang) {
   if (PAGE === "works") renderWorks(data);
   if (PAGE === "blog") renderBlog(data);
   if (PAGE === "contact") renderContact(data);
+  if (PAGE === "notes") renderNotes(data);
 }
 
 let languageSwitchId = 0;
