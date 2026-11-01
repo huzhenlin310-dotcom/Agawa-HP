@@ -10,7 +10,7 @@ const UI = {
   zh: {
     issue: "Issue 01 / Notes from Agawa",
     folio: "Vol. 01",
-    season: "20260509",
+    season: "2026 春",
     format: "自我介绍",
     contentsKicker: "Contents",
     contentsTitle: "目录",
@@ -43,7 +43,7 @@ const UI = {
   en: {
     issue: "Issue 01 / Notes from Agawa",
     folio: "Vol. 01",
-    season: "20260509",
+    season: "Spring 2026",
     format: "self-introduction",
     contentsKicker: "Contents",
     contentsTitle: "Table of Contents",
@@ -76,7 +76,7 @@ const UI = {
   ja: {
     issue: "Issue 01 / Notes from Agawa",
     folio: "Vol. 01",
-    season: "20260509",
+    season: "2026年春",
     format: "自己紹介",
     contentsKicker: "Contents",
     contentsTitle: "目次",

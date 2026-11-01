@@ -128,16 +128,8 @@
     "intro": "If you have any suggestions, new ideas, collaboration opportunities, or just want to say hello, feel free to reach out.",
     "email": "huzhenlin@jaist.ac.jp",
     "socials": [{
-        "label": "Portfolio archive",
-        "url": "#"
-      },
-      {
         "label": "GitHub",
-        "url": "#"
-      },
-      {
-        "label": "Instagram",
-        "url": "#"
+        "url": "https://github.com/huzhenlin310-dotcom"
       }
     ],
     "location": "日本 / 石川県 / JAIST",
