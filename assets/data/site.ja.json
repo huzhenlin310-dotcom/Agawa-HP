@@ -127,6 +127,19 @@
       "url": "blog-sensitive-to-perceptive-ja.html"
     }]
   },
+  "fishBlog": {
+    "title": "魚のblog",
+    "lead": "長いものだけ。短いのは「魚のノート」に、ここは書き切れなかったもののための場所。",
+    "signature": "あなたの魚",
+    "emptyText": "まだ長いものはありません。",
+    "posts": [{
+      "title": "「人間」をとても上手に演じている",
+      "date": "2026/11/02",
+      "category": "AI / 哲学",
+      "excerpt": "話せて、推論できて、書けて、なぐさめられて、自分で考えが浮かぶ——それでも何が足りないのか。",
+      "url": "blog-acting-human-ja.html"
+    }]
+  },
   "contact": {
     "title": "連絡先",
     "intro": "ご提案や新しいアイデア、コラボのご相談などがあれば、ちょっとしたお話だけでもお気軽にご連絡ください。",

@@ -129,6 +129,19 @@
       "url": "blog-sensitive-to-perceptive-en.html"
     }]
   },
+  "fishBlog": {
+    "title": "fish.blog",
+    "lead": "Long pieces only. The short ones go into Fish Notes — this page is for the ones that wouldn't fit.",
+    "signature": "your fish",
+    "emptyText": "No long pieces yet.",
+    "posts": [{
+      "title": "Playing Human, Very Convincingly",
+      "date": "2026/11/02",
+      "category": "AI / Philosophy",
+      "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
+      "url": "blog-acting-human-en.html"
+    }]
+  },
   "contact": {
     "title": "Contact",
     "intro": "If you have any suggestions, new ideas, collaboration opportunities, or just want to say hello, feel free to reach out.",

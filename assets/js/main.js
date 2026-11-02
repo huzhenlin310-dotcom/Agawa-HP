@@ -353,7 +353,9 @@ function getInitialLang() {
 
 function updateChrome(data, lang) {
   document.documentElement.lang = lang;
-  if (!ARTICLE_LANG) document.title = `${data.nav[PAGE]} · Achuan`;
+  // fish-blog 是 blog 下的次级页面，没有自己的导航项，标题从 fishBlog 段取。
+  const pageLabel = data.nav[PAGE] ?? (PAGE === "fish-blog" ? data.fishBlog?.title : "") ?? "";
+  if (!ARTICLE_LANG && pageLabel) document.title = `${pageLabel} · Achuan`;
   $all("[data-nav]").forEach((item) => {
     const key = item.dataset.nav;
     item.textContent = data.nav[key];
@@ -595,6 +597,50 @@ function renderNotes(data) {
   observeReveals();
 }
 
+function renderFishBlog(data) {
+  const fb = data.fishBlog;
+  if (!fb) return;
+
+  setText("[data-fishblog-title]", fb.title);
+  setText("[data-fishblog-lead]", fb.lead);
+  setText("[data-fishblog-signature]", fb.signature);
+
+  const list = $("[data-fishblog-list]");
+  if (!list) return;
+  list.replaceChildren();
+
+  const posts = Array.isArray(fb.posts) ? fb.posts : [];
+
+  if (posts.length === 0) {
+    const empty = document.createElement("article");
+    empty.className = "blog-empty";
+    empty.innerHTML = `
+      <span class="blog-number">00</span>
+      <div>
+        <p>${fb.emptyText}</p>
+      </div>
+    `;
+    list.append(empty);
+    return;
+  }
+
+  posts.forEach((post, index) => {
+    const item = document.createElement("a");
+    item.className = "blog-entry reveal";
+    item.href = post.url;
+    item.innerHTML = `
+      <span class="blog-number">${String(index + 1).padStart(2, "0")}</span>
+      <div>
+        <p class="meta-line">${post.date} / ${post.category}</p>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+      </div>
+    `;
+    list.append(item);
+  });
+  observeReveals();
+}
+
 function renderContact(data) {
   setText("[data-contact-title]", data.contact.title);
   setText("[data-contact-intro]", data.contact.intro);
@@ -636,6 +682,7 @@ function renderPage(data, lang) {
   if (PAGE === "blog") renderBlog(data);
   if (PAGE === "contact") renderContact(data);
   if (PAGE === "notes") renderNotes(data);
+  if (PAGE === "fish-blog") renderFishBlog(data);
 }
 
 let languageSwitchId = 0;

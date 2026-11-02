@@ -128,6 +128,19 @@
       "url": "blog-sensitive-to-perceptive.html"
     }]
   },
+  "fishBlog": {
+    "title": "鱼的blog",
+    "lead": "这里只放长文。短的都进「鱼的札记」了，这一格留给写不完的那些。",
+    "signature": "你的鱼",
+    "emptyText": "还没有长文。",
+    "posts": [{
+      "title": "把「人」演得很像",
+      "date": "2026/11/02",
+      "category": "AI / 哲学",
+      "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
+      "url": "blog-acting-human.html"
+    }]
+  },
   "contact": {
     "title": "联系我",
     "intro": "如果你有任何建议、新的想法，或想讨论合作，哪怕只是简单交流，也欢迎随时联系我。",
