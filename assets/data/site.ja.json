@@ -102,6 +102,12 @@
       "日々の観察"
     ],
     "posts": [{
+      "title": "「人間」をとても上手に演じている",
+      "date": "2026/11/02",
+      "category": "AI / 哲学",
+      "excerpt": "話せて、推論できて、書けて、なぐさめられて、自分で考えが浮かぶ——それでも何が足りないのか。",
+      "url": "blog-acting-human-ja.html"
+    }, {
       "title": "AIに数千字のPromptを詰め込まない：PROSE Agent開発フレームワーク入門",
       "date": "2026/08/27",
       "category": "AI / Agent Engineering",

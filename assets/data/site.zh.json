@@ -103,6 +103,12 @@
       "生活观察"
     ],
     "posts": [{
+      "title": "把「人」演得很像",
+      "date": "2026/11/02",
+      "category": "AI / 哲学",
+      "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
+      "url": "blog-acting-human.html"
+    }, {
       "title": "别再给 AI 塞几千字 Prompt：一文读懂 PROSE Agent 开发框架",
       "date": "2026/08/27",
       "category": "AI / Agent Engineering",

@@ -104,6 +104,12 @@
       "Everyday observations"
     ],
     "posts": [{
+      "title": "Playing Human, Very Convincingly",
+      "date": "2026/11/02",
+      "category": "AI / Philosophy",
+      "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
+      "url": "blog-acting-human-en.html"
+    }, {
       "title": "Stop Stuffing AI with Thousand-Word Prompts: The PROSE Agent Development Framework",
       "date": "2026/08/27",
       "category": "AI / Agent Engineering",
