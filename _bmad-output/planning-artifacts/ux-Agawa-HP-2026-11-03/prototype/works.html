@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>项目 · 阿川 · 原型</title>
+    <meta name="description" content="Agawa-HP UX 方案原型：项目页结构（页首索引、项目介绍、明确的外部入口）。非发布页面。">
+    <link rel="icon" href="../../../../assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/proto.css">
+    <script src="assets/proto.js" defer></script>
+  </head>
+  <body data-proto-page="works">
+    <a class="skip-link" href="#main" data-ui="a11y.skip">跳到正文</a>
+
+    <div class="proto-strip">
+      <div class="proto-strip__inner">
+        <span class="proto-badge" data-ui="proto.badge">原型 · 非发布页面</span>
+        <span data-ui="proto.banner">这是 UX 方案的可操作原型，不是已上线的网站页面。</span>
+        <a href="review.html" data-link data-ui="proto.reviewLink">原型检查页</a>
+      </div>
+    </div>
+
+    <header class="site-head">
+      <div class="site-head__inner">
+        <a class="brand" href="index.html" data-link>+1<span>Lab</span></a>
+
+        <nav class="desk-nav" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-link data-nav="home">首页</a>
+          <a href="works.html" data-link data-nav="works" aria-current="page">项目</a>
+          <a href="blog.html" data-link data-nav="blog">博客</a>
+          <a href="about.html" data-link data-nav="about">关于我</a>
+          <a href="contact.html" data-link data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang">
+          <button class="lang__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span id="lang-current">中文</span>
+            <span class="lang__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang__panel" id="lang-panel" hidden>
+            <a href="?lang=zh" data-lang-option="zh" data-link>中文</a>
+            <a href="?lang=en" data-lang-option="en" data-link>English</a>
+            <a href="?lang=ja" data-lang-option="ja" data-link>日本語</a>
+          </div>
+        </div>
+
+        <div class="mobile-bar">
+          <a href="works.html" data-link data-nav="works" aria-current="page">项目</a>
+          <a href="blog.html" data-link data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="footer.title">主要页面</p>
+          <a href="index.html" data-link data-nav="home">首页</a>
+          <a href="about.html" data-link data-nav="about">关于我</a>
+          <a href="contact.html" data-link data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="a11y.language">语言</p>
+          <div class="menu-lang" id="menu-lang">
+            <a href="?lang=zh" data-lang-option="zh" data-link>中文</a>
+            <a href="?lang=en" data-lang-option="en" data-link>English</a>
+            <a href="?lang=ja" data-lang-option="ja" data-link>日本語</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="shell">
+      <section class="page-head">
+        <p class="kicker" data-ui="works.kicker">Portfolio notes</p>
+        <h1 class="page-title" data-ui="works.title">项目</h1>
+        <p class="page-lead" data-ui="works.lead">三个用 AI 与前端做出来的东西。先扫一眼索引，再决定跳到哪一个。</p>
+      </section>
+
+      <section class="work-index" aria-labelledby="work-index-title">
+        <p class="work-index__title" id="work-index-title" data-ui="works.indexTitle">项目索引</p>
+        <p class="work-index__hint" data-ui="works.indexHint">选择名称直接跳到项目介绍</p>
+        <ol id="work-index-list"></ol>
+      </section>
+
+      <section id="work-entries" aria-label="项目介绍" data-aria="common.worksRegion"></section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="site-foot__inner">
+        <div>
+          <p class="site-foot__title" data-ui="footer.title">主要页面</p>
+          <nav class="site-foot__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-link data-nav="home">首页</a>
+            <a href="works.html" data-link data-nav="works">项目</a>
+            <a href="blog.html" data-link data-nav="blog">博客</a>
+            <a href="about.html" data-link data-nav="about">关于我</a>
+            <a href="contact.html" data-link data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="site-foot__note" data-ui="footer.note">原型演示，非发布页面。</p>
+          <p class="site-foot__copy" data-ui="footer.copyright">© 2026 Agawa. All rights reserved.</p>
+          <p class="site-foot__copy"><a href="review.html" data-link data-ui="proto.reviewLink">原型检查页</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="proto-error" id="data-error" role="alert" hidden>
+      <p data-ui="proto.loadError">原型数据加载失败。导航仍可点击，请检查本地服务器后重试。</p>
+      <button type="button" class="btn" data-ui="proto.retry">重试</button>
+    </div>
+  </body>
+</html>

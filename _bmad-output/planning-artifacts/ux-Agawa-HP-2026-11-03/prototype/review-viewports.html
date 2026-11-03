@@ -1,0 +1,188 @@
+﻿<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>尺寸检查 · 原型审核工具</title>
+    <style>
+      :root {
+        --paper: #e5e5e5;
+        --ink: #000;
+        --accent: #ff4428;
+        --muted: #4a4a4a;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #f4f4f4;
+        color: var(--ink);
+        font: 14px/1.5 "Segoe UI", "Noto Sans SC", sans-serif;
+      }
+      h1 { margin: 0 0 4px; font-size: 20px; }
+      .lead { margin: 0 0 18px; color: var(--muted); }
+      .bar {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        margin-bottom: 18px; padding: 10px 12px; border: 1px solid var(--ink); background: #fff;
+      }
+      .bar a, .bar strong { padding: 4px 8px; border: 1px solid var(--ink); text-decoration: none; color: var(--ink); }
+      .bar strong { background: var(--ink); color: #fff; }
+      .grid { display: grid; gap: 18px; justify-items: start; }
+      .card { border: 1px solid var(--ink); background: #fff; }
+      .card__head {
+        display: flex; gap: 12px; align-items: baseline; justify-content: space-between;
+        padding: 6px 10px; border-bottom: 1px solid var(--ink); font-weight: 700;
+      }
+      .card__size { font-family: ui-monospace, Consolas, monospace; }
+      .card__status { font-size: 12px; font-weight: 600; color: var(--muted); }
+      .card__status.bad { color: #b00020; font-weight: 800; }
+      iframe { display: block; border: 0; background: var(--paper); }
+    </style>
+  </head>
+  <body>
+    <h1>尺寸检查（审核工具，非产品页面）</h1>
+    <p class="lead">每个窄屏/宽屏卡片是一个固定 CSS 宽度的 iframe，用来核对响应式与首屏可见性。iframe 内是真实原型页面，可以正常点击。</p>
+    <div class="bar" id="bar"></div>
+    <div class="grid" id="grid"></div>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      const pageFile = params.get("page") || "index.html";
+      const lang = params.get("lang") || "zh";
+      const state = params.get("state") || "none";
+
+      const SIZES = [
+        { label: "320 × 640", w: 320, h: 640 },
+        { label: "360 × 740", w: 360, h: 740 },
+        { label: "390 × 844", w: 390, h: 844 },
+        { label: "768 × 1024", w: 768, h: 1024 },
+        { label: "1280 × 800", w: 1280, h: 800 },
+        { label: "1440 × 900", w: 1440, h: 900 },
+      ];
+
+      const STATES = [
+        ["none", "默认"],
+        ["menu", "菜单展开"],
+        ["filter", "筛选：技术实践"],
+        ["empty", "筛选无结果"],
+        ["article-toc", "目录展开"],
+      ];
+
+      const bar = document.getElementById("bar");
+      const pageLabel = document.createElement("strong");
+      pageLabel.textContent = pageFile;
+      bar.append(pageLabel);
+      for (const [value, label] of STATES) {
+        const link = document.createElement("a");
+        link.href = `?page=${encodeURIComponent(pageFile)}&lang=${lang}&state=${value}`;
+        link.textContent = label;
+        if (value === state) link.style.background = "#000", (link.style.color = "#fff");
+        bar.append(link);
+      }
+      const back = document.createElement("a");
+      back.href = "review.html";
+      back.textContent = "返回原型检查页"; back.setAttribute("data-link", "");
+      bar.append(back);
+
+      const grid = document.getElementById("grid");
+
+      function buildTarget(page, state) {
+        const url = new URL(page, location.href);
+        url.searchParams.set("lang", lang);
+        if (state === "empty") url.searchParams.set("topic", "__none__");
+        if (state === "filter") url.searchParams.set("topic", "technical");
+        return url.toString();
+      }
+
+      function whenReady(doc, callback) {
+        if (!doc) return;
+        if (doc.body && doc.body.classList.contains("is-ready")) return callback();
+        const started = Date.now();
+        const timer = setInterval(() => {
+          if (doc.body && doc.body.classList.contains("is-ready")) {
+            clearInterval(timer);
+            callback();
+          } else if (Date.now() - started > 8000) {
+            clearInterval(timer);
+          }
+        }, 50);
+      }
+
+      function applyState(frame, state) {
+        whenReady(frame.contentDocument, () => {
+          const doc = frame.contentDocument;
+          if (state === "menu" && frame.clientWidth <= 860) {
+            doc.getElementById("menu-toggle")?.click();
+          }
+          if (state === "filter") {
+            const chips = [...doc.querySelectorAll(".filter__btn")];
+            const chip = chips.find((item) => item.dataset.topic === "technical");
+            chip?.click();
+          }
+          if (state === "article-toc") {
+            const details = doc.getElementById("toc-mobile");
+            if (details) details.open = true;
+          }
+        });
+      }
+
+      function report(card, frame) {
+        const status = card.querySelector(".card__status");
+        const doc = frame.contentDocument;
+        if (!doc) {
+          status.textContent = "无法读取 iframe";
+          status.classList.add("bad");
+          return;
+        }
+        const overflow = doc.documentElement.scrollWidth - frame.clientWidth;
+        const problems = [];
+        if (overflow > 1) problems.push(`横向溢出 ${overflow}px`);
+        const main = doc.getElementById("main");
+        if (main && main.getBoundingClientRect().width === 0) problems.push("正文未渲染");
+        if (pageFile === "index.html") {
+          const cta = doc.querySelector(".hero__cta .btn");
+          if (cta) {
+            const box = cta.getBoundingClientRect();
+            if (box.bottom > frame.clientHeight) problems.push("主入口不在首屏");
+          }
+        }
+        if (problems.length) {
+          status.textContent = problems.join(" / ");
+          status.classList.add("bad");
+        } else {
+          status.textContent = "无横向溢出" + (pageFile === "index.html" ? " · 双入口在首屏" : "") + (status.dataset.scaled ? ` · 缩放 ${status.dataset.scaled}` : "");
+        }
+      }
+
+      for (const size of SIZES) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.width = String(size.w);
+        const head = document.createElement("div");
+        head.className = "card__head";
+        head.innerHTML = `<span class="card__size">${size.label}</span><span class="card__status">加载中…</span>`;
+        const frame = document.createElement("iframe");
+        frame.width = String(size.w);
+        frame.height = String(size.h);
+        frame.loading = "eager";
+        frame.title = `${pageFile} ${size.label}`;
+        frame.src = buildTarget(pageFile, state);
+        frame.addEventListener("load", () => {
+          applyState(frame, state);
+          setTimeout(() => report(card, frame), 350);
+        });
+        card.append(head, frame);
+        const available = Math.max(320, document.documentElement.clientWidth - 64);
+        if (size.w > available) {
+          const fit = available / size.w;
+          card.style.transform = `scale(${fit})`;
+          card.style.transformOrigin = "top left";
+          card.style.marginBottom = `${Math.round((fit - 1) * (size.h + 42))}px`;
+          head.querySelector(".card__status").dataset.scaled = `${Math.round(fit * 100)}%`;
+        }
+        grid.append(card);
+      }
+    </script>
+  </body>
+</html>

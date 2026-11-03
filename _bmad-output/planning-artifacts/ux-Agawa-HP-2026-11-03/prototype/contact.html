@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>联系 · 阿川 · 原型</title>
+    <meta name="description" content="Agawa-HP UX 方案原型：联系页（先给可用联系方式，再给其他渠道与项目博客入口）。非发布页面。">
+    <link rel="icon" href="../../../../assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/proto.css">
+    <script src="assets/proto.js" defer></script>
+  </head>
+  <body data-proto-page="contact">
+    <a class="skip-link" href="#main" data-ui="a11y.skip">跳到正文</a>
+
+    <div class="proto-strip">
+      <div class="proto-strip__inner">
+        <span class="proto-badge" data-ui="proto.badge">原型 · 非发布页面</span>
+        <span data-ui="proto.banner">这是 UX 方案的可操作原型，不是已上线的网站页面。</span>
+        <a href="review.html" data-link data-ui="proto.reviewLink">原型检查页</a>
+      </div>
+    </div>
+
+    <header class="site-head">
+      <div class="site-head__inner">
+        <a class="brand" href="index.html" data-link>+1<span>Lab</span></a>
+
+        <nav class="desk-nav" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-link data-nav="home">首页</a>
+          <a href="works.html" data-link data-nav="works">项目</a>
+          <a href="blog.html" data-link data-nav="blog">博客</a>
+          <a href="about.html" data-link data-nav="about">关于我</a>
+          <a href="contact.html" data-link data-nav="contact" aria-current="page">联系</a>
+        </nav>
+
+        <div class="lang">
+          <button class="lang__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span id="lang-current">中文</span>
+            <span class="lang__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang__panel" id="lang-panel" hidden>
+            <a href="?lang=zh" data-lang-option="zh" data-link>中文</a>
+            <a href="?lang=en" data-lang-option="en" data-link>English</a>
+            <a href="?lang=ja" data-lang-option="ja" data-link>日本語</a>
+          </div>
+        </div>
+
+        <div class="mobile-bar">
+          <a href="works.html" data-link data-nav="works">项目</a>
+          <a href="blog.html" data-link data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="footer.title">主要页面</p>
+          <a href="index.html" data-link data-nav="home">首页</a>
+          <a href="about.html" data-link data-nav="about">关于我</a>
+          <a href="contact.html" data-link data-nav="contact" aria-current="page">联系</a>
+          <p class="menu-panel__title" data-ui="a11y.language">语言</p>
+          <div class="menu-lang" id="menu-lang">
+            <a href="?lang=zh" data-lang-option="zh" data-link>中文</a>
+            <a href="?lang=en" data-lang-option="en" data-link>English</a>
+            <a href="?lang=ja" data-lang-option="ja" data-link>日本語</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="shell">
+      <section class="page-head">
+        <p class="kicker" data-ui="contact.kicker">联系</p>
+        <h1 class="page-title" id="contact-title">联系我</h1>
+        <p class="page-lead" id="contact-intro">如果你有任何建议、新的想法，或想讨论合作，欢迎随时联系我。</p>
+      </section>
+
+      <section class="section" aria-labelledby="contact-direct-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="contact-direct-title" data-ui="contact.directTitle">直接联系</h2>
+            <p class="section__lead" data-ui="contact.directLead">联系方式放在最前，不藏在页尾。</p>
+          </div>
+        </div>
+        <div class="contact-directory">
+          <div>
+            <p class="kicker" data-ui="contact.emailLabel">邮箱</p>
+            <a class="btn btn--solid" id="contact-email" href="mailto:huzhenlin@jaist.ac.jp">huzhenlin@jaist.ac.jp</a>
+          </div>
+          <div>
+            <p class="kicker" data-ui="contact.locationLabel">所在地</p>
+            <p id="contact-location">日本 / 石川県 / JAIST</p>
+          </div>
+          <div>
+            <p class="kicker" data-ui="contact.socialLabel">社交</p>
+            <ul class="plain-list" id="contact-socials"></ul>
+          </div>
+          <div>
+            <p class="kicker" data-ui="contact.collaborationLabel">合作方向</p>
+            <ul class="plain-list" id="contact-collaboration"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="contact-next-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="contact-next-title" data-ui="contact.nextTitle">也可以先看这些</h2>
+            <p class="section__lead" data-ui="contact.nextLead">联系页保留去向，访客不必回到首页再找。</p>
+          </div>
+        </div>
+        <div class="hero__cta" id="contact-entries"></div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="site-foot__inner">
+        <div>
+          <p class="site-foot__title" data-ui="footer.title">主要页面</p>
+          <nav class="site-foot__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-link data-nav="home">首页</a>
+            <a href="works.html" data-link data-nav="works">项目</a>
+            <a href="blog.html" data-link data-nav="blog">博客</a>
+            <a href="about.html" data-link data-nav="about">关于我</a>
+            <a href="contact.html" data-link data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="site-foot__note" data-ui="footer.note">原型演示，非发布页面。</p>
+          <p class="site-foot__copy" data-ui="footer.copyright">© 2026 Agawa. All rights reserved.</p>
+          <p class="site-foot__copy"><a href="review.html" data-link data-ui="proto.reviewLink">原型检查页</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="proto-error" id="data-error" role="alert" hidden>
+      <p data-ui="proto.loadError">原型数据加载失败。导航仍可点击，请检查本地服务器后重试。</p>
+      <button type="button" class="btn" data-ui="proto.retry">重试</button>
+    </div>
+  </body>
+</html>

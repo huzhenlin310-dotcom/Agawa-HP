@@ -1,0 +1,207 @@
+{
+  "date": "2026-11-03",
+  "taskDir": "_bmad-output/planning-artifacts/ux-Agawa-HP-2026-11-03",
+  "prototypeVersion": "final + trilingual copy fix (2026-11-03 second round: about/contact/error/TOC/fish count/aria/alt)",
+  "server": {
+    "command": "python server.py --port 8137",
+    "url": "http://127.0.0.1:8137/_bmad-output/planning-artifacts/ux-Agawa-HP-2026-11-03/prototype/",
+    "httpStatus": 200
+  },
+  "staticChecks": {
+    "command": "node tools/verify-prototype.mjs",
+    "result": "PASS",
+    "details": {
+      "htmlPages": 10,
+      "dataUiKeys": 92,
+      "dataAriaKeys": 7,
+      "languages": [
+        "zh",
+        "en",
+        "ja"
+      ],
+      "tocCounts": {
+        "october-2026": 10,
+        "acting-human": 6,
+        "prose-agent-framework": 10,
+        "forward-deployed-engineer": 6,
+        "sensitive-to-perceptive": 11
+      },
+      "productionFilesCompared": 33,
+      "productionFilesChanged": 0
+    }
+  },
+  "jsSyntax": {
+    "command": "node --check prototype/assets/proto.js",
+    "exitCode": 0
+  },
+  "widthMatrix": {
+    "script": "tools/browser-checks/width-matrix.js",
+    "viewports": [
+      320,
+      360,
+      390,
+      768,
+      1280,
+      1440
+    ],
+    "zh": {
+      "pages": 8,
+      "checks": 48,
+      "failures": 0
+    },
+    "enJa": {
+      "pageLanguageCombos": 12,
+      "checks": 72,
+      "failures": 0
+    },
+    "totalChecks": 120,
+    "note": "每个卡片由 review-viewports.html 内的固定宽度 iframe 渲染；1280/1440 在较窄的浏览器窗口里按 93%/82% 缩放显示，卡片头部标注比例"
+  },
+  "functional": {
+    "script": "tools/browser-checks/functional.js",
+    "checks": 14,
+    "passed": 14,
+    "names": [
+      "首页：三项目卡 + 技术 2 + 其他 2，且无札记区",
+      "首页：双入口同屏",
+      "博客：首屏可见第一篇文章（1280×800）",
+      "博客：筛选 2 篇并写 URL；全部恢复 5 篇",
+      "博客：作者含鱼且仅一篇",
+      "无结果状态可见且标题正确",
+      "文章：目录 6 条、锚点不被遮挡、无“未找到”区块",
+      "文章：继续阅读 2 篇、作者鱼、返回博客",
+      "鱼的文字：三级位置、长文当前、可切札记、空态隐藏",
+      "札记：3 条、当前札记、署名",
+      "项目：索引 3 项、入口文字区分、锚点不遮挡、头部 sticky",
+      "关于：介绍后 3 个去向",
+      "联系：邮箱 mailto + 2 个去向",
+      "数据失败：错误可见 + 重试 + 导航可用"
+    ]
+  },
+  "keyboardAndMenu": {
+    "script": "tools/browser-checks/keyboard-console.js",
+    "checks": 9,
+    "passed": 9,
+    "names": [
+      "手机菜单：展开并聚焦第一项",
+      "手机菜单：Escape 关闭且焦点回按钮",
+      "手机菜单：关闭后不入 Tab 顺序",
+      "手机头部直接可见项目/博客",
+      "语言入口：显示当前语言与三语选项",
+      "语言入口：保留当前筛选",
+      "语言入口：Escape 关闭并回焦",
+      "键盘：Enter 激活筛选",
+      "键盘：Enter 跳转目录锚点"
+    ]
+  },
+  "console": {
+    "pages": 7,
+    "errors": 0,
+    "exceptions": 0,
+    "networkFailures": 0,
+    "domainsEnabled": [
+      "Log",
+      "Runtime",
+      "Network"
+    ]
+  },
+  "layoutMeasurements": {
+    "firstArticleVisible": {
+      "320x640": false,
+      "360x740": true,
+      "390x844": true,
+      "768x1024": true,
+      "1280x800": true,
+      "1440x900": true
+    },
+    "blogFirstRowTop": {
+      "320": 746,
+      "360": 718,
+      "390": 690,
+      "768": 755,
+      "1280": 765,
+      "1440": 765
+    },
+    "note": "320×640 时鱼的文字入口与文章区标题可见，第一篇文章在首屏下方约 106px"
+  },
+  "targets": {
+    "minHeight": 44,
+    "footerLinkWidth": 34,
+    "prototypeStripLink": "65×19 (审核界面，不属于产品导航)"
+  },
+  "contrast": {
+    "body": 16.7,
+    "muted": 7,
+    "accentText": "not used for body text"
+  },
+  "notRun": [
+    "Lighthouse / axe",
+    "screen reader",
+    "200% text zoom",
+    "manual keyboard walkthrough",
+    "real visitor walkthrough"
+  ],
+  "i18n": {
+    "script": "tools/browser-checks/i18n.js",
+    "pages": 8,
+    "languages": [
+      "zh",
+      "en",
+      "ja"
+    ],
+    "domDiffSuspicious": [
+      {
+        "page": "contact.html",
+        "text": "日本 / 石川県 / JAIST",
+        "note": "内容数据（三语 JSON 里都是日文地名），不是界面文案，未改写"
+      }
+    ],
+    "allowedIntentionallyNative": [
+      "中文",
+      "日本語"
+    ],
+    "assertions": {
+      "aboutContactHeadingsAndLeads": "通过（三语互不相同）",
+      "englishAboutContactNoCJK": "通过",
+      "errorStateLocalized": "通过（zh/en/ja）",
+      "articleTocSummary": "通过（en: On this page (6)）",
+      "fishCount": "通过（en: 1 long-form · 3 notes；ja: 長文 1 本 ・ ノート 3 件）",
+      "languageSwitchKeepsPage": "通过（about.html?lang=en/ja/zh，标题与语言同步变化）",
+      "overflow390And1280": "通过（about/contact × 三语 × 6 宽度共 72 次，0 失败）"
+    },
+    "screenshots": [
+      "about-zh-390",
+      "about-zh-1280",
+      "about-en-390",
+      "about-en-1280",
+      "about-ja-390",
+      "about-ja-1280",
+      "contact-zh-390",
+      "contact-zh-1280",
+      "contact-en-390",
+      "contact-en-1280",
+      "contact-ja-390",
+      "contact-ja-1280"
+    ],
+    "uiKeys": {
+      "dataUi": 92,
+      "dataAria": 7,
+      "parity": {
+        "zh": 133,
+        "en": 133,
+        "ja": 133,
+        "missing": 0
+      }
+    }
+  },
+  "checksAfterFix": {
+    "jsSyntax": 0,
+    "verify": "PASS",
+    "gitDiffCheck": 0,
+    "widthMatrix": {
+      "checks": 72,
+      "failures": 0,
+      "note": "本轮复核：8 个页面（含 about/contact 三语）× 6 个宽度"
+    }
+  }
+}
