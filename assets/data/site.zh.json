@@ -104,12 +104,12 @@
     ],
     "posts": [
       {
-        "title": "十月回顾：让 AI 干活，也学着踩刹车",
-        "date": "2026/11/03",
-        "category": "月度回顾 / AI 实践",
-        "excerpt": "2026 年十月回顾：小红书图鉴运营与自动化、oTree 实验系统开发，以及陪伴型 Agent 的部署和记忆探索。",
-        "url": "blog-october-2026.html"
-      }, {
+          "title": "十月回顾：小红书运营、实验系统与 Agent",
+          "date": "2026/11/03",
+          "category": "月度回顾 / AI 实践",
+          "excerpt": "十月的小红书运营及自动化、oTree 实验系统开发、DSH 使用，以及感情类 Agent 的部署与试用。",
+          "url": "blog-october-2026.html"
+        }, {
       "title": "把「人」演得很像",
       "date": "2026/11/02",
       "category": "AI / 哲学",

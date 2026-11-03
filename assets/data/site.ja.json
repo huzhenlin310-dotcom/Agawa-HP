@@ -103,12 +103,12 @@
     ],
     "posts": [
       {
-        "title": "10月の振り返り：AIに任せること、立ち止まること",
-        "date": "2026/11/03",
-        "category": "月次振り返り / AI実践",
-        "excerpt": "2026年10月の活動記録。小紅書の図鑑運営と自動化、oTree実験システムの開発、対話型Agentの導入と記憶について。",
-        "url": "blog-october-2026-ja.html"
-      }, {
+          "title": "10月の振り返り：小紅書の運営、実験システム、Agent",
+          "date": "2026/11/03",
+          "category": "月次振り返り / AI実践",
+          "excerpt": "10月の小紅書運営と自動化、oTree実験システムの開発、DSHの利用、感情交流型Agentの導入と試用。",
+          "url": "blog-october-2026-ja.html"
+        }, {
       "title": "「人間」をとても上手に演じている",
       "date": "2026/11/02",
       "category": "AI / 哲学",

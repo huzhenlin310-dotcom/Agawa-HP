@@ -105,12 +105,12 @@
     ],
     "posts": [
       {
-        "title": "October: Putting AI to Work—and Learning When to Stop",
-        "date": "2026/11/03",
-        "category": "Monthly Review / AI Practice",
-        "excerpt": "An October 2026 retrospective on Xiaohongshu content and automation, an oTree experiment system, and companion Agent deployment and memory.",
-        "url": "blog-october-2026-en.html"
-      }, {
+          "title": "October Review: Xiaohongshu, an Experiment System, and Agents",
+          "date": "2026/11/03",
+          "category": "Monthly Review / AI Practice",
+          "excerpt": "October activities: Xiaohongshu operations and automation, an oTree experiment system, DSH, and deploying and trying an emotional companion Agent.",
+          "url": "blog-october-2026-en.html"
+        }, {
       "title": "Playing Human, Very Convincingly",
       "date": "2026/11/02",
       "category": "AI / Philosophy",
