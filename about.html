@@ -19,64 +19,118 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/og-default.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"About · 阿川","description":"了解阿川的研究兴趣、学习经历，以及关于 AI、人机共创、心理学与哲学的关注。","url":"https://www.agawa5642.com/about.html","inLanguage":["zh","en","ja"]}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="about">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about" aria-current="page">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-lang="zh" aria-pressed="true">中</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="page-shell about-page">
-      <section class="interview-grid reveal">
-        <p class="issue-label" data-ui="profileKicker">Profile</p>
+    <main id="content" class="shell about-page">
+      <section class="page-head">
+        <p class="kicker" data-ui="about.kicker">简介</p>
         <h1 class="page-title" data-about-title>关于我</h1>
         <p class="page-lead" data-about-lead></p>
-        <figure class="portrait-figure">
-          <picture>
-            <source type="image/webp" srcset="assets/images/me-480.webp 480w, assets/images/me-768.webp 768w, assets/images/me-1122.webp 1122w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 42vw">
-            <img src="assets/images/me.png" alt="" width="1122" height="1402" loading="eager" fetchpriority="high" decoding="async">
-          </picture>
-          <figcaption data-ui="portraitCaption">A quiet studio note in image form.</figcaption>
-        </figure>
-        <article class="prose dropcap" data-about-body></article>
-        <aside class="side-notes">
-          <p class="section-kicker" data-ui="marginalia">Marginalia</p>
-          <ul data-about-notes></ul>
-        </aside>
       </section>
 
-      <section class="quote-band reveal" aria-label="Quote">
-        <blockquote data-about-quote></blockquote>
+      <section class="section" aria-labelledby="about-entries-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="about-entries-title" data-ui="about.entriesTitle">先看这些</h2>
+            <p class="section__lead" data-ui="about.entriesLead"></p>
+          </div>
+        </div>
+        <div class="hero__cta" data-about-entries></div>
       </section>
 
-      <section class="timeline-section reveal" aria-labelledby="timeline-title">
-        <div class="section-rule"></div>
-        <p class="section-kicker" data-ui="chronologyKicker">Chronology</p>
-        <h2 id="timeline-title" data-ui="chronologyTitle">时间线</h2>
+      <section class="section" aria-labelledby="about-body-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="about-body-title" data-ui="about.bodyTitle">介绍</h2>
+          </div>
+        </div>
+        <article class="prose" data-about-body></article>
+        <blockquote class="quote-band" data-about-quote></blockquote>
+      </section>
+
+      <section class="section" aria-labelledby="about-timeline-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="about-timeline-title" data-ui="about.timelineTitle">时间线</h2>
+            <p class="section__lead" data-ui="about.timelineLead"></p>
+          </div>
+        </div>
         <ol class="timeline" data-about-timeline></ol>
+        <ul class="plain-list" data-about-notes></ul>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p data-footer-text></p>
-      <p data-footer-copyright></p>
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

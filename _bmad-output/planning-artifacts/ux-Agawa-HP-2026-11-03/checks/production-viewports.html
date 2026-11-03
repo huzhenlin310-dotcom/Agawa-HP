@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>正式站尺寸检查（开发工具）</title>
+    <style>
+      :root { --ink:#000; --paper:#e5e5e5; --muted:#4a4a4a; }
+      * { box-sizing: border-box; }
+      body { margin:0; padding:20px; background:#f4f4f4; color:var(--ink); font:14px/1.5 "Segoe UI","Noto Sans SC",sans-serif; }
+      h1 { margin:0 0 4px; font-size:18px; }
+      .lead { margin:0 0 14px; color:var(--muted); }
+      .grid { display:grid; gap:16px; justify-items:start; }
+      .card { border:1px solid var(--ink); background:#fff; }
+      .card__head { display:flex; gap:12px; justify-content:space-between; padding:6px 10px; border-bottom:1px solid var(--ink); font-weight:700; }
+      .card__status { font-size:12px; color:var(--muted); font-weight:600; }
+      .card__status.bad { color:#b00020; font-weight:800; }
+      iframe { display:block; border:0; background:var(--paper); }
+    </style>
+  </head>
+  <body>
+    <h1>正式站尺寸检查（开发工具，不属于公开站点）</h1>
+    <p class="lead">每张卡片是固定 CSS 宽度的 iframe，加载正式根目录页面，用来检查横向溢出与首屏入口。</p>
+    <div class="grid" id="grid"></div>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const pageFile = params.get("page") || "index.html";
+      const lang = params.get("lang") || "zh";
+      const state = params.get("state") || "none";
+      const SIZES = [
+        { label: "320 × 640", w: 320, h: 640 },
+        { label: "360 × 740", w: 360, h: 740 },
+        { label: "390 × 844", w: 390, h: 844 },
+        { label: "768 × 1024", w: 768, h: 1024 },
+        { label: "1280 × 800", w: 1280, h: 800 },
+        { label: "1440 × 900", w: 1440, h: 900 }
+      ];
+      const grid = document.getElementById("grid");
+      const url = new URL("/" + pageFile, location.origin);
+      url.searchParams.set("lang", lang);
+      if (state === "empty") url.searchParams.set("topic", "__none__");
+      if (state === "filter") url.searchParams.set("topic", "technical");
+
+      const build = (frame) => {
+        const doc = frame.contentDocument;
+        if (!doc) return;
+        if (state === "menu" && frame.clientWidth <= 860) doc.getElementById("menu-toggle")?.click();
+        if (state === "article-toc" && frame.clientWidth <= 1080) {
+          const toc = doc.querySelector(".article-toc");
+          if (toc) toc.open = true;
+        }
+      };
+
+      const report = (card, frame) => {
+        const status = card.querySelector(".card__status");
+        const doc = frame.contentDocument;
+        if (!doc) return;
+        const overflow = doc.documentElement.scrollWidth - frame.clientWidth;
+        const problems = [];
+        if (overflow > 1) problems.push(`横向溢出 ${overflow}px`);
+        if (pageFile.startsWith("index")) {
+          const cta = doc.querySelector(".hero__cta .btn");
+          if (cta && cta.getBoundingClientRect().bottom > frame.clientHeight) problems.push("主入口不在首屏");
+        }
+        status.textContent = problems.length ? problems.join(" / ") : "无横向溢出";
+        status.classList.toggle("bad", problems.length > 0);
+      };
+
+      for (const size of SIZES) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.width = String(size.w);
+        const head = document.createElement("div");
+        head.className = "card__head";
+        head.innerHTML = `<span>${size.label}</span><span class="card__status">加载中…</span>`;
+        const frame = document.createElement("iframe");
+        frame.width = String(size.w);
+        frame.height = String(size.h);
+        frame.title = `${pageFile} ${size.label}`;
+        frame.src = url.toString();
+        frame.addEventListener("load", () => {
+          build(frame);
+          setTimeout(() => report(card, frame), 500);
+        });
+        card.append(head, frame);
+        if (size.w > document.documentElement.clientWidth - 40) {
+          const fit = (document.documentElement.clientWidth - 40) / size.w;
+          card.style.transform = `scale(${fit})`;
+          card.style.transformOrigin = "top left";
+          card.style.marginBottom = `${Math.round((fit - 1) * (size.h + 42))}px`;
+        }
+        grid.append(card);
+      }
+    </script>
+  </body>
+</html>

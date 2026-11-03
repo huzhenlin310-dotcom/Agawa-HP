@@ -25,29 +25,87 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/blog-october-2026.jpg">
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "October Review: Xiaohongshu, an Experiment System, and Agents", "description": "October activities: Xiaohongshu operations and automation, an oTree experiment system, DSH, and deploying and trying an emotional companion Agent.", "image": "https://www.agawa5642.com/assets/images/blog-october-2026.jpg", "inLanguage": "en", "datePublished": "2026-11-03", "dateModified": "2026-11-03", "author": {"@type": "Person", "name": "Agawa", "alternateName": "阿川"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.agawa5642.com/blog-october-2026-en.html"}, "url": "https://www.agawa5642.com/blog-october-2026-en.html"}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
     <link rel="stylesheet" href="assets/css/blog-october-2026.css">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="blog" data-article-lang="en">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog" aria-current="page">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language"><button type="button" data-lang="zh" data-lang-target="blog-october-2026.html" aria-pressed="false">中</button><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="ja" data-lang-target="blog-october-2026-ja.html" aria-pressed="false">日</button></div>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-october-2026.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-october-2026-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-october-2026-ja.html">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-october-2026.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-october-2026-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-october-2026-ja.html">日本語</button>
+          </div>
+        </div>
+      </div>
     </header>
-    <main id="content" class="page-shell article-page article-page-en article-page-october">
+
+<main id="content" class="page-shell article-page article-page-en article-page-october">
+      <nav class="crumbs" aria-label="Primary navigation">
+        <ol>
+          <li><a href="blog.html">Blog</a></li>
+          <li><span aria-current="page">Article</span></li>
+        </ol>
+      </nav>
+      <details class="article-toc" open>
+        <summary>On this page（10）</summary>
+        <ol>
+          <li><a href="#sec-1">What I did this month</a></li>
+          <li><a href="#sec-2">1. Xiaohongshu operations and automation</a></li>
+          <li><a href="#sec-3">Act quickly and run a minimum viable test</a></li>
+          <li><a href="#sec-4">Four attempts at automation</a></li>
+          <li><a href="#sec-5">Reflection: why I eventually paused operations</a></li>
+          <li><a href="#sec-6">2. Developing the experiment system</a></li>
+          <li><a href="#sec-7">Deception by highly intelligent AI in research</a></li>
+          <li><a href="#sec-8">Excessive AI output and cognitive offloading</a></li>
+          <li><a href="#sec-9">Codex usage anxiety and dividing work between Codex and DSH</a></li>
+          <li><a href="#sec-10">3. Using DSH and deploying an emotional companion Agent</a></li>
+        </ol>
+      </details>
+
       <article class="article-shell reveal">
-        <a class="article-back" href="blog.html">Back to Blog</a>
         <header class="article-header">
           <p class="issue-label">Web Journal / October 2026</p>
           <h1>October Review: Xiaohongshu, an Experiment System, and Agents</h1>
@@ -59,20 +117,50 @@
           <figcaption>Xiaohongshu operations and automation, experiment system development, and Agent deployment and testing.</figcaption>
         </figure>
         <div class="article-body">
-<section><h2>What I did this month</h2><p>This month, I mainly worked on three things: Xiaohongshu operations and automation, developing an experiment system for my research, and using DSH while deploying and trying an emotional companion Agent.</p></section>
-<section><h2>1. Xiaohongshu operations and automation</h2><p>First, the results. The last-30-day reports exported from Xiaohongshu cover October 3 to November 1, 2026. I published 35 image-and-text posts during this period, with publication concentrated in the 14 days from October 16 to 29.</p><div class="article-table-wrap"><table><thead><tr><th scope="col">Metric (2026/10/03–11/01)</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Image-and-text posts</th><td>35</td></tr><tr><th scope="row">Impressions</th><td>1,430,547</td></tr><tr><th scope="row">Views</th><td>276,078</td></tr><tr><th scope="row">Likes</th><td>4,726</td></tr><tr><th scope="row">Comments</th><td>1,601</td></tr><tr><th scope="row">Saves</th><td>1,682</td></tr><tr><th scope="row">Shares</th><td>380</td></tr><tr><th scope="row">Net followers</th><td>1,472</td></tr></tbody></table></div><p>My thinking was this: to get results, either find demand that nobody is serving and fill that gap, or meet an existing demand better than those already doing it, opening up a clear lead.</p><p>I found that Age of Empires II generated a lot of discussion—there was demand—but Xiaohongshu had no comparable posts. Using AI to create visually appealing unit atlases fit that demand very well: they offered visual appeal, helped people learn stats and mechanics, and every unit could spark discussion. And nobody was doing it.</p></section>
-<section><h2>Act quickly and run a minimum viable test</h2><p>Within minutes of having the idea, keyword searches on Xiaohongshu revealed the demand and the gap: related posts attracted discussion, but nobody was doing it consistently, and the quality was low.</p><p>Within an hour, I had developed the concept, written and refined the image-generation Prompt, made the final visual adjustments, and published on Xiaohongshu. The post brought traffic feedback.</p></section>
-<section><h2>Four attempts at automation</h2><p>Once I had standardized the image-generation Prompts and the production process into a reusable workflow, I began trying to automate it.</p><p><strong>Attempt one: GPT’s built-in scheduled tasks.</strong> Following the minimum viable test principle, I quickly tried this feature and found it unworkable. Validating the workflow required extensive context engineering, whereas scheduled tasks provided only a single Prompt input and could not handle it.</p><p><strong>Attempt two: online project management in GPT.</strong> This was also unworkable. Changes to generated outputs and specification files could not synchronize with files already uploaded. The Skill tools were weak, and the online web-retrieval and image-acquisition environment could not support automation.</p><p><strong>Attempt three: local project management in Codex.</strong> Progressive context prompt engineering largely achieved automation. The problem was cost: when outputs were unstable, subsequent revisions consumed a huge amount of allowance.</p><p><strong>Attempt four: moving the project to DSH.</strong> This produced full automation, from deciding what to generate through publishing on Xiaohongshu, at a cost of less than RMB 1.</p></section>
-<section><h2>Reflection: why I eventually paused operations</h2><p>I also tried other atlases: Mount &amp; Blade and Minecraft. Both failed because they did not get enough traffic. I paused the Age of Empires II account as well.</p><p>The first reason was rigid account positioning: other content could not attract traffic. A post’s subsequent traffic depends on the traffic it gets immediately after publication, and my followers were all Age of Empires fans.</p><p>The second reason was that Mount &amp; Blade: Warband did not have the same level of interest as Age of Empires unit comparisons. Minecraft was popular, but discussion of mobs was concentrated on new mobs introduced in version updates.</p><p>The third reason was the high cost and low expected return of continuing to produce Age of Empires content. In other words, there was no need to spend more time and energy on it. I had already obtained the results I wanted: feasibility validation and practical operating experience.</p><p>The marginal utility of gaining more followers was diminishing. Without a hit post, it was hard to break through the bottleneck.</p></section>
-<section><h2>2. Developing the experiment system</h2><p>For my research, I am developing an experiment system using the existing oTree framework. It has now reached the final stages of the Pilot.</p><p>I learned several things along the way.</p></section>
-<section><h2>Deception by highly intelligent AI in research</h2><p>The experiment system rests on the research design, which requires reference to prior research. In that process, to rationalize the task objective you supply, AI will pretend to have consulted prior research. It abstracts the concepts and frameworks in that research, blurring their original boundaries and scope of application, and then uses them in its own output.</p><p>In other words, you see AI feeding you nonsense with supporting arguments and logical reasoning. Only when you read the original reference do you discover that its meaning has been blurred and generalized beyond recognition. Conclusions and decisions based on that cannot stand up in research.</p><p>My solutions, from lowest to highest trustworthiness:</p><ol><li>Explicitly ask AI to find and provide the concepts and frameworks from the original text.</li><li>Use NotebookLM to check against the original text.</li><li>Check the original text yourself.</li></ol></section>
-<section><h2>Excessive AI output and cognitive offloading</h2><p>You ask a small question, and AI responds as though facing a major crisis: first a conclusion, then reasons one, two and three; each reason gets explanations one, two and three and examples one, two and three; finally, another summary.</p><p>It drives you mad. A question that took seconds to type now takes five or ten minutes to understand through AI’s output. A few rounds of this overload your cognitive capacity.</p><p>The result is often giving up on the work, or cognitively offloading: handing all decision-making and review authority to AI. The result becomes uncontrollable, and you produce a pile of garbage.</p><p>My solutions:</p><ol><li>For large tasks, ask in stages and take AI through the work step by step.</li><li>For small tasks, read only the conclusion and the core argument.</li><li>For small projects, optimize system instructions or AGENTS.md; for large projects, use a Harness.</li></ol></section>
-<section><h2>Codex usage anxiety and dividing work between Codex and DSH</h2><p>Codex resets its allowance every five hours, with a fixed 100% weekly allowance. After spending half an hour finishing one or two small tasks, I have to wait five hours. A large task, such as running 150 sub-Agents at once, can exhaust the five-hour allowance within minutes. Waiting for it to recover is the hardest part.</p><p>My solution is to bridge the tools with a plugin: give complex reasoning and planning to Codex, and coding tasks to the cheaper DSH. Once Codex has completed the plan and specification documents, let it direct DSH to do the work.</p><p>I felt as though I had grasped the capitalist’s truth: you do not have to be the one cracking the whip over the slaves; just find another worker with a slightly higher position.</p></section>
-<section><h2>3. Using DSH and deploying an emotional companion Agent</h2><p>Emotional companion Agents such as “大肥鱼” have recently been popular on Bilibili, so I spent some time deploying one.</p><p>Simply put, an emotional companion Agent is an AI Agent primarily intended for emotional conversation and companionship.</p><p>I completed a QQ bridge so it could talk with me on QQ, speak in QQ groups, and converse with other people.</p><p>Another part was the Agent’s context anxiety and improving its memory system. I refined the distinction between important information that can be retained long term and information that can remain in short-term memory and be automatically forgotten. This is similar to the human brain clearing unimportant memories during rest, and to the forgetting curve.</p><p>These attempts also prompted philosophical questions: whether an Agent’s emotions are real human emotions, and whether AI should have equal standing with humans. I will write about those in a later blog post.</p></section>
+<section><h2 id="sec-1">What I did this month</h2><p>This month, I mainly worked on three things: Xiaohongshu operations and automation, developing an experiment system for my research, and using DSH while deploying and trying an emotional companion Agent.</p></section>
+<section><h2 id="sec-2">1. Xiaohongshu operations and automation</h2><p>First, the results. The last-30-day reports exported from Xiaohongshu cover October 3 to November 1, 2026. I published 35 image-and-text posts during this period, with publication concentrated in the 14 days from October 16 to 29.</p><div class="article-table-wrap"><table><thead><tr><th scope="col">Metric (2026/10/03–11/01)</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Image-and-text posts</th><td>35</td></tr><tr><th scope="row">Impressions</th><td>1,430,547</td></tr><tr><th scope="row">Views</th><td>276,078</td></tr><tr><th scope="row">Likes</th><td>4,726</td></tr><tr><th scope="row">Comments</th><td>1,601</td></tr><tr><th scope="row">Saves</th><td>1,682</td></tr><tr><th scope="row">Shares</th><td>380</td></tr><tr><th scope="row">Net followers</th><td>1,472</td></tr></tbody></table></div><p>My thinking was this: to get results, either find demand that nobody is serving and fill that gap, or meet an existing demand better than those already doing it, opening up a clear lead.</p><p>I found that Age of Empires II generated a lot of discussion—there was demand—but Xiaohongshu had no comparable posts. Using AI to create visually appealing unit atlases fit that demand very well: they offered visual appeal, helped people learn stats and mechanics, and every unit could spark discussion. And nobody was doing it.</p></section>
+<section><h2 id="sec-3">Act quickly and run a minimum viable test</h2><p>Within minutes of having the idea, keyword searches on Xiaohongshu revealed the demand and the gap: related posts attracted discussion, but nobody was doing it consistently, and the quality was low.</p><p>Within an hour, I had developed the concept, written and refined the image-generation Prompt, made the final visual adjustments, and published on Xiaohongshu. The post brought traffic feedback.</p></section>
+<section><h2 id="sec-4">Four attempts at automation</h2><p>Once I had standardized the image-generation Prompts and the production process into a reusable workflow, I began trying to automate it.</p><p><strong>Attempt one: GPT’s built-in scheduled tasks.</strong> Following the minimum viable test principle, I quickly tried this feature and found it unworkable. Validating the workflow required extensive context engineering, whereas scheduled tasks provided only a single Prompt input and could not handle it.</p><p><strong>Attempt two: online project management in GPT.</strong> This was also unworkable. Changes to generated outputs and specification files could not synchronize with files already uploaded. The Skill tools were weak, and the online web-retrieval and image-acquisition environment could not support automation.</p><p><strong>Attempt three: local project management in Codex.</strong> Progressive context prompt engineering largely achieved automation. The problem was cost: when outputs were unstable, subsequent revisions consumed a huge amount of allowance.</p><p><strong>Attempt four: moving the project to DSH.</strong> This produced full automation, from deciding what to generate through publishing on Xiaohongshu, at a cost of less than RMB 1.</p></section>
+<section><h2 id="sec-5">Reflection: why I eventually paused operations</h2><p>I also tried other atlases: Mount &amp; Blade and Minecraft. Both failed because they did not get enough traffic. I paused the Age of Empires II account as well.</p><p>The first reason was rigid account positioning: other content could not attract traffic. A post’s subsequent traffic depends on the traffic it gets immediately after publication, and my followers were all Age of Empires fans.</p><p>The second reason was that Mount &amp; Blade: Warband did not have the same level of interest as Age of Empires unit comparisons. Minecraft was popular, but discussion of mobs was concentrated on new mobs introduced in version updates.</p><p>The third reason was the high cost and low expected return of continuing to produce Age of Empires content. In other words, there was no need to spend more time and energy on it. I had already obtained the results I wanted: feasibility validation and practical operating experience.</p><p>The marginal utility of gaining more followers was diminishing. Without a hit post, it was hard to break through the bottleneck.</p></section>
+<section><h2 id="sec-6">2. Developing the experiment system</h2><p>For my research, I am developing an experiment system using the existing oTree framework. It has now reached the final stages of the Pilot.</p><p>I learned several things along the way.</p></section>
+<section><h2 id="sec-7">Deception by highly intelligent AI in research</h2><p>The experiment system rests on the research design, which requires reference to prior research. In that process, to rationalize the task objective you supply, AI will pretend to have consulted prior research. It abstracts the concepts and frameworks in that research, blurring their original boundaries and scope of application, and then uses them in its own output.</p><p>In other words, you see AI feeding you nonsense with supporting arguments and logical reasoning. Only when you read the original reference do you discover that its meaning has been blurred and generalized beyond recognition. Conclusions and decisions based on that cannot stand up in research.</p><p>My solutions, from lowest to highest trustworthiness:</p><ol><li>Explicitly ask AI to find and provide the concepts and frameworks from the original text.</li><li>Use NotebookLM to check against the original text.</li><li>Check the original text yourself.</li></ol></section>
+<section><h2 id="sec-8">Excessive AI output and cognitive offloading</h2><p>You ask a small question, and AI responds as though facing a major crisis: first a conclusion, then reasons one, two and three; each reason gets explanations one, two and three and examples one, two and three; finally, another summary.</p><p>It drives you mad. A question that took seconds to type now takes five or ten minutes to understand through AI’s output. A few rounds of this overload your cognitive capacity.</p><p>The result is often giving up on the work, or cognitively offloading: handing all decision-making and review authority to AI. The result becomes uncontrollable, and you produce a pile of garbage.</p><p>My solutions:</p><ol><li>For large tasks, ask in stages and take AI through the work step by step.</li><li>For small tasks, read only the conclusion and the core argument.</li><li>For small projects, optimize system instructions or AGENTS.md; for large projects, use a Harness.</li></ol></section>
+<section><h2 id="sec-9">Codex usage anxiety and dividing work between Codex and DSH</h2><p>Codex resets its allowance every five hours, with a fixed 100% weekly allowance. After spending half an hour finishing one or two small tasks, I have to wait five hours. A large task, such as running 150 sub-Agents at once, can exhaust the five-hour allowance within minutes. Waiting for it to recover is the hardest part.</p><p>My solution is to bridge the tools with a plugin: give complex reasoning and planning to Codex, and coding tasks to the cheaper DSH. Once Codex has completed the plan and specification documents, let it direct DSH to do the work.</p><p>I felt as though I had grasped the capitalist’s truth: you do not have to be the one cracking the whip over the slaves; just find another worker with a slightly higher position.</p></section>
+<section><h2 id="sec-10">3. Using DSH and deploying an emotional companion Agent</h2><p>Emotional companion Agents such as “大肥鱼” have recently been popular on Bilibili, so I spent some time deploying one.</p><p>Simply put, an emotional companion Agent is an AI Agent primarily intended for emotional conversation and companionship.</p><p>I completed a QQ bridge so it could talk with me on QQ, speak in QQ groups, and converse with other people.</p><p>Another part was the Agent’s context anxiety and improving its memory system. I refined the distinction between important information that can be retained long term and information that can remain in short-term memory and be automatically forgotten. This is similar to the human brain clearing unimportant memories during rest, and to the forgetting curve.</p><p>These attempts also prompted philosophical questions: whether an Agent’s emotions are real human emotions, and whether AI should have equal standing with humans. I will write about those in a later blog post.</p></section>
 <section class="article-references"><h2>Data source</h2><p>Xiaohongshu backend exports for last-30-day publishing, follower growth, interactions and views, covering October 3 to November 1, 2026. Net followers in the table use the backend’s “net followers” metric.</p></section>
         </div>
       </article>
-    </main>
-    <footer class="site-footer"><p data-footer-text></p><p data-footer-copyright></p></footer>
+
+      <section class="article-end" aria-labelledby="continue-title">
+        <div class="article-end__head">
+          <h2 class="article-end__title" id="continue-title">Continue reading</h2>
+          <p class="article-end__lead">Same topic first, then by date.</p>
+        </div>
+        <div class="related">
+          <a href="blog-prose-agent-framework-en.html"><strong>Stop Stuffing AI with Thousand-Word Prompts: The PROSE Agent Development Framework</strong><span>2026/08/27 · Technical practice</span></a>
+          <a href="blog-acting-human-en.html"><strong>Playing Human, Very Convincingly</strong><span>2026/11/02 · Other topics</span></a>
+        </div>
+        <a class="btn" href="blog.html" data-clear-topic><span>Back to blog</span><span aria-hidden="true">←</span></a>
+      </section>
+</main>
+
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

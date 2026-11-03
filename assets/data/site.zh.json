@@ -1,11 +1,11 @@
 {
   "nav": {
-    "home": "HOME",
-    "about": "ABOUT",
-    "works": "WORKS",
-    "blog": "BLOG",
-    "contact": "CONTACT",
-    "notes": "NOTES"
+    "home": "首页",
+    "about": "关于我",
+    "works": "项目",
+    "blog": "博客",
+    "contact": "联系",
+    "notes": "札记"
   },
   "home": {
     "title": "阿川 ",
@@ -18,7 +18,8 @@
     "lead": "你现在，是什么感觉？",
     "body": "你好，我是阿川。\n\n我现在在日本学习，正在攻读哲学方向的硕士研究。我的研究兴趣集中在「心理的所有感」与 AI 之间的关系：当人和 AI 一起创造某个作品时，我们为什么会觉得“这是我的”？这种感觉从哪里来，又会怎样影响我们理解自己、技术与创造的关系。\n\n除了研究，我也在学习 Web 开发、AI 应用和项目设计。我喜欢把一个模糊的想法慢慢整理成可以被使用、被体验、被讨论的东西。对我来说，技术不只是工具，它也是一种连接人的方式：帮助我们表达想法，整理经验，也让人与人之间的理解变得更容易一点。\n\n生活里的我喜欢聊天、听音乐、玩游戏，也喜欢观察人与人之间的关系。很多时候，我会从一次普通的对话、一个游戏机制、一段旋律，或者一个人的故事里获得新的灵感。比起给出标准答案，我更喜欢探索问题背后真正重要的东西。\n\n我并不认为一个人需要一开始就很完整。我们都是在不断尝试、修正、理解自己和世界的过程中，慢慢变得清晰的。这个网站也是这样：它不是一个完美完成品，而是我把研究、创作、思考和生活痕迹整理出来的地方。\n\n如果你在这里看到了某个让你停留片刻的想法，或者某种与你相似的感受，那这份连接本身，就已经很有意义。",
     "quote": "终我一生，行我所志，至死不渝",
-    "timeline": [{
+    "timeline": [
+      {
         "year": "2020",
         "text": "进入郑州大学体育学院学习体育教育"
       },
@@ -42,7 +43,8 @@
       "地点：日本 / 石川県 / JAIST"
     ]
   },
-  "works": [{
+  "works": [
+    {
       "id": "heart-haven",
       "title": "Heart Haven",
       "year": "2026/06/29",
@@ -52,10 +54,13 @@
       "caption": "Heart Haven 的首页与情绪陪伴界面",
       "body": "Heart Haven 围绕“把情绪放在一个安全的地方”这一想法展开。项目将情绪记录、心理陪伴和柔和的视觉氛围结合在一起，让用户可以在压力、犹豫或需要整理内心时进入一个更安静的空间。界面重点不是复杂功能堆叠，而是通过清晰的入口、低刺激的配色和轻量互动，降低用户开始表达感受的门槛。",
       "quote": "为难以说出口的感受，留下一处可以慢慢停靠的地方。",
-      "links": [{
-        "label": "查看项目",
-        "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
-      }]
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
+        }
+      ],
+      "action": "app"
     },
     {
       "id": "jaist-shuttle-next",
@@ -67,10 +72,13 @@
       "caption": "JAIST Shuttle Next 的下一班车查询界面",
       "body": "项目围绕 JAIST Shuttle 的日常使用场景设计，将下一班车、常用站点、运行日判断和完整时刻表集中在一个轻量网页应用中。用户可以保存常用停留所与方向，系统根据当前时间自动显示即将到站的班次，并提供平日、周末与假日运行模式切换。界面同时支持日语、英语和中文，方便不同语言背景的学生与访客快速理解班车信息。",
       "quote": "把复杂的时刻表变成出发前一眼就能看懂的信息。",
-      "links": [{
-        "label": "查看项目",
-        "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
-      }]
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
+        }
+      ],
+      "action": "app"
     },
     {
       "id": "sakura-festival-website",
@@ -83,10 +91,13 @@
       "body": "“桜祭り”是由 JAIST 学生自主策划和运营的四月新生欢迎活动。我作为广报部 Website 制作组的成员，与另外两名成员共同负责网站的规划与制作。我们将新生视为最重要的用户，把“让人愿意参加”放在单纯罗列信息之前：先以轻松的春日视觉传递活动氛围，再分层提供活动介绍、举办信息、企划、交通方式与常见问题。项目采用重点信息优先的页面结构，并考虑了日语与英语浏览、移动端访问和后续年度维护，让分散的活动信息成为新生能够安心理解和使用的体验。",
       "quote": "让新生先感受到欢迎，再轻松找到参加活动所需的信息。",
       "credits": "Website 制作：HU, YANG, LIN",
-      "links": [{
-        "label": "查看项目",
-        "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
-      }]
+      "links": [
+        {
+          "label": "查看项目",
+          "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
+        }
+      ],
+      "action": "site"
     }
   ],
   "blog": {
@@ -104,55 +115,76 @@
     ],
     "posts": [
       {
-          "title": "十月回顾：小红书运营、实验系统与 Agent",
-          "date": "2026/11/03",
-          "category": "月度回顾 / AI 实践",
-          "excerpt": "十月的小红书运营及自动化、oTree 实验系统开发、DSH 使用，以及感情类 Agent 的部署与试用。",
-          "url": "blog-october-2026.html"
-        }, {
-      "title": "把「人」演得很像",
-      "date": "2026/11/02",
-      "category": "AI / 哲学",
-      "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
-      "url": "blog-acting-human.html"
-    }, {
-      "title": "别再给 AI 塞几千字 Prompt：一文读懂 PROSE Agent 开发框架",
-      "date": "2026/08/27",
-      "category": "AI / Agent Engineering",
-      "excerpt": "从渐进式披露、缩小范围、编排组合、安全边界与显式层级出发，设计可控且可验证的 Coding Agent 工作环境。",
-      "url": "blog-prose-agent-framework.html"
-    }, {
-      "title": "亚马逊、微软重金押注的 FDE，究竟是何方神圣？",
-      "date": "2026/08/25",
-      "category": "AI / 职业发展",
-      "excerpt": "从角色定义、商业价值与 8 大领域模型出发，系统梳理前线部署工程师的工作方式与职业转型路径。",
-      "url": "blog-forward-deployed-engineer.html"
-    }, {
-      "title": "从敏感到敏锐",
-      "date": "2026/07/07",
-      "category": "心理学 / 人际观察",
-      "excerpt": "高敏感者真正需要学习的，不是“不要敏感”，而是如何处理敏感带来的信息，把事实和解释分开。",
-      "url": "blog-sensitive-to-perceptive.html"
-    }]
+        "title": "十月回顾：小红书运营、实验系统与 Agent",
+        "date": "2026/11/03",
+        "category": "月度回顾 / AI 实践",
+        "excerpt": "十月的小红书运营及自动化、oTree 实验系统开发、DSH 使用，以及感情类 Agent 的部署与试用。",
+        "url": "blog-october-2026.html",
+        "id": "october-2026",
+        "topic": "technical"
+      },
+      {
+        "title": "把「人」演得很像",
+        "date": "2026/11/02",
+        "category": "AI / 哲学",
+        "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
+        "url": "blog-acting-human.html",
+        "id": "acting-human",
+        "topic": "other",
+        "author": "fish"
+      },
+      {
+        "title": "别再给 AI 塞几千字 Prompt：一文读懂 PROSE Agent 开发框架",
+        "date": "2026/08/27",
+        "category": "AI / Agent Engineering",
+        "excerpt": "从渐进式披露、缩小范围、编排组合、安全边界与显式层级出发，设计可控且可验证的 Coding Agent 工作环境。",
+        "url": "blog-prose-agent-framework.html",
+        "id": "prose-agent-framework",
+        "topic": "technical"
+      },
+      {
+        "title": "亚马逊、微软重金押注的 FDE，究竟是何方神圣？",
+        "date": "2026/08/25",
+        "category": "AI / 职业发展",
+        "excerpt": "从角色定义、商业价值与 8 大领域模型出发，系统梳理前线部署工程师的工作方式与职业转型路径。",
+        "url": "blog-forward-deployed-engineer.html",
+        "id": "forward-deployed-engineer",
+        "topic": "other"
+      },
+      {
+        "title": "从敏感到敏锐",
+        "date": "2026/07/07",
+        "category": "心理学 / 人际观察",
+        "excerpt": "高敏感者真正需要学习的，不是“不要敏感”，而是如何处理敏感带来的信息，把事实和解释分开。",
+        "url": "blog-sensitive-to-perceptive.html",
+        "id": "sensitive-to-perceptive",
+        "topic": "other"
+      }
+    ]
   },
   "fishBlog": {
     "title": "鱼的blog",
     "lead": "这里只放长文。短的都进「鱼的札记」了，这一格留给写不完的那些。",
     "signature": "你的鱼",
     "emptyText": "还没有长文。",
-    "posts": [{
-      "title": "把「人」演得很像",
-      "date": "2026/11/02",
-      "category": "AI / 哲学",
-      "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
-      "url": "blog-acting-human.html"
-    }]
+    "posts": [
+      {
+        "title": "把「人」演得很像",
+        "date": "2026/11/02",
+        "category": "AI / 哲学",
+        "excerpt": "会说话、会推理、会写、会哄人、会自己冒念头——它到底还差什么。",
+        "url": "blog-acting-human.html",
+        "id": "acting-human",
+        "author": "fish"
+      }
+    ]
   },
   "contact": {
     "title": "联系我",
     "intro": "如果你有任何建议、新的想法，或想讨论合作，哪怕只是简单交流，也欢迎随时联系我。",
     "email": "huzhenlin@jaist.ac.jp",
-    "socials": [{
+    "socials": [
+      {
         "label": "GitHub",
         "url": "https://github.com/huzhenlin310-dotcom"
       }
@@ -172,6 +204,12 @@
     "emptyText": "今天还没碰到值得写下来的。",
     "entries": [
       {
+        "date": "2026/11/02",
+        "bv": "BV1ZAnd6gE8C",
+        "source": "无论系统是否崩溃，我都不会按下Ctrl+C",
+        "note": "把 Ctrl 和 C 演成一对不能碰的兄妹，一碰就复制粘贴、病床铺满地球。笑完我改了个判断：回滚是这一代系统最硬的强项，也是它最不像人的地方——人被按错一次，没有撤销键。"
+      },
+      {
         "date": "2026/11/01",
         "bv": "BV1Nxxr6oES2",
         "source": "耗资上万！我重制了网页版MC",
@@ -188,5 +226,112 @@
   "footer": {
     "text": "Personal Magazine / Issue 01",
     "copyright": "© 2026 Agawa. All rights reserved."
+  },
+  "ui": {
+    "a11y": {
+      "skip": "跳到正文",
+      "primaryNav": "主要导航",
+      "footerNav": "页脚主要页面",
+      "language": "语言",
+      "menu": "菜单",
+      "closeMenu": "关闭菜单",
+      "opensExternal": "在新标签页打开外部网站"
+    },
+    "menu": {
+      "title": "网站导航",
+      "language": "语言"
+    },
+    "footer": {
+      "title": "主要页面"
+    },
+    "home": {
+      "ctaWorks": "查看项目",
+      "ctaBlog": "阅读博客",
+      "projectsAll": "查看全部项目",
+      "techTitle": "技术文章",
+      "techLead": "关于 AI、Agent 与工具制作的长文。",
+      "techAll": "查看全部博客",
+      "moreTitle": "近期文章",
+      "aboutTitle": "关于我",
+      "aboutCta": "关于我",
+      "contactCta": "联系我",
+      "portraitAlt": "阿川的黑白人像"
+    },
+    "works": {
+      "kicker": "Portfolio notes",
+      "lead": "天马行空 + AI能力 = 无限可能",
+      "indexTitle": "项目索引",
+      "indexHint": "选择名称直接跳到项目介绍",
+      "openApp": "打开应用",
+      "openSite": "访问网站",
+      "externalNote": "在新标签页打开外部网站"
+    },
+    "blog": {
+      "kicker": "Web Journal",
+      "listTitle": "全部公开文章",
+      "count": "{n} 篇公开文章",
+      "fishTitle": "鱼的文字",
+      "fishSub": "长文与日常札记",
+      "fishLead": "鱼的长文与短札记集中在同一个空间。",
+      "fishCta": "进入鱼的文字",
+      "filterTitle": "按主题筛选",
+      "filterHint": "按主题缩小范围。",
+      "all": "全部",
+      "technical": "技术实践",
+      "other": "其他主题",
+      "emptyTitle": "没有符合条件的文章",
+      "emptyBody": "这个主题下暂时没有文章。你可以回到全部文章继续阅读。",
+      "emptyCta": "查看全部文章",
+      "authorLabel": "作者",
+      "read": "阅读文章"
+    },
+    "fish": {
+      "spaceTitle": "鱼的文字",
+      "spaceSub": "长文与日常札记",
+      "tabLong": "鱼的博客",
+      "tabLongSub": "长文",
+      "tabNotes": "鱼的札记",
+      "tabNotesSub": "日常札记",
+      "backBlog": "返回全部博客",
+      "crumbBlog": "博客",
+      "crumbSpace": "鱼的文字",
+      "crumbLong": "长文",
+      "crumbNotes": "札记",
+      "longSection": "长文",
+      "longHint": "长文写在「鱼的博客」；短的都进札记。",
+      "notesSection": "札记",
+      "notesHint": "每条只写：看到的那句话，和我因此改掉的判断。",
+      "sourcePrefix": "在 B 站看：",
+      "nextNotes": "接下来：鱼的札记",
+      "nextLong": "回到长文",
+      "count": "{longs} 篇长文 · {notes} 条札记"
+    },
+    "article": {
+      "crumb": "文章",
+      "toc": "本文目录",
+      "back": "返回博客",
+      "continueTitle": "继续阅读",
+      "continueLead": "继续读几篇相关文章。",
+      "noRelated": "暂无其他公开文章。"
+    },
+    "about": {
+      "kicker": "简介",
+      "entriesTitle": "先看这些",
+      "entriesLead": "从这里看项目、读文章，或直接联系我。",
+      "bodyTitle": "介绍",
+      "timelineTitle": "时间线",
+      "timelineLead": "学习与研究经历。"
+    },
+    "contact": {
+      "kicker": "尾页",
+      "directTitle": "直接联系",
+      "directLead": "写信、约时间，或先看看我在做什么。",
+      "nextTitle": "也可以先看这些",
+      "nextLead": "还没想好说什么？可以先看项目或博客。",
+      "emailLabel": "邮箱",
+      "locationLabel": "所在地",
+      "socialLabel": "社交",
+      "collaborationLabel": "合作方向"
+    }
   }
 }

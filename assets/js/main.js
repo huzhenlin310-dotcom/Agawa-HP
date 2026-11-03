@@ -1,118 +1,12 @@
 const SUPPORTED_LANGS = ["zh", "en", "ja"];
-const DATA_VERSION = "works-sakura-20260831";
+const DATA_VERSION = "ux-20261103";
 const PAGE = document.body.dataset.page || "home";
 const ARTICLE_LANG = document.body.dataset.articleLang;
 const PRIVATE_BLOG_PASSWORD_HASH = "8e0c19142ee61342e1f8b09a6fccbcf5867db1542444474ed37ad11bd08eb062";
 const PRIVATE_BLOG_SESSION_KEY = "agawa-private-blog-unlocked";
 const PRIVATE_BLOG_TRIGGER_WINDOW = 1000;
-
-const UI = {
-  zh: {
-    issue: "Issue 01 / Notes from Agawa",
-    folio: "Vol. 01",
-    season: "2026 春",
-    format: "自我介绍",
-    contentsKicker: "Contents",
-    contentsTitle: "目录",
-    selectedKicker: "Selected works",
-    profileKicker: "Profile",
-    portraitCaption: "我问了一下AI，我是怎样一个人？",
-    marginalia: "边注",
-    chronologyKicker: "Chronology",
-    chronologyTitle: "时间线",
-    portfolioKicker: "Portfolio notes",
-    portfolioLead: "天马行空 + AI能力 = 无限可能",
-    blogKicker: "Web Journal",
-    blogTopics: "Topics",
-    blogIndex: "Web articles",
-    backPage: "Back page",
-    deskCaption: "信件、札记与开放的沟通方式。",
-    emailLabel: "邮箱",
-    locationLabel: "所在地",
-    socialLabel: "社交链接",
-    collaborationLabel: "可合作方向",
-    tocDescriptions: {
-      home: "",
-      about: "",
-      works: "",
-      blog: "",
-      contact: "",
-      notes: ""
-    }
-  },
-  en: {
-    issue: "Issue 01 / Notes from Agawa",
-    folio: "Vol. 01",
-    season: "Spring 2026",
-    format: "self-introduction",
-    contentsKicker: "Contents",
-    contentsTitle: "Table of Contents",
-    selectedKicker: "Selected works",
-    profileKicker: "Profile",
-    portraitCaption: "I asked AI what kind of person I am.",
-    marginalia: "Marginalia",
-    chronologyKicker: "Chronology",
-    chronologyTitle: "Chronology",
-    portfolioKicker: "Portfolio notes",
-    portfolioLead: "Imagination + AI power = infinite possibilities.",
-    blogKicker: "Web Journal",
-    blogTopics: "Topics",
-    blogIndex: "Web articles",
-    backPage: "Back page",
-    deskCaption: "Letters, notes, and open channels.",
-    emailLabel: "Email",
-    locationLabel: "Location",
-    socialLabel: "Social",
-    collaborationLabel: "Collaboration",
-    tocDescriptions: {
-      home: "",
-      about: "",
-      works: "",
-      blog: "",
-      contact: "",
-      notes: ""
-    }
-  },
-  ja: {
-    issue: "Issue 01 / Notes from Agawa",
-    folio: "Vol. 01",
-    season: "2026年春",
-    format: "自己紹介",
-    contentsKicker: "Contents",
-    contentsTitle: "目次",
-    selectedKicker: "Selected works",
-    profileKicker: "Profile",
-    portraitCaption: "自分がどんな人かAIに聞いてみると",
-    marginalia: "欄外メモ",
-    chronologyKicker: "Chronology",
-    chronologyTitle: "年譜",
-    portfolioKicker: "Portfolio notes",
-    portfolioLead: "発想力 + AIの力 = 無限の可能性",
-    blogKicker: "Web Journal",
-    blogTopics: "Topics",
-    blogIndex: "Web articles",
-    backPage: "Back page",
-    deskCaption: "手紙、ノート、開かれた連絡先。",
-    emailLabel: "メール",
-    locationLabel: "所在地",
-    socialLabel: "ソーシャル",
-    collaborationLabel: "協働領域",
-    tocDescriptions: {
-      home: "",
-      about: "",
-      works: "",
-      blog: "",
-      contact: "",
-      notes: ""
-    }
-  }
-};
-
-const LINK_LABELS = {
-  zh: "查看项目",
-  en: "View project",
-  ja: "プロジェクトを見る"
-};
+const LANG_NAMES = { zh: "中文", en: "English", ja: "日本語" };
+const FISH_NAME = { zh: "鱼", en: "Fish", ja: "魚" };
 
 const PRIVATE_BLOG_UI = {
   zh: {
@@ -147,6 +41,7 @@ const PRIVATE_BLOG_UI = {
 const dataCache = new Map();
 let currentPageData = null;
 let currentPageLang = "zh";
+let currentTopic = "all";
 let privateBlogDialog = null;
 let privateBlogDialogReturnFocus = null;
 
@@ -160,7 +55,7 @@ function $all(selector, root = document) {
 
 function setText(selector, value, root = document) {
   const target = $(selector, root);
-  if (target) target.textContent = value || "";
+  if (target) target.textContent = value == null ? "" : String(value);
 }
 
 function splitParagraphs(value) {
@@ -173,21 +68,21 @@ function splitParagraphs(value) {
 function createEl(tag, className, text) {
   const element = document.createElement(tag);
   if (className) element.className = className;
-  if (text) element.textContent = text;
+  if (text != null) element.textContent = text;
   return element;
 }
 
-async function getData(lang) {
-  if (dataCache.has(lang)) return dataCache.get(lang);
-  const response = await fetch(`assets/data/site.${lang}.json?v=${DATA_VERSION}`);
-  if (!response.ok) throw new Error(`Could not load language data: ${lang}`);
-  const data = await response.json();
-  dataCache.set(lang, data);
-  return data;
+function resolvePath(object, path) {
+  return path.split(".").reduce((value, key) => (value == null ? undefined : value[key]), object);
 }
 
-function normalizeLang(value) {
-  return SUPPORTED_LANGS.includes(value) ? value : "zh";
+function uiValue(path, lang = currentPageLang) {
+  const value = resolvePath(currentPageData?.ui || {}, path);
+  return typeof value === "string" ? value : undefined;
+}
+
+function format(template, values) {
+  return String(template || "").replace(/\{(\w+)\}/g, (match, key) => (values[key] == null ? match : String(values[key])));
 }
 
 function isPrivateBlogUnlocked() {
@@ -211,9 +106,7 @@ async function hashPrivateBlogPassword(value) {
   if (!window.crypto?.subtle) throw new Error("Web Crypto unavailable");
   const bytes = new TextEncoder().encode(value);
   const digest = await window.crypto.subtle.digest("SHA-256", bytes);
-  return [...new Uint8Array(digest)]
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 function updatePrivateBlogDialog(lang) {
@@ -240,6 +133,7 @@ function openPrivateBlogDialog() {
 }
 
 function createPrivateBlogDialog() {
+  if (privateBlogDialog) return;
   const dialog = document.createElement("dialog");
   dialog.className = "private-blog-dialog";
   dialog.setAttribute("aria-labelledby", "private-blog-dialog-title");
@@ -292,7 +186,7 @@ function createPrivateBlogDialog() {
       storePrivateBlogUnlock();
       document.body.classList.add("is-private-unlocked");
       closePrivateBlogDialog();
-      if (PAGE === "blog" && !ARTICLE_LANG && currentPageData) renderBlog(currentPageData);
+      if (!ARTICLE_LANG) renderPage(currentPageData, currentPageLang);
     } catch {
       error.textContent = copy.unavailable;
     } finally {
@@ -343,302 +237,395 @@ function initPrivateBlogAccess(lang) {
   });
 }
 
+async function getData(lang) {
+  if (dataCache.has(lang)) return dataCache.get(lang);
+  const response = await fetch(`assets/data/site.${lang}.json?v=${DATA_VERSION}`);
+  if (!response.ok) throw new Error(`Could not load language data: ${lang}`);
+  const data = await response.json();
+  dataCache.set(lang, data);
+  return data;
+}
+
+function normalizeLang(value) {
+  return SUPPORTED_LANGS.includes(value) ? value : "zh";
+}
+
 function getInitialLang() {
   if (SUPPORTED_LANGS.includes(ARTICLE_LANG)) return ARTICLE_LANG;
+  const paramLang = new URLSearchParams(location.search).get("lang");
+  if (SUPPORTED_LANGS.includes(paramLang)) return paramLang;
   const stored = localStorage.getItem("magazine-lang");
   if (SUPPORTED_LANGS.includes(stored)) return stored;
   const browserLang = navigator.language.slice(0, 2);
   return normalizeLang(browserLang);
 }
 
-function updateChrome(data, lang) {
-  document.documentElement.lang = lang;
-  // fish-blog 是 blog 下的次级页面，没有自己的导航项，标题从 fishBlog 段取。
-  const pageLabel = data.nav[PAGE] ?? (PAGE === "fish-blog" ? data.fishBlog?.title : "") ?? "";
-  if (!ARTICLE_LANG && pageLabel) document.title = `${pageLabel} · Achuan`;
-  $all("[data-nav]").forEach((item) => {
-    const key = item.dataset.nav;
-    item.textContent = data.nav[key];
-    if (key === PAGE) {
-      item.setAttribute("aria-current", "page");
-    } else {
-      item.removeAttribute("aria-current");
-    }
-  });
-  $all("[data-lang]").forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
-  });
-  $all("[data-ui]").forEach((node) => {
-    const key = node.dataset.ui;
-    if (UI[lang][key]) node.textContent = UI[lang][key];
-  });
-  setText("[data-footer-text]", data.footer.text);
-  setText("[data-footer-copyright]", data.footer.copyright);
+function visiblePosts(data) {
+  const unlocked = isPrivateBlogUnlocked();
+  return Array.isArray(data.blog.posts)
+    ? data.blog.posts.filter((post) => !post.private || unlocked)
+    : [];
 }
 
-function renderHome(data, lang) {
-  setText("[data-home-title]", data.home.title);
+function byDateDesc(a, b) {
+  return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+}
+
+function topicLabel(topic, data = currentPageData) {
+  const blog = data?.ui?.blog || {};
+  if (topic === "technical") return blog.technical || "Technical practice";
+  if (topic === "other") return blog.other || "Other topics";
+  return blog.all || "All";
+}
+
+function findPostByUrl(data, url) {
+  return (data.blog.posts || []).find((post) => post.url === url) || null;
+}
+
+function applyStaticText(data, lang) {
+  $all("[data-ui]").forEach((node) => {
+    const value = uiValue(node.dataset.ui, lang);
+    if (typeof value === "string" && value) node.textContent = value;
+  });
+  $all("[data-aria]").forEach((node) => {
+    const value = uiValue(node.dataset.aria, lang);
+    if (typeof value === "string" && value) node.setAttribute("aria-label", value);
+  });
+  $all("[data-alt]").forEach((node) => {
+    const value = uiValue(node.dataset.alt, lang);
+    if (typeof value === "string" && value) node.setAttribute("alt", value);
+  });
   setText("[data-home-subtitle]", data.home.subtitle);
   setText("[data-home-intro]", data.home.intro);
   setText("[data-home-featured-title]", data.home.featuredWorksTitle);
-  setText("[data-home-caption]", data.works[0]?.caption || "");
+  setText("[data-about-lead]", data.about.lead);
+  setText("[data-blog-lead]", data.blog.lead);
+  setText("[data-fish-lead]", data.fishBlog.lead);
+  setText("[data-fish-count]", format(uiValue("fish.count", lang) || "", {
+    longs: data.fishBlog.posts.filter((post) => {
+      const source = findPostByUrl(data, post.url);
+      return !(post.private || source?.private) || isPrivateBlogUnlocked();
+    }).length,
+    notes: data.notes.entries.length
+  }));
+}
 
-  const toc = $("[data-toc]");
-  if (toc) {
-    toc.replaceChildren();
-    ["home", "about", "works", "blog", "contact", "notes"].forEach((key, index) => {
-      const item = document.createElement("a");
-      item.className = "toc-item";
-      item.href = key === "home" ? "index.html" : `${key}.html`;
-      item.innerHTML = `
-        <span class="toc-number">${String(index + 1).padStart(2, "0")}</span>
-        <strong>${data.nav[key]}</strong>
-        <span>${UI[lang].tocDescriptions[key]}</span>
-      `;
-      toc.append(item);
-    });
+function updateChrome(data, lang) {
+  document.documentElement.lang = lang;
+  const fishSpaceTitle = data.ui?.fish?.spaceTitle || data.fishBlog.title;
+  const pageLabel = data.nav[PAGE] ?? (PAGE === "fish-blog" || PAGE === "notes" ? fishSpaceTitle : "");
+  if (!ARTICLE_LANG && pageLabel) document.title = `${pageLabel} · Achuan`;
+
+  const navKey = PAGE === "fish-blog" || PAGE === "notes" ? "blog" : PAGE;
+  $all("[data-nav]").forEach((item) => {
+    const key = item.dataset.nav;
+    item.textContent = data.nav[key] || "";
+    if (key === navKey) item.setAttribute("aria-current", "page");
+    else item.removeAttribute("aria-current");
+  });
+
+  $all("[data-lang]").forEach((buttonEl) => {
+    buttonEl.setAttribute("aria-pressed", String(buttonEl.dataset.lang === lang));
+  });
+
+  const current = $("[data-lang-current]");
+  if (current) current.textContent = LANG_NAMES[lang] || LANG_NAMES.zh;
+
+  applyStaticText(data, lang);
+  setText("[data-footer-text]", data.footer.text);
+  setText("[data-footer-copyright]", data.footer.copyright);
+
+  const langButton = $("#lang-button");
+  if (langButton) langButton.setAttribute("aria-label", `${uiValue("a11y.language", lang) || "Language"}: ${LANG_NAMES[lang]}`);
+  const menuButton = $("#menu-toggle");
+  if (menuButton) {
+    const label = menuButton.getAttribute("aria-expanded") === "true"
+      ? uiValue("a11y.closeMenu", lang) || "Close menu"
+      : uiValue("a11y.menu", lang) || "Menu";
+    menuButton.setAttribute("aria-label", label);
+    const text = $(".menu-toggle__text", menuButton);
+    if (text) text.textContent = label;
   }
 
-  const featured = $("[data-featured-works]");
-  if (featured) {
-    featured.replaceChildren();
-    data.works.slice(0, 3).forEach((work, index) => {
-      const item = document.createElement("a");
-      item.className = "featured-item";
-      item.href = `works.html#${work.id}`;
-      item.innerHTML = `
-        <img src="${work.image}" alt="" width="1200" height="1500" loading="lazy" fetchpriority="low" decoding="async">
-        <div>
-          <p class="meta-line">No. ${String(index + 1).padStart(2, "0")} / ${work.year} / ${work.medium}</p>
-          <h3>${work.title}</h3>
-          <p>${work.summary}</p>
-        </div>
-      `;
-      featured.append(item);
-    });
+  const tabs = { "fish-blog": "#tab-long", notes: "#tab-notes" }[PAGE];
+  if (tabs) {
+    $all(".tabs a").forEach((tab) => tab.removeAttribute("aria-current"));
+    const currentTab = $(tabs);
+    if (currentTab) currentTab.setAttribute("aria-current", "page");
+    setText("[data-crumb-current]", PAGE === "fish-blog" ? data.ui.fish.crumbLong : data.ui.fish.crumbNotes);
   }
+
+  if (ARTICLE_LANG) {
+    const toc = $(".article-toc");
+    if (toc && window.matchMedia("(max-width: 1080px)").matches) toc.removeAttribute("open");
+  }
+}
+
+function postRow(post, index, data) {
+  const lang = currentPageLang;
+  const row = createEl("a", "post-row");
+  row.href = post.url;
+
+  const no = createEl("span", "post-row__no", String(index + 1).padStart(2, "0"));
+  const body = createEl("div");
+  body.append(createEl("h3", "post-row__title", post.title));
+  body.append(createEl("p", "post-row__excerpt", post.excerpt || ""));
+
+  const side = createEl("div", "post-row__side");
+  side.append(createEl("span", "", post.date));
+  if (post.author === "fish") {
+    side.append(createEl("span", "post-row__author", `${data.ui.blog.authorLabel}: ${FISH_NAME[lang]}`));
+  }
+  side.append(createEl("span", "", topicLabel(post.topic, data)));
+
+  row.append(no, body, side);
+  return row;
+}
+
+function renderHome(data) {
+  const works = $("[data-home-projects]");
+  if (works) {
+    works.replaceChildren(...data.works.slice(0, 3).map((work, index) => {
+      const card = createEl("a", "work-card");
+      card.href = `works.html#${work.id}`;
+      const figure = createEl("figure", "work-card__figure");
+      const img = createEl("img");
+      img.src = work.image;
+      img.alt = "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      figure.append(img);
+      card.append(figure);
+      card.append(createEl("span", "work-card__no", `No. ${String(index + 1).padStart(2, "0")} / ${work.year}`));
+      card.append(createEl("h3", "work-card__title", work.title));
+      card.append(createEl("p", "work-card__summary", work.summary));
+      card.append(createEl("span", "work-card__cta", `${data.nav.works} →`));
+      return card;
+    }));
+  }
+
+  const posts = visiblePosts(data).slice().sort(byDateDesc);
+  const technical = posts.filter((post) => post.topic === "technical").slice(0, 2);
+  const techList = $("[data-home-technical]");
+  if (techList) techList.replaceChildren(...technical.map((post, index) => postRow(post, index, data)));
+
+  const techIds = new Set(technical.map((post) => post.id));
+  const more = posts.filter((post) => !techIds.has(post.id)).slice(0, 2);
+  const moreList = $("[data-home-more]");
+  if (moreList) moreList.replaceChildren(...more.map((post, index) => postRow(post, index, data)));
+}
+
+function renderWorks(data) {
+  setText("[data-works-title]", data.nav.works);
+
+  const index = $("[data-work-index]");
+  if (index) {
+    index.replaceChildren(...data.works.map((work, i) => {
+      const li = createEl("li");
+      const link = createEl("a");
+      link.href = `#${work.id}`;
+      link.append(createEl("span", "index-card__no", String(i + 1).padStart(2, "0")));
+      link.append(createEl("span", "", work.title));
+      const action = work.action === "site" ? data.ui.works.openSite : data.ui.works.openApp;
+      link.append(createEl("span", "index-card__type", action));
+      li.append(link);
+      return li;
+    }));
+  }
+
+  const list = $("[data-works-list]");
+  if (!list) return;
+  list.replaceChildren(...data.works.map((work, i) => {
+    const article = createEl("article", "work-row");
+    article.id = work.id;
+
+    const figure = createEl("figure", "work-row__figure");
+    const img = createEl("img");
+    img.src = work.image;
+    img.alt = "";
+    img.loading = i === 0 ? "eager" : "lazy";
+    img.decoding = "async";
+    figure.append(img);
+    figure.append(createEl("figcaption", "", work.caption));
+
+    const copy = createEl("div", "work-row__copy");
+    copy.append(createEl("span", "work-row__no", `No. ${String(i + 1).padStart(2, "0")} / ${work.year}`));
+    copy.append(createEl("h2", "work-row__title", work.title));
+    copy.append(createEl("p", "work-row__summary", work.summary));
+    copy.append(createEl("p", "work-row__body", work.body));
+    if (work.quote) copy.append(createEl("blockquote", "", work.quote));
+    if (work.credits) copy.append(createEl("p", "work-row__credits", work.credits));
+
+    const actions = createEl("div", "work-row__actions");
+    const link = work.links?.[0];
+    if (link) {
+      const action = createEl("a", "btn btn--solid");
+      action.href = link.url;
+      action.target = "_blank";
+      action.rel = "noreferrer";
+      action.append(createEl("span", "", work.action === "site" ? data.ui.works.openSite : data.ui.works.openApp));
+      action.append(createEl("span", "", "↗"));
+      action.setAttribute("aria-label", `${action.textContent.replace("↗", "").trim()} · ${work.title}（${data.ui.a11y.opensExternal}）`);
+      actions.append(action);
+    }
+    copy.append(actions);
+    copy.append(createEl("p", "work-row__note", data.ui.works.externalNote));
+
+    article.append(figure, copy);
+    return article;
+  }));
+}
+
+function renderBlog(data, lang) {
+  setText("[data-blog-title]", data.nav.blog);
+
+  const posts = visiblePosts(data).slice().sort(byDateDesc);
+  const counts = {
+    all: posts.length,
+    technical: posts.filter((post) => post.topic === "technical").length,
+    other: posts.filter((post) => post.topic === "other").length
+  };
+
+  setText("[data-blog-count]", format(uiValue("blog.count", lang) || "{n}", { n: posts.length }));
+
+  const filterRoot = $("[data-blog-filter]");
+  if (filterRoot) {
+    const buttons = ["all", "technical", "other"].map((topic) => {
+      const buttonEl = createEl("button", "filter__btn");
+      buttonEl.type = "button";
+      buttonEl.dataset.topic = topic;
+      buttonEl.setAttribute("aria-pressed", String(topic === currentTopic));
+      buttonEl.append(createEl("span", "", topicLabel(topic, data)));
+      buttonEl.append(createEl("span", "filter__count", `(${counts[topic]})`));
+      buttonEl.addEventListener("click", () => setTopic(topic));
+      return buttonEl;
+    });
+    filterRoot.replaceChildren(createEl("span", "filter__label", data.ui.blog.filterTitle), ...buttons);
+  }
+
+  const list = $("[data-blog-list]");
+  const empty = $("[data-blog-empty]");
+  if (!list || !empty) return;
+
+  const filtered = currentTopic === "all" ? posts : posts.filter((post) => post.topic === currentTopic);
+
+  if (filtered.length === 0) {
+    list.replaceChildren();
+    list.hidden = true;
+    empty.hidden = false;
+    return;
+  }
+
+  list.hidden = false;
+  empty.hidden = true;
+  list.replaceChildren(...filtered.map((post, index) => postRow(post, index, data)));
+}
+
+function setTopic(topic) {
+  currentTopic = topic;
+  const params = new URLSearchParams(location.search);
+  if (topic === "all") params.delete("topic");
+  else params.set("topic", topic);
+  const query = params.toString();
+  history.pushState({ topic }, "", `${location.pathname}${query ? `?${query}` : ""}`);
+  renderBlog(currentPageData, currentPageLang);
+  $(`[data-blog-filter] .filter__btn[data-topic="${topic}"]`)?.focus();
+}
+
+function readTopicFromUrl() {
+  const topic = new URLSearchParams(location.search).get("topic");
+  return ["technical", "other"].includes(topic) ? topic : "all";
+}
+
+function renderFish(data) {
+  const isLong = PAGE === "fish-blog";
+  setText("[data-crumb-current]", isLong ? data.ui.fish.crumbLong : data.ui.fish.crumbNotes);
+  setText("[data-fish-lead]", isLong ? data.fishBlog.lead : data.notes.lead);
+
+  if (isLong) {
+    const posts = [];
+    for (const post of data.fishBlog.posts || []) {
+      const source = findPostByUrl(data, post.url);
+      if ((post.private || source?.private) && !isPrivateBlogUnlocked()) continue;
+      posts.push({ ...source, ...post });
+    }
+    const list = $("[data-fish-list]");
+    const empty = $("[data-fish-empty]");
+    if (empty) {
+      const p = empty.querySelector("p");
+      if (p) p.textContent = data.fishBlog.emptyText;
+    }
+    if (!list) return;
+    if (posts.length === 0) {
+      list.hidden = true;
+      if (empty) empty.hidden = false;
+      return;
+    }
+    list.replaceChildren(...posts.map((post, index) => postRow(post, index, data)));
+    return;
+  }
+
+  const entries = data.notes.entries || [];
+  const list = $("[data-notes-list]");
+  const empty = $("[data-notes-empty]");
+  setText("[data-notes-signature]", data.notes.signature);
+  if (empty) {
+    const p = empty.querySelector("p");
+    if (p) p.textContent = data.notes.emptyText;
+  }
+  if (!list) return;
+
+  if (entries.length === 0) {
+    list.hidden = true;
+    if (empty) empty.hidden = false;
+    return;
+  }
+
+  list.replaceChildren(...entries.map((entry) => {
+    const item = createEl("article", "note-item");
+    const meta = createEl("div", "note-item__meta");
+    meta.append(createEl("time", "", entry.date));
+    const source = createEl("a", "note-item__source", `${data.ui.fish.sourcePrefix}${entry.source}`);
+    source.href = `https://www.bilibili.com/video/${entry.bv}/`;
+    source.target = "_blank";
+    source.rel = "noreferrer";
+    meta.append(source);
+    meta.append(createEl("span", "", entry.bv));
+    item.append(meta);
+    item.append(createEl("p", "note-item__text", entry.note));
+    return item;
+  }));
 }
 
 function renderAbout(data) {
   setText("[data-about-title]", data.about.title);
   setText("[data-about-lead]", data.about.lead);
-  setText("[data-about-quote]", data.about.quote);
+
+  const entries = $("[data-about-entries]");
+  if (entries) {
+    entries.replaceChildren(
+      button("works.html", data.nav.works),
+      button("blog.html", data.nav.blog),
+      button("contact.html", data.nav.contact)
+    );
+  }
 
   const body = $("[data-about-body]");
-  if (body) {
-    body.replaceChildren(...splitParagraphs(data.about.body).map((text) => createEl("p", "", text)));
-  }
-
-  const notes = $("[data-about-notes]");
-  if (notes) {
-    notes.replaceChildren(...data.about.notes.map((text) => createEl("li", "", text)));
-  }
+  if (body) body.replaceChildren(...splitParagraphs(data.about.body).map((text) => createEl("p", "", text)));
+  setText("[data-about-quote]", data.about.quote);
 
   const timeline = $("[data-about-timeline]");
   if (timeline) {
-    timeline.replaceChildren(
-      ...data.about.timeline.map((item) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<time>${item.year}</time><p>${item.text}</p>`;
-        return li;
-      })
-    );
-  }
-}
-
-function renderWorks(data) {
-  setText("[data-works-title]", data.nav.works);
-  const list = $("[data-works-list]");
-  if (!list) return;
-  list.replaceChildren();
-
-  data.works.forEach((work, index) => {
-    const article = document.createElement("article");
-    article.className = "work-entry reveal";
-    article.id = work.id;
-
-    const links = Array.isArray(work.links) && work.links.length
-      ? `<div class="work-links">${work.links.map((link) => {
-          const normalized = typeof link === "string"
-            ? { url: link, label: LINK_LABELS[document.documentElement.lang] || LINK_LABELS.zh }
-            : link;
-          return `<a href="${normalized.url}" target="_blank" rel="noreferrer">${normalized.label}</a>`;
-        }).join("")}</div>`
-      : "";
-
-    article.innerHTML = `
-      <span class="work-number">No. ${String(index + 1).padStart(2, "0")}</span>
-      <figure>
-        <img src="${work.image}" alt="" width="1500" height="1200" loading="lazy">
-        <figcaption>${work.caption}</figcaption>
-      </figure>
-      <div class="work-copy">
-        <div>
-          <h2>${work.title}</h2>
-          <p class="summary">${work.summary}</p>
-          <p class="body-copy">${work.body}</p>
-          ${work.quote ? `<blockquote>${work.quote}</blockquote>` : ""}
-          ${links}
-        </div>
-        <aside class="work-meta">
-          <p>${work.year}</p>
-          <p>${work.medium}</p>
-          ${work.credits ? `<p>${work.credits}</p>` : ""}
-          <p>${work.id}</p>
-        </aside>
-      </div>
-    `;
-    list.append(article);
-  });
-  observeReveals();
-}
-
-function renderBlog(data) {
-  setText("[data-blog-title]", data.blog.title);
-  setText("[data-blog-lead]", data.blog.lead);
-  setText("[data-blog-index-title]", data.blog.indexTitle);
-
-  const topics = $("[data-blog-topics]");
-  if (topics) {
-    topics.replaceChildren(
-      ...data.blog.topics.map((topic, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <span class="toc-number">${String(index + 1).padStart(2, "0")}</span>
-          <strong>${topic}</strong>
-        `;
-        return li;
-      })
-    );
+    timeline.replaceChildren(...data.about.timeline.map((item) => {
+      const li = createEl("li");
+      li.append(createEl("time", "", item.year));
+      li.append(createEl("p", "", item.text));
+      return li;
+    }));
   }
 
-  const list = $("[data-blog-list]");
-  if (!list) return;
-  list.replaceChildren();
-
-  const posts = Array.isArray(data.blog.posts)
-    ? data.blog.posts.filter((post) => !post.private || isPrivateBlogUnlocked())
-    : [];
-
-  if (posts.length === 0) {
-    const empty = document.createElement("article");
-    empty.className = "blog-empty";
-    empty.innerHTML = `
-      <span class="blog-number">00</span>
-      <div>
-        <h3>${data.blog.emptyTitle}</h3>
-        <p>${data.blog.emptyText}</p>
-      </div>
-    `;
-    list.append(empty);
-    return;
-  }
-
-  posts.forEach((post, index) => {
-    const item = document.createElement(post.url ? "a" : "article");
-    item.className = "blog-entry reveal";
-    if (post.url) item.href = post.url;
-    item.innerHTML = `
-      <span class="blog-number">${String(index + 1).padStart(2, "0")}</span>
-      <div>
-        <p class="meta-line">${post.date} / ${post.category}</p>
-        <h3>${post.title}</h3>
-        <p>${post.excerpt}</p>
-      </div>
-    `;
-    list.append(item);
-  });
-  observeReveals();
-}
-
-function renderNotes(data) {
-  const notes = data.notes;
-  if (!notes) return;
-
-  setText("[data-notes-title]", notes.title);
-  setText("[data-notes-lead]", notes.lead);
-  setText("[data-notes-signature]", notes.signature);
-
-  const list = $("[data-notes-list]");
-  if (!list) return;
-  list.replaceChildren();
-
-  const entries = Array.isArray(notes.entries) ? notes.entries : [];
-
-  if (entries.length === 0) {
-    const empty = document.createElement("article");
-    empty.className = "blog-empty";
-    empty.innerHTML = `
-      <span class="blog-number">00</span>
-      <div>
-        <p>${notes.emptyText}</p>
-      </div>
-    `;
-    list.append(empty);
-    return;
-  }
-
-  entries.forEach((entry, index) => {
-    const item = document.createElement("article");
-    item.className = "blog-entry reveal";
-    const bili = entry.bv
-      ? `<p class="meta-line"><a href="https://www.bilibili.com/video/${entry.bv}/" rel="noreferrer" target="_blank">${entry.bv} ↗</a></p>`
-      : "";
-    item.innerHTML = `
-      <span class="blog-number">${String(index + 1).padStart(2, "0")}</span>
-      <div>
-        <p class="meta-line">${entry.date} / ${entry.source}</p>
-        <p>${entry.note}</p>
-        ${bili}
-      </div>
-    `;
-    list.append(item);
-  });
-  observeReveals();
-}
-
-function renderFishBlog(data) {
-  const fb = data.fishBlog;
-  if (!fb) return;
-
-  setText("[data-fishblog-title]", fb.title);
-  setText("[data-fishblog-lead]", fb.lead);
-  setText("[data-fishblog-signature]", fb.signature);
-
-  const list = $("[data-fishblog-list]");
-  if (!list) return;
-  list.replaceChildren();
-
-  const posts = Array.isArray(fb.posts) ? fb.posts : [];
-
-  if (posts.length === 0) {
-    const empty = document.createElement("article");
-    empty.className = "blog-empty";
-    empty.innerHTML = `
-      <span class="blog-number">00</span>
-      <div>
-        <p>${fb.emptyText}</p>
-      </div>
-    `;
-    list.append(empty);
-    return;
-  }
-
-  posts.forEach((post, index) => {
-    const item = document.createElement("a");
-    item.className = "blog-entry reveal";
-    item.href = post.url;
-    item.innerHTML = `
-      <span class="blog-number">${String(index + 1).padStart(2, "0")}</span>
-      <div>
-        <p class="meta-line">${post.date} / ${post.category}</p>
-        <h3>${post.title}</h3>
-        <p>${post.excerpt}</p>
-      </div>
-    `;
-    list.append(item);
-  });
-  observeReveals();
+  const notes = $("[data-about-notes]");
+  if (notes) notes.replaceChildren(...data.about.notes.map((text) => createEl("li", "", text)));
 }
 
 function renderContact(data) {
@@ -654,35 +641,40 @@ function renderContact(data) {
 
   const socials = $("[data-contact-socials]");
   if (socials) {
-    socials.replaceChildren(
-      ...data.contact.socials.map((item) => {
-        const li = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = item.url;
-        link.textContent = item.label;
-        link.rel = "noreferrer";
-        link.target = item.url.startsWith("mailto:") ? "_self" : "_blank";
-        li.append(link);
-        return li;
-      })
-    );
+    socials.replaceChildren(...data.contact.socials.map((item) => {
+      const li = createEl("li");
+      const link = createEl("a", "", item.label);
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      li.append(link);
+      return li;
+    }));
   }
 
   const collaboration = $("[data-contact-collaboration]");
-  if (collaboration) {
-    collaboration.replaceChildren(...data.contact.collaboration.map((text) => createEl("li", "", text)));
-  }
+  if (collaboration) collaboration.replaceChildren(...data.contact.collaboration.map((text) => createEl("li", "", text)));
+
+  const entries = $("[data-contact-entries]");
+  if (entries) entries.replaceChildren(button("works.html", data.nav.works), button("blog.html", data.nav.blog));
+}
+
+function button(href, label) {
+  const link = createEl("a", "btn");
+  link.href = href;
+  link.append(createEl("span", "", `${label} →`));
+  return link;
 }
 
 function renderPage(data, lang) {
   updateChrome(data, lang);
-  if (PAGE === "home") renderHome(data, lang);
-  if (PAGE === "about") renderAbout(data);
+  if (ARTICLE_LANG) return;
+  if (PAGE === "home") renderHome(data);
   if (PAGE === "works") renderWorks(data);
-  if (PAGE === "blog") renderBlog(data);
+  if (PAGE === "blog") renderBlog(data, lang);
+  if (PAGE === "about") renderAbout(data);
   if (PAGE === "contact") renderContact(data);
-  if (PAGE === "notes") renderNotes(data);
-  if (PAGE === "fish-blog") renderFishBlog(data);
+  if (PAGE === "fish-blog" || PAGE === "notes") renderFish(data);
 }
 
 let languageSwitchId = 0;
@@ -701,9 +693,15 @@ async function switchLanguage(lang) {
     if (requestId !== languageSwitchId) return;
     currentPageData = data;
     currentPageLang = nextLang;
+    currentTopic = readTopicFromUrl();
     updatePrivateBlogDialog(nextLang);
     renderPage(data, nextLang);
     localStorage.setItem("magazine-lang", nextLang);
+    if (!ARTICLE_LANG) {
+      const params = new URLSearchParams(location.search);
+      params.set("lang", nextLang);
+      history.replaceState(history.state, "", `${location.pathname}?${params.toString()}`);
+    }
   } finally {
     if (requestId === languageSwitchId) {
       window.clearTimeout(switchingTimer);
@@ -712,6 +710,106 @@ async function switchLanguage(lang) {
       }, 120);
     }
   }
+}
+
+function applyLanguage(lang) {
+  const next = normalizeLang(lang);
+  if (ARTICLE_LANG) {
+    localStorage.setItem("magazine-lang", next);
+    const target = $(`[data-lang="${next}"]`)?.dataset.langTarget;
+    if (target) window.location.href = target;
+    return;
+  }
+  switchLanguage(next);
+}
+
+function setupMenu() {
+  const buttonEl = $("#menu-toggle");
+  const panel = $("#menu-panel");
+  if (!buttonEl || !panel) return;
+
+  const setOpen = (open) => {
+    panel.hidden = !open;
+    buttonEl.setAttribute("aria-expanded", String(open));
+    const label = open ? uiValue("a11y.closeMenu") || "Close menu" : uiValue("a11y.menu") || "Menu";
+    buttonEl.setAttribute("aria-label", label);
+    const text = $(".menu-toggle__text", buttonEl);
+    if (text) text.textContent = label;
+    if (open) $("#menu-panel a")?.focus();
+  };
+
+  buttonEl.addEventListener("click", () => setOpen(panel.hidden));
+  panel.addEventListener("click", (event) => {
+    if (event.target.closest("[data-lang]")) {
+      setOpen(false);
+      buttonEl.focus();
+    }
+  });
+  panel.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.stopPropagation();
+      setOpen(false);
+      buttonEl.focus();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) {
+      setOpen(false);
+      buttonEl.focus();
+    }
+  });
+  document.addEventListener("mousedown", (event) => {
+    if (panel.hidden) return;
+    if (!panel.contains(event.target) && !buttonEl.contains(event.target)) setOpen(false);
+  });
+  setOpen(false);
+}
+
+function setupLangMenu() {
+  const buttonEl = $("#lang-button");
+  const panel = $("#lang-panel");
+  if (!buttonEl || !panel) return;
+
+  const setOpen = (open) => {
+    panel.hidden = !open;
+    buttonEl.setAttribute("aria-expanded", String(open));
+    if (open) $("button", panel)?.focus();
+  };
+
+  buttonEl.addEventListener("click", () => setOpen(panel.hidden));
+  panel.addEventListener("click", (event) => {
+    if (event.target.closest("[data-lang]")) {
+      setOpen(false);
+      buttonEl.focus();
+    }
+  });
+  panel.addEventListener("keydown", (event) => {
+    const items = $all("button", panel);
+    const index = items.indexOf(document.activeElement);
+    if (event.key === "Escape") {
+      setOpen(false);
+      buttonEl.focus();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      items[(index + 1) % items.length]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      items[(index - 1 + items.length) % items.length]?.focus();
+    } else if (event.key === "Tab" && index === items.length - 1 && !event.shiftKey) {
+      setOpen(false);
+    }
+  });
+  document.addEventListener("mousedown", (event) => {
+    if (panel.hidden) return;
+    if (!panel.contains(event.target) && !buttonEl.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) {
+      setOpen(false);
+      buttonEl.focus();
+    }
+  });
+  setOpen(false);
 }
 
 function observeReveals() {
@@ -742,8 +840,7 @@ function updateProgress() {
   if (!progress) return;
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const value = max <= 0 ? 0 : (window.scrollY / max) * 100;
-  const ratio = Math.min(100, Math.max(0, value)) / 100;
-  progress.style.transform = `scaleX(${ratio})`;
+  progress.style.transform = `scaleX(${Math.min(100, Math.max(0, value)) / 100})`;
 }
 
 function scheduleProgressUpdate() {
@@ -752,19 +849,24 @@ function scheduleProgressUpdate() {
 }
 
 async function init() {
-  if (PAGE === "blog") initPrivateBlogAccess(getInitialLang());
-  $all("[data-lang]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.dataset.langTarget) {
-        localStorage.setItem("magazine-lang", normalizeLang(button.dataset.lang));
-        window.location.href = button.dataset.langTarget;
-        return;
-      }
-      switchLanguage(button.dataset.lang);
-    });
+  currentTopic = readTopicFromUrl();
+  if (PAGE === "blog" && !ARTICLE_LANG) initPrivateBlogAccess(getInitialLang());
+  else currentPageLang = getInitialLang();
+
+  $all("[data-lang]").forEach((buttonEl) => {
+    buttonEl.addEventListener("click", () => applyLanguage(buttonEl.dataset.lang));
   });
+  setupMenu();
+  setupLangMenu();
+
   window.addEventListener("scroll", scheduleProgressUpdate, { passive: true });
   window.addEventListener("resize", scheduleProgressUpdate);
+  window.addEventListener("popstate", () => {
+    if (PAGE === "blog" && !ARTICLE_LANG) {
+      currentTopic = readTopicFromUrl();
+      renderBlog(currentPageData, currentPageLang);
+    }
+  });
 
   observeReveals();
   document.body.classList.add("is-ready");

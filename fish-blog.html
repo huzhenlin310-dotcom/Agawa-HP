@@ -20,46 +20,122 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/og-default.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"鱼的blog · 阿川","description":"这里只放她写的长文。","url":"https://www.agawa5642.com/fish-blog.html","inLanguage":["zh","en","ja"]}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="fish-blog">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog" aria-current="page">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-lang="zh" aria-pressed="true">中</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="page-shell blog-page">
-      <section class="blog-intro reveal">
-        <p class="issue-label" data-fishblog-signature>你的鱼</p>
-        <h1 class="page-title" data-fishblog-title>鱼的blog</h1>
-        <p class="page-lead" data-fishblog-lead></p>
+    <main id="content" class="shell fish-page">
+      <nav class="crumbs" aria-label="博客">
+        <ol>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="fish-blog.html">鱼的文字</a></li>
+          <li><span aria-current="page" data-crumb-current>长文</span></li>
+        </ol>
+      </nav>
+      <section class="space-head">
+        <p class="kicker" data-ui="fish.spaceSub">长文与日常札记</p>
+        <h1 class="space-head__title" data-ui="fish.spaceTitle">鱼的文字</h1>
+        <p class="space-head__lead" data-fish-lead></p>
       </section>
 
-      <section class="blog-index reveal">
-        <div class="section-rule"></div>
-        <div class="blog-list" data-fishblog-list></div>
+      <nav class="tabs" aria-label="鱼的文字">
+        <a id="tab-long" href="fish-blog.html">
+          <span class="tabs__label" data-ui="fish.tabLong">鱼的博客</span>
+          <span class="tabs__sub" data-ui="fish.tabLongSub">长文</span>
+        </a>
+        <a id="tab-notes" href="notes.html">
+          <span class="tabs__label" data-ui="fish.tabNotes">鱼的札记</span>
+          <span class="tabs__sub" data-ui="fish.tabNotesSub">日常札记</span>
+        </a>
+      </nav>
+
+      <section class="section" aria-labelledby="fish-section-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="fish-section-title" data-ui="fish.longSection">长文</h2>
+            <p class="section__lead" data-ui="fish.longHint">长文写在「鱼的博客」；短的都进札记。</p>
+          </div>
+          <a class="section__more" href="blog.html" data-ui="fish.backBlog">返回全部博客</a>
+        </div>
+        <div class="post-list" data-fish-list></div>
+        <div class="empty-state" data-fish-empty hidden><p></p></div>
+      </section>
+
+      <section class="space-next">
+        <a class="btn" href="notes.html"><span data-ui="fish.nextNotes">接下来：鱼的札记</span><span aria-hidden="true">→</span></a>
+        <a class="link-more" href="blog.html" data-ui="fish.backBlog">返回全部博客</a>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p data-footer-text></p>
-      <p data-footer-copyright></p>
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

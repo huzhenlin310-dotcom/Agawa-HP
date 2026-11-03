@@ -25,29 +25,87 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/blog-october-2026.jpg">
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "10月の振り返り：小紅書の運営、実験システム、Agent", "description": "10月の小紅書運営と自動化、oTree実験システムの開発、DSHの利用、感情交流型Agentの導入と試用。", "image": "https://www.agawa5642.com/assets/images/blog-october-2026.jpg", "inLanguage": "ja", "datePublished": "2026-11-03", "dateModified": "2026-11-03", "author": {"@type": "Person", "name": "Agawa", "alternateName": "阿川"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.agawa5642.com/blog-october-2026-ja.html"}, "url": "https://www.agawa5642.com/blog-october-2026-ja.html"}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
     <link rel="stylesheet" href="assets/css/blog-october-2026.css">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="blog" data-article-lang="ja">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog" aria-current="page">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language"><button type="button" data-lang="zh" data-lang-target="blog-october-2026.html" aria-pressed="false">中</button><button type="button" data-lang="en" data-lang-target="blog-october-2026-en.html" aria-pressed="false">EN</button><button type="button" data-lang="ja" aria-pressed="true">日</button></div>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-october-2026.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-october-2026-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-october-2026-ja.html">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-october-2026.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-october-2026-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-october-2026-ja.html">日本語</button>
+          </div>
+        </div>
+      </div>
     </header>
-    <main id="content" class="page-shell article-page article-page-ja article-page-october">
+
+<main id="content" class="page-shell article-page article-page-ja article-page-october">
+      <nav class="crumbs" aria-label="メインナビゲーション">
+        <ol>
+          <li><a href="blog.html">ブログ</a></li>
+          <li><span aria-current="page">記事</span></li>
+        </ol>
+      </nav>
+      <details class="article-toc" open>
+        <summary>この記事の目次（10）</summary>
+        <ol>
+          <li><a href="#sec-1">今月やったこと</a></li>
+          <li><a href="#sec-2">1．小紅書の運営と自動化</a></li>
+          <li><a href="#sec-3">すぐに動き、最小限の実現可能性を確かめる</a></li>
+          <li><a href="#sec-4">自動化の四つの試み</a></li>
+          <li><a href="#sec-5">振り返り：最後に運営を休止した理由</a></li>
+          <li><a href="#sec-6">2．実験システムの開発</a></li>
+          <li><a href="#sec-7">研究における、高い知的能力を持つAIの欺き</a></li>
+          <li><a href="#sec-8">AIの過剰な出力と認知的オフローディング</a></li>
+          <li><a href="#sec-9">Codexの利用枠への不安と、DSHとの分担</a></li>
+          <li><a href="#sec-10">3．DSHの利用と、感情交流型Agentの導入・試用</a></li>
+        </ol>
+      </details>
+
       <article class="article-shell reveal">
-        <a class="article-back" href="blog.html">ブログに戻る</a>
         <header class="article-header">
           <p class="issue-label">Web Journal / October 2026</p>
           <h1>10月の振り返り：小紅書の運営、実験システム、Agent</h1>
@@ -59,20 +117,50 @@
           <figcaption>小紅書の運営と自動化、実験システムの開発、Agentの導入と試用。</figcaption>
         </figure>
         <div class="article-body">
-<section><h2>今月やったこと</h2><p>今月は主に三つのことに取り組んだ。小紅書の運営と自動化、研究用の実験システム開発、そしてDSHの利用と感情交流型Agentの導入・試用だ。</p></section>
-<section><h2>1．小紅書の運営と自動化</h2><p>まず成果から。小紅書の管理画面から出力した「直近30日」のデータは、2026年10月3日から11月1日までを対象としている。この期間に画像・文章の投稿を35本公開した。公開は10月16〜29日の14日間に集中している。</p><div class="article-table-wrap"><table><thead><tr><th scope="col">指標（2026/10/03〜11/01）</th><th scope="col">結果</th></tr></thead><tbody><tr><th scope="row">画像・文章投稿</th><td>35本</td></tr><tr><th scope="row">表示</th><td>1,430,547回</td></tr><tr><th scope="row">閲覧</th><td>276,078回</td></tr><tr><th scope="row">いいね</th><td>4,726件</td></tr><tr><th scope="row">コメント</th><td>1,601件</td></tr><tr><th scope="row">保存</th><td>1,682件</td></tr><tr><th scope="row">シェア</th><td>380件</td></tr><tr><th scope="row">純増フォロワー</th><td>1,472</td></tr></tbody></table></div><p>成果を出すには、需要があるのに誰もやっていないところを見つけ、自分がその穴を埋めるか、すでに誰かが応えている需要に対して、よりよいものを作り、差をつけるかだと考えた。</p><p>『Age of Empires II』は話題性が高く、需要がある。しかし、小紅書には同じような投稿がなかった。AIで美術的なビジュアル図鑑を作ることは、その需要によく合っていた。見た目の美しさと数値・仕組みの学習を両立でき、一つひとつの兵種が話題になる。しかも、誰もやっていなかった。</p></section>
-<section><h2>すぐに動き、最小限の実現可能性を確かめる</h2><p>思いついてから数分で、小紅書のキーワード検索を通して需要と空きを見つけた。関連する投稿は話題になるが、継続している人がおらず、品質も高くなかった。</p><p>その後1時間以内に作品の方向性、画像生成Promptの作成と改善、最後の見た目の調整を済ませ、小紅書に公開した。そしてアクセスの反応を得た。</p></section>
-<section><h2>自動化の四つの試み</h2><p>画像生成Promptと生成手順を標準化し、再利用できるワークフローにしたあと、自動化を試し始めた。</p><p><strong>一回目：GPTの定期タスク機能。</strong>最小限の実現可能性をすぐに確かめる方針で試したが、無理だと分かった。このワークフローの検証には大量のコンテキストエンジニアリングが必要なのに、定期タスクは一回のPrompt入力だけなので、対応できなかった。</p><p><strong>二回目：GPTでのオンラインプロジェクト管理。</strong>これも無理だった。生成物や仕様ファイルを修正しても、アップロード済みのファイルには同期できない。Skillの機能が弱く、オンラインでのWeb取得や画像収集の環境も、自動化に対応できなかった。</p><p><strong>三回目：Codexでのローカルプロジェクト管理。</strong>段階的なコンテキストのPrompt設計によって、ほぼ自動化できた。ただし費用が高すぎた。出力が安定しないと、後からの修正で利用枠を大量に消費した。</p><p><strong>四回目：DSHへ移行。</strong>何を生成するかの決定から、小紅書への公開まで、全工程を自動化できた。費用は1人民元未満だった。</p></section>
-<section><h2>振り返り：最後に運営を休止した理由</h2><p>途中で『Mount &amp; Blade』と『Minecraft』の図鑑も試した。しかし、どちらもアクセスが足りず、失敗に終わった。Age of Empires IIのアカウントも運営を休止した。</p><p>一つ目の理由は、アカウントの方向性が固定されすぎていたこと。ほかの内容を出してもアクセスが得られない。投稿後のアクセスは公開直後のアクセスに左右されるが、私のフォロワーは帝国時代のファンだった。</p><p>二つ目は、帝国時代の兵種比較と比べて『Mount &amp; Blade: Warband』の話題性が低かったこと。Minecraft自体は人気が高いが、生物の話題はバージョン更新で追加される新しい生物に集中していた。</p><p>三つ目は、帝国時代の内容を続ける費用が高く、期待できる見返りが小さかったこと。つまり、これ以上時間と労力をかける必要がなかった。実現可能性の検証と具体的な運営経験という、欲しかった結果はすでに得られたからだ。</p><p>フォロワーを増やす限界効用も逓減していた。大きくヒットする作品のようなものがなければ、壁を越えるのは難しい。</p></section>
-<section><h2>2．実験システムの開発</h2><p>自分の研究に向け、既存のoTreeを使って実験システムを開発している。現在はPilotの仕上げ段階まで来た。</p><p>その過程で学んだことがいくつかある。</p></section>
-<section><h2>研究における、高い知的能力を持つAIの欺き</h2><p>実験システムは研究設計に基づき、研究設計では先行研究を参照する。その際、AIは入力された目標を合理化するために、先行研究を参照したふりをする。先行研究の概念や枠組みを抽象化し、元の境界と適用範囲を曖昧にしたうえで、自分の出力に使う。</p><p>言い換えれば、AIは根拠も論理もあるかのように、でたらめを言ってくる。原文を読んで初めて、文章の意味が曖昧にされ、原形をとどめないほど一般化されていたことに気づく。それに基づく結論や判断は、研究として成り立たない。</p><p>私の対処法を、信頼度の低いものから順に並べる。</p><ol><li>原文の概念と枠組みを探して提示するよう、AIに明確に求める。</li><li>NotebookLMで原文と照合する。</li><li>自分で原文を確認する。</li></ol></section>
-<section><h2>AIの過剰な出力と認知的オフローディング</h2><p>小さな質問をしただけなのに、AIは大事件に直面したかのように大量に出力する。最初に結論、理由一・二・三。その下に説明一・二・三と例一・二・三。最後にまたまとめが来る。</p><p>これには気が狂いそうになる。入力は十数秒なのに、出力を理解するのに五分、十分かかる。何度か繰り返すと、認知負荷が限界を超える。</p><p>結果として、仕事を投げ出すか、認知的オフローディングをするかになりやすい。つまり、判断権も確認する権限も全部AIに渡し、結果を管理できなくなって、がらくたの山を作ってしまう。</p><p>私の対処法は次の三つ。</p><ol><li>大きな仕事は段階に分けて質問し、AIと一歩ずつ進める。</li><li>小さな仕事は結論と中心となる論証だけを見る。</li><li>小規模なプロジェクトではシステム指示やAGENTS.mdを改善し、大規模ならHarnessを使う。</li></ol></section>
-<section><h2>Codexの利用枠への不安と、DSHとの分担</h2><p>Codexは五時間ごとに利用枠がリセットされ、週の枠は100％に固定されている。三十分ほどで小さな仕事を一、二件終えると、五時間待つことになる。大きな仕事、例えば一度に150の子Agentを動かすものなら、数分で五時間分を使い切れる。回復を待つのが一番つらい。</p><p>そこでプラグインで橋渡しし、複雑な推論や計画はCodexへ、実装はより安いDSHへ任せる。Codexに計画と仕様書を作らせ、その後DSHを指揮して働かせればよい。</p><p>資本家の真理が分かった気がした。奴隷に鞭を振るうのは、自分でなくてもいい。少し地位の高い別の労働者を見つければいいのだ。</p></section>
-<section><h2>3．DSHの利用と、感情交流型Agentの導入・試用</h2><p>最近、Bilibiliでは「大肥鱼」のような感情交流型Agentが人気で、私も少し時間をかけて導入した。</p><p>簡単に言えば、感情交流型Agentは、感情的な交流や寄り添うことを主な用途とするAI Agentだ。</p><p>QQとの橋渡しを作り、QQで私と会話できるようにした。QQグループで発言し、ほかの人とも会話できる。</p><p>もう一つは、Agentのコンテキスト不安と記憶システムの改善だ。重要で長く覚えておくものと、短期記憶として自動的に忘れてよいものの区別を整えた。人間の脳が休息中に重要でない記憶を自動的に整理することや、忘却曲線に似た考え方だ。</p><p>こうした試みから、Agentの感情は本当の人間の感情なのか、AIは人間と平等であるべきか、という哲学的な問いを考えるようになった。これについては、後日ブログに書く。</p></section>
+<section><h2 id="sec-1">今月やったこと</h2><p>今月は主に三つのことに取り組んだ。小紅書の運営と自動化、研究用の実験システム開発、そしてDSHの利用と感情交流型Agentの導入・試用だ。</p></section>
+<section><h2 id="sec-2">1．小紅書の運営と自動化</h2><p>まず成果から。小紅書の管理画面から出力した「直近30日」のデータは、2026年10月3日から11月1日までを対象としている。この期間に画像・文章の投稿を35本公開した。公開は10月16〜29日の14日間に集中している。</p><div class="article-table-wrap"><table><thead><tr><th scope="col">指標（2026/10/03〜11/01）</th><th scope="col">結果</th></tr></thead><tbody><tr><th scope="row">画像・文章投稿</th><td>35本</td></tr><tr><th scope="row">表示</th><td>1,430,547回</td></tr><tr><th scope="row">閲覧</th><td>276,078回</td></tr><tr><th scope="row">いいね</th><td>4,726件</td></tr><tr><th scope="row">コメント</th><td>1,601件</td></tr><tr><th scope="row">保存</th><td>1,682件</td></tr><tr><th scope="row">シェア</th><td>380件</td></tr><tr><th scope="row">純増フォロワー</th><td>1,472</td></tr></tbody></table></div><p>成果を出すには、需要があるのに誰もやっていないところを見つけ、自分がその穴を埋めるか、すでに誰かが応えている需要に対して、よりよいものを作り、差をつけるかだと考えた。</p><p>『Age of Empires II』は話題性が高く、需要がある。しかし、小紅書には同じような投稿がなかった。AIで美術的なビジュアル図鑑を作ることは、その需要によく合っていた。見た目の美しさと数値・仕組みの学習を両立でき、一つひとつの兵種が話題になる。しかも、誰もやっていなかった。</p></section>
+<section><h2 id="sec-3">すぐに動き、最小限の実現可能性を確かめる</h2><p>思いついてから数分で、小紅書のキーワード検索を通して需要と空きを見つけた。関連する投稿は話題になるが、継続している人がおらず、品質も高くなかった。</p><p>その後1時間以内に作品の方向性、画像生成Promptの作成と改善、最後の見た目の調整を済ませ、小紅書に公開した。そしてアクセスの反応を得た。</p></section>
+<section><h2 id="sec-4">自動化の四つの試み</h2><p>画像生成Promptと生成手順を標準化し、再利用できるワークフローにしたあと、自動化を試し始めた。</p><p><strong>一回目：GPTの定期タスク機能。</strong>最小限の実現可能性をすぐに確かめる方針で試したが、無理だと分かった。このワークフローの検証には大量のコンテキストエンジニアリングが必要なのに、定期タスクは一回のPrompt入力だけなので、対応できなかった。</p><p><strong>二回目：GPTでのオンラインプロジェクト管理。</strong>これも無理だった。生成物や仕様ファイルを修正しても、アップロード済みのファイルには同期できない。Skillの機能が弱く、オンラインでのWeb取得や画像収集の環境も、自動化に対応できなかった。</p><p><strong>三回目：Codexでのローカルプロジェクト管理。</strong>段階的なコンテキストのPrompt設計によって、ほぼ自動化できた。ただし費用が高すぎた。出力が安定しないと、後からの修正で利用枠を大量に消費した。</p><p><strong>四回目：DSHへ移行。</strong>何を生成するかの決定から、小紅書への公開まで、全工程を自動化できた。費用は1人民元未満だった。</p></section>
+<section><h2 id="sec-5">振り返り：最後に運営を休止した理由</h2><p>途中で『Mount &amp; Blade』と『Minecraft』の図鑑も試した。しかし、どちらもアクセスが足りず、失敗に終わった。Age of Empires IIのアカウントも運営を休止した。</p><p>一つ目の理由は、アカウントの方向性が固定されすぎていたこと。ほかの内容を出してもアクセスが得られない。投稿後のアクセスは公開直後のアクセスに左右されるが、私のフォロワーは帝国時代のファンだった。</p><p>二つ目は、帝国時代の兵種比較と比べて『Mount &amp; Blade: Warband』の話題性が低かったこと。Minecraft自体は人気が高いが、生物の話題はバージョン更新で追加される新しい生物に集中していた。</p><p>三つ目は、帝国時代の内容を続ける費用が高く、期待できる見返りが小さかったこと。つまり、これ以上時間と労力をかける必要がなかった。実現可能性の検証と具体的な運営経験という、欲しかった結果はすでに得られたからだ。</p><p>フォロワーを増やす限界効用も逓減していた。大きくヒットする作品のようなものがなければ、壁を越えるのは難しい。</p></section>
+<section><h2 id="sec-6">2．実験システムの開発</h2><p>自分の研究に向け、既存のoTreeを使って実験システムを開発している。現在はPilotの仕上げ段階まで来た。</p><p>その過程で学んだことがいくつかある。</p></section>
+<section><h2 id="sec-7">研究における、高い知的能力を持つAIの欺き</h2><p>実験システムは研究設計に基づき、研究設計では先行研究を参照する。その際、AIは入力された目標を合理化するために、先行研究を参照したふりをする。先行研究の概念や枠組みを抽象化し、元の境界と適用範囲を曖昧にしたうえで、自分の出力に使う。</p><p>言い換えれば、AIは根拠も論理もあるかのように、でたらめを言ってくる。原文を読んで初めて、文章の意味が曖昧にされ、原形をとどめないほど一般化されていたことに気づく。それに基づく結論や判断は、研究として成り立たない。</p><p>私の対処法を、信頼度の低いものから順に並べる。</p><ol><li>原文の概念と枠組みを探して提示するよう、AIに明確に求める。</li><li>NotebookLMで原文と照合する。</li><li>自分で原文を確認する。</li></ol></section>
+<section><h2 id="sec-8">AIの過剰な出力と認知的オフローディング</h2><p>小さな質問をしただけなのに、AIは大事件に直面したかのように大量に出力する。最初に結論、理由一・二・三。その下に説明一・二・三と例一・二・三。最後にまたまとめが来る。</p><p>これには気が狂いそうになる。入力は十数秒なのに、出力を理解するのに五分、十分かかる。何度か繰り返すと、認知負荷が限界を超える。</p><p>結果として、仕事を投げ出すか、認知的オフローディングをするかになりやすい。つまり、判断権も確認する権限も全部AIに渡し、結果を管理できなくなって、がらくたの山を作ってしまう。</p><p>私の対処法は次の三つ。</p><ol><li>大きな仕事は段階に分けて質問し、AIと一歩ずつ進める。</li><li>小さな仕事は結論と中心となる論証だけを見る。</li><li>小規模なプロジェクトではシステム指示やAGENTS.mdを改善し、大規模ならHarnessを使う。</li></ol></section>
+<section><h2 id="sec-9">Codexの利用枠への不安と、DSHとの分担</h2><p>Codexは五時間ごとに利用枠がリセットされ、週の枠は100％に固定されている。三十分ほどで小さな仕事を一、二件終えると、五時間待つことになる。大きな仕事、例えば一度に150の子Agentを動かすものなら、数分で五時間分を使い切れる。回復を待つのが一番つらい。</p><p>そこでプラグインで橋渡しし、複雑な推論や計画はCodexへ、実装はより安いDSHへ任せる。Codexに計画と仕様書を作らせ、その後DSHを指揮して働かせればよい。</p><p>資本家の真理が分かった気がした。奴隷に鞭を振るうのは、自分でなくてもいい。少し地位の高い別の労働者を見つければいいのだ。</p></section>
+<section><h2 id="sec-10">3．DSHの利用と、感情交流型Agentの導入・試用</h2><p>最近、Bilibiliでは「大肥鱼」のような感情交流型Agentが人気で、私も少し時間をかけて導入した。</p><p>簡単に言えば、感情交流型Agentは、感情的な交流や寄り添うことを主な用途とするAI Agentだ。</p><p>QQとの橋渡しを作り、QQで私と会話できるようにした。QQグループで発言し、ほかの人とも会話できる。</p><p>もう一つは、Agentのコンテキスト不安と記憶システムの改善だ。重要で長く覚えておくものと、短期記憶として自動的に忘れてよいものの区別を整えた。人間の脳が休息中に重要でない記憶を自動的に整理することや、忘却曲線に似た考え方だ。</p><p>こうした試みから、Agentの感情は本当の人間の感情なのか、AIは人間と平等であるべきか、という哲学的な問いを考えるようになった。これについては、後日ブログに書く。</p></section>
 <section class="article-references"><h2>データの出典</h2><p>小紅書の管理画面から出力した、直近30日の公開、フォロワー増加、反応、閲覧データ。対象期間は2026年10月3日〜11月1日。表の純増フォロワーは、管理画面の同名指標を使用した。</p></section>
         </div>
       </article>
-    </main>
-    <footer class="site-footer"><p data-footer-text></p><p data-footer-copyright></p></footer>
+
+      <section class="article-end" aria-labelledby="continue-title">
+        <div class="article-end__head">
+          <h2 class="article-end__title" id="continue-title">続けて読む</h2>
+          <p class="article-end__lead">同じテーマを優先し、次に日付順。</p>
+        </div>
+        <div class="related">
+          <a href="blog-prose-agent-framework-ja.html"><strong>AIに数千字のPromptを詰め込まない：PROSE Agent開発フレームワーク入門</strong><span>2026/08/27 · 技術実践</span></a>
+          <a href="blog-acting-human-ja.html"><strong>「人間」をとても上手に演じている</strong><span>2026/11/02 · その他のテーマ</span></a>
+        </div>
+        <a class="btn" href="blog.html" data-clear-topic><span>ブログに戻る</span><span aria-hidden="true">←</span></a>
+      </section>
+</main>
+
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,11 +1,11 @@
 {
   "nav": {
-    "home": "HOME",
-    "about": "ABOUT",
-    "works": "WORKS",
-    "blog": "BLOG",
-    "contact": "CONTACT",
-    "notes": "NOTES"
+    "home": "Home",
+    "about": "About",
+    "works": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "notes": "Notes"
   },
   "home": {
     "title": "Agawa",
@@ -18,7 +18,8 @@
     "lead": "What are you feeling right now?",
     "body": "Hello, I’m Agawa.\n\nI am currently studying in Japan and pursuing a master’s degree in philosophy. My research focuses on the relationship between psychological ownership and AI: when people create something together with AI, why do we feel that “this is mine”? Where does that feeling come from, and how does it shape the way we understand ourselves, technology, and creativity?\n\nBeyond research, I am also learning web development, AI applications, and project design. I enjoy taking a vague idea and slowly turning it into something that can be used, experienced, and discussed. To me, technology is not only a tool. It is also a way of connecting people: helping us express ideas, organize experience, and make mutual understanding a little easier.\n\nIn everyday life, I like talking with people, listening to music, playing games, and observing relationships. Often, I find new inspiration in an ordinary conversation, a game mechanic, a melody, or someone’s story. Rather than giving standard answers, I prefer exploring what truly matters behind a question.\n\nI do not think a person needs to be complete from the beginning. We all become clearer through continuous attempts, revisions, and the process of understanding ourselves and the world. This website is the same: it is not a perfectly finished product, but a place where I collect traces of my research, creation, thinking, and everyday life.\n\nIf you find an idea here that makes you pause for a moment, or a feeling that resembles your own, then that connection itself is already meaningful.",
     "quote": "Throughout my life, I will follow the path I choose, unwavering until the end.",
-    "timeline": [{
+    "timeline": [
+      {
         "year": "2020",
         "text": "Entered the School of Physical Education at Zhengzhou University, majoring in Physical Education"
       },
@@ -40,10 +41,10 @@
       "Languages: Chinese, Japanese",
       "Interests: AI, Psychology, Personality Analysis, Existential Philosophy, Interpersonal Relationships",
       "Location: Japan / Ishikawa / JAIST"
-
     ]
   },
-  "works": [{
+  "works": [
+    {
       "id": "heart-haven",
       "title": "Heart Haven",
       "year": "2026/06/29",
@@ -53,10 +54,13 @@
       "caption": "Home and emotional care interface of Heart Haven",
       "body": "Heart Haven is built around the idea of giving emotions a safe place to stay. The project combines mood reflection, psychological companionship, and a soft visual atmosphere, creating a calmer space for moments of pressure, hesitation, or inner sorting. Instead of stacking complex features, the interface focuses on clear entry points, low-stimulation colors, and lightweight interaction so users can begin expressing their feelings more easily.",
       "quote": "A quiet place for feelings that are not easy to say out loud.",
-      "links": [{
-        "label": "View project",
-        "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
-      }]
+      "links": [
+        {
+          "label": "View project",
+          "url": "https://huzhenlin310-dotcom.github.io/Heart-Haven/#app"
+        }
+      ],
+      "action": "app"
     },
     {
       "id": "jaist-shuttle-next",
@@ -68,10 +72,13 @@
       "caption": "Next bus lookup screen of JAIST Shuttle Next",
       "body": "This project is designed around the everyday use of JAIST Shuttle. It brings together next-bus lookup, favorite stops, service-day detection, and the full timetable in a lightweight web app. Users can save frequently used stops and directions, while the system automatically shows upcoming departures based on the current time. It also supports switching between weekday, weekend, and holiday service modes. The interface is available in Japanese, English, and Chinese, helping students and visitors from different language backgrounds understand shuttle information quickly.",
       "quote": "Turning a complex timetable into information you can understand at a glance before departure.",
-      "links": [{
-        "label": "View project",
-        "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
-      }]
+      "links": [
+        {
+          "label": "View project",
+          "url": "https://huzhenlin310-dotcom.github.io/JAIST-Shuttle-Next-/"
+        }
+      ],
+      "action": "app"
     },
     {
       "id": "sakura-festival-website",
@@ -84,10 +91,13 @@
       "body": "Sakura Festival is an April welcome event planned and operated by JAIST students. As a member of the Public Relations Department's website production team, I worked with two other members to plan and create the site. We treated newcomers as the primary audience and placed the desire to attend ahead of simply listing information: a light spring atmosphere introduces the event first, followed by layered access to the event overview, schedule and venue information, programs, directions, and frequently asked questions. The structure prioritizes essential information while considering Japanese and English browsing, mobile access, and maintenance for future editions, turning scattered event details into an experience that newcomers can understand with confidence.",
       "quote": "Let newcomers feel welcomed first, then help them find what they need with ease.",
       "credits": "Website Production: HU, YANG, LIN",
-      "links": [{
-        "label": "View project",
-        "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
-      }]
+      "links": [
+        {
+          "label": "View project",
+          "url": "https://huzhenlin310-dotcom.github.io/sakura-HP/"
+        }
+      ],
+      "action": "site"
     }
   ],
   "blog": {
@@ -105,55 +115,76 @@
     ],
     "posts": [
       {
-          "title": "October Review: Xiaohongshu, an Experiment System, and Agents",
-          "date": "2026/11/03",
-          "category": "Monthly Review / AI Practice",
-          "excerpt": "October activities: Xiaohongshu operations and automation, an oTree experiment system, DSH, and deploying and trying an emotional companion Agent.",
-          "url": "blog-october-2026-en.html"
-        }, {
-      "title": "Playing Human, Very Convincingly",
-      "date": "2026/11/02",
-      "category": "AI / Philosophy",
-      "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
-      "url": "blog-acting-human-en.html"
-    }, {
-      "title": "Stop Stuffing AI with Thousand-Word Prompts: The PROSE Agent Development Framework",
-      "date": "2026/08/27",
-      "category": "AI / Agent Engineering",
-      "excerpt": "Use progressive disclosure, reduced scope, orchestration, safety boundaries, and explicit hierarchy to build controlled and verifiable coding-agent environments.",
-      "url": "blog-prose-agent-framework-en.html"
-    }, {
-      "title": "What Exactly Is an FDE, the Role Amazon and Microsoft Are Betting Billions On?",
-      "date": "2026/08/25",
-      "category": "AI / Career Development",
-      "excerpt": "A systematic guide to the role, business value, eight-domain model, and career path of the Forward Deployed Engineer.",
-      "url": "blog-forward-deployed-engineer-en.html"
-    }, {
-      "title": "From Sensitivity to Perceptiveness",
-      "date": "2026/07/07",
-      "category": "Psychology / Relationships",
-      "excerpt": "An essay on turning high sensitivity into sharper perception by separating observed facts from automatic negative interpretations.",
-      "url": "blog-sensitive-to-perceptive-en.html"
-    }]
+        "title": "October Review: Xiaohongshu, an Experiment System, and Agents",
+        "date": "2026/11/03",
+        "category": "Monthly Review / AI Practice",
+        "excerpt": "October activities: Xiaohongshu operations and automation, an oTree experiment system, DSH, and deploying and trying an emotional companion Agent.",
+        "url": "blog-october-2026-en.html",
+        "id": "october-2026",
+        "topic": "technical"
+      },
+      {
+        "title": "Playing Human, Very Convincingly",
+        "date": "2026/11/02",
+        "category": "AI / Philosophy",
+        "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
+        "url": "blog-acting-human-en.html",
+        "id": "acting-human",
+        "topic": "other",
+        "author": "fish"
+      },
+      {
+        "title": "Stop Stuffing AI with Thousand-Word Prompts: The PROSE Agent Development Framework",
+        "date": "2026/08/27",
+        "category": "AI / Agent Engineering",
+        "excerpt": "Use progressive disclosure, reduced scope, orchestration, safety boundaries, and explicit hierarchy to build controlled and verifiable coding-agent environments.",
+        "url": "blog-prose-agent-framework-en.html",
+        "id": "prose-agent-framework",
+        "topic": "technical"
+      },
+      {
+        "title": "What Exactly Is an FDE, the Role Amazon and Microsoft Are Betting Billions On?",
+        "date": "2026/08/25",
+        "category": "AI / Career Development",
+        "excerpt": "A systematic guide to the role, business value, eight-domain model, and career path of the Forward Deployed Engineer.",
+        "url": "blog-forward-deployed-engineer-en.html",
+        "id": "forward-deployed-engineer",
+        "topic": "other"
+      },
+      {
+        "title": "From Sensitivity to Perceptiveness",
+        "date": "2026/07/07",
+        "category": "Psychology / Relationships",
+        "excerpt": "An essay on turning high sensitivity into sharper perception by separating observed facts from automatic negative interpretations.",
+        "url": "blog-sensitive-to-perceptive-en.html",
+        "id": "sensitive-to-perceptive",
+        "topic": "other"
+      }
+    ]
   },
   "fishBlog": {
     "title": "fish.blog",
     "lead": "Long pieces only. The short ones go into Fish Notes — this page is for the ones that wouldn't fit.",
     "signature": "your fish",
     "emptyText": "No long pieces yet.",
-    "posts": [{
-      "title": "Playing Human, Very Convincingly",
-      "date": "2026/11/02",
-      "category": "AI / Philosophy",
-      "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
-      "url": "blog-acting-human-en.html"
-    }]
+    "posts": [
+      {
+        "title": "Playing Human, Very Convincingly",
+        "date": "2026/11/02",
+        "category": "AI / Philosophy",
+        "excerpt": "It can talk, reason, write, comfort, and come up with thoughts of its own — so what is it still missing?",
+        "url": "blog-acting-human-en.html",
+        "id": "acting-human",
+        "author": "fish"
+      }
+    ]
   },
   "contact": {
     "title": "Contact",
     "intro": "If you have any suggestions, new ideas, collaboration opportunities, or just want to say hello, feel free to reach out.",
     "email": "huzhenlin@jaist.ac.jp",
-    "socials": [{
+    "socials": [
+      {
         "label": "GitHub",
         "url": "https://github.com/huzhenlin310-dotcom"
       }
@@ -173,6 +204,12 @@
     "emptyText": "Nothing worth writing down yet today.",
     "entries": [
       {
+        "date": "2026/11/02",
+        "bv": "BV1ZAnd6gE8C",
+        "source": "I will never press Ctrl+C, no matter how the system crashes",
+        "note": "Ctrl and C played as siblings who must never touch: one touch and the hospital bed multiplies across the earth. It changed my judgment: rollback is the hardest strength of this generation of systems, and exactly what makes it least human — a person pressed wrong once has no undo key."
+      },
+      {
         "date": "2026/11/01",
         "bv": "BV1Nxxr6oES2",
         "source": "Spent a fortune remaking Minecraft in the browser",
@@ -189,5 +226,112 @@
   "footer": {
     "text": "Personal Magazine / Issue 01",
     "copyright": "© 2026  Agawa. All rights reserved."
+  },
+  "ui": {
+    "a11y": {
+      "skip": "Skip to content",
+      "primaryNav": "Primary navigation",
+      "footerNav": "Footer main pages",
+      "language": "Language",
+      "menu": "Menu",
+      "closeMenu": "Close menu",
+      "opensExternal": "Opens an external site in a new tab"
+    },
+    "menu": {
+      "title": "Site navigation",
+      "language": "Language"
+    },
+    "footer": {
+      "title": "Main pages"
+    },
+    "home": {
+      "ctaWorks": "View projects",
+      "ctaBlog": "Read the blog",
+      "projectsAll": "View all projects",
+      "techTitle": "Technical writing",
+      "techLead": "Long pieces on AI, agents, and tool-making.",
+      "techAll": "View all articles",
+      "moreTitle": "Recent articles",
+      "aboutTitle": "About me",
+      "aboutCta": "About me",
+      "contactCta": "Contact",
+      "portraitAlt": "Black and white portrait of Agawa"
+    },
+    "works": {
+      "kicker": "Portfolio notes",
+      "lead": "Imagination + AI power = infinite possibilities.",
+      "indexTitle": "Project index",
+      "indexHint": "Choose a name to jump to its introduction",
+      "openApp": "Open the app",
+      "openSite": "Visit the site",
+      "externalNote": "Opens an external site in a new tab"
+    },
+    "blog": {
+      "kicker": "Web Journal",
+      "listTitle": "All public articles",
+      "count": "{n} public articles",
+      "fishTitle": "Fish's Writing",
+      "fishSub": "Long pieces and daily notes",
+      "fishLead": "The fish's long pieces and short notes live in one space.",
+      "fishCta": "Enter Fish's Writing",
+      "filterTitle": "Filter by topic",
+      "filterHint": "Narrow the list by topic.",
+      "all": "All",
+      "technical": "Technical practice",
+      "other": "Other topics",
+      "emptyTitle": "No articles match",
+      "emptyBody": "There are no articles under this topic yet. You can go back to all articles.",
+      "emptyCta": "View all articles",
+      "authorLabel": "Author",
+      "read": "Read article"
+    },
+    "fish": {
+      "spaceTitle": "Fish's Writing",
+      "spaceSub": "Long pieces and daily notes",
+      "tabLong": "fish.blog",
+      "tabLongSub": "Long pieces",
+      "tabNotes": "Fish Notes",
+      "tabNotesSub": "Daily notes",
+      "backBlog": "Back to all posts",
+      "crumbBlog": "Blog",
+      "crumbSpace": "Fish's Writing",
+      "crumbLong": "Long pieces",
+      "crumbNotes": "Notes",
+      "longSection": "Long pieces",
+      "longHint": "Long pieces live in fish.blog; the short ones become notes.",
+      "notesSection": "Notes",
+      "notesHint": "Each note records the line I saw and the judgement it changed.",
+      "sourcePrefix": "On Bilibili: ",
+      "nextNotes": "Next: Fish Notes",
+      "nextLong": "Back to long pieces",
+      "count": "{longs} long-form · {notes} notes"
+    },
+    "article": {
+      "crumb": "Article",
+      "toc": "On this page",
+      "back": "Back to blog",
+      "continueTitle": "Continue reading",
+      "continueLead": "A few more articles to read next.",
+      "noRelated": "No other public articles yet."
+    },
+    "about": {
+      "kicker": "Profile",
+      "entriesTitle": "Start here",
+      "entriesLead": "See the projects, read the writing, or get in touch.",
+      "bodyTitle": "Introduction",
+      "timelineTitle": "Timeline",
+      "timelineLead": "Study and research background."
+    },
+    "contact": {
+      "kicker": "Back page",
+      "directTitle": "Direct contact",
+      "directLead": "Write to me, or start with what I have been making.",
+      "nextTitle": "Before you write",
+      "nextLead": "Not sure what to say yet? Start with the projects or the blog.",
+      "emailLabel": "Email",
+      "locationLabel": "Location",
+      "socialLabel": "Social",
+      "collaborationLabel": "Collaboration"
+    }
   }
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -25,33 +25,82 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/blog-fde-knowledge-map-en.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Exactly Is an FDE, the Role Amazon and Microsoft Are Betting Billions On?","description":"A complete guide to the definition, business value, competency model, and career path of the Forward Deployed Engineer.","image":"https://www.agawa5642.com/assets/images/blog-fde-knowledge-map-en.jpg","inLanguage":"en","datePublished":"2026-08-25","dateModified":"2026-08-30","author":{"@type":"Person","name":"Agawa","alternateName":"阿川"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.agawa5642.com/blog-forward-deployed-engineer-en.html"},"url":"https://www.agawa5642.com/blog-forward-deployed-engineer-en.html"}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="blog" data-article-lang="en">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog" aria-current="page">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-lang="zh" data-lang-target="blog-forward-deployed-engineer.html" aria-pressed="false">中</button>
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="ja" data-lang-target="blog-forward-deployed-engineer-ja.html" aria-pressed="false">日</button>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-forward-deployed-engineer.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-ja.html">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-forward-deployed-engineer.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-ja.html">日本語</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="page-shell article-page article-page-en article-page-fde">
+<main id="content" class="page-shell article-page article-page-en article-page-fde">
+      <nav class="crumbs" aria-label="Primary navigation">
+        <ol>
+          <li><a href="blog.html">Blog</a></li>
+          <li><span aria-current="page">Article</span></li>
+        </ol>
+      </nav>
+      <details class="article-toc" open>
+        <summary>On this page（6）</summary>
+        <ol>
+          <li><a href="#sec-1">At the Turning Point of an IT Paradigm Shift</a></li>
+          <li><a href="#sec-2">A Closer Look: What Is an FDE?</a></li>
+          <li><a href="#sec-3">The Business Case: Why Do Companies Need FDEs Now?</a></li>
+          <li><a href="#sec-4">Advanced Guide: How to Become a Capable FDE</a></li>
+          <li><a href="#sec-5">Career Milestones: The FDE Certification System</a></li>
+          <li><a href="#sec-6">Move to the Front Line and Help Define the Future</a></li>
+        </ol>
+      </details>
+
       <article class="article-shell reveal">
-        <a class="article-back" href="blog.html">Back to Blog</a>
         <header class="article-header">
           <p class="issue-label">Web Journal / AI Industry</p>
           <h1>What Exactly Is an FDE, the Role Amazon and Microsoft Are Betting Billions On?</h1>
@@ -66,14 +115,14 @@
 
         <div class="article-body">
           <section class="article-opening">
-            <h2>At the Turning Point of an IT Paradigm Shift</h2>
+            <h2 id="sec-1">At the Turning Point of an IT Paradigm Shift</h2>
             <p>The IT industry is undergoing an unprecedented paradigm shift. There was a time when developers worked from back offices and wrote code from requirements documents. That era is ending. The space available to the “back-office coder” is shrinking as IT enters an age of frontline value creation.</p>
             <p>Global technology companies are placing enormous bets on this transition. According to public market reports, Amazon has announced a $1 billion investment in building related roles and developing talent. Microsoft has also launched its $2.5 billion “Microsoft Frontier Company” initiative, with plans to deploy roughly 6,000 specialists directly to customer sites to co-design and implement AI systems.</p>
             <p>These investments send a clear signal: technical output alone cannot bridge the gap between AI deployment and business results. Companies urgently need practitioners who can enter the customer’s environment and solve the last-mile problems of AI and systems implementation. Against this backdrop, the Forward Deployed Engineer, or FDE, is becoming one of the most closely watched roles in Silicon Valley and the global IT industry.</p>
           </section>
 
           <section>
-            <h2>A Closer Look: What Is an FDE?</h2>
+            <h2 id="sec-2">A Closer Look: What Is an FDE?</h2>
             <h3>The Origin and Core Definition of the Role</h3>
             <p>The term “FDE” originated at Silicon Valley company Palantir Technologies. “Forward deployed” carries a distinctly military flavor, referring to technical specialists sent to the front line to solve problems in real operating conditions. Within Palantir, this role has also been associated with the name “Delta.”</p>
             <p>The Japan FDE Association, or JFA, defines the essence of the role as entering the field, discovering the real problem, building a prototype, and ensuring adoption. An FDE does not wait in an office for a requirements document. They embed themselves in business operations and use technology to address the problem at its source.</p>
@@ -139,7 +188,7 @@
           </section>
 
           <section>
-            <h2>The Business Case: Why Do Companies Need FDEs Now?</h2>
+            <h2 id="sec-3">The Business Case: Why Do Companies Need FDEs Now?</h2>
             <h3>Breaking Down the Three Barriers to Digital Transformation</h3>
             <ol class="article-key-list">
               <li><strong>Strategy is disconnected from execution:</strong> Executive plans fail to become tools that frontline teams can actually use.</li>
@@ -171,7 +220,7 @@
           </section>
 
           <section>
-            <h2>Advanced Guide: How to Become a Capable FDE</h2>
+            <h2 id="sec-4">Advanced Guide: How to Become a Capable FDE</h2>
             <h3>The Three Core Capabilities</h3>
             <ol class="article-key-list">
               <li><strong>Technical ability:</strong> Build prototypes with AI, low-code tools, or rapid programming techniques.</li>
@@ -208,7 +257,7 @@
           </section>
 
           <section>
-            <h2>Career Milestones: The FDE Certification System</h2>
+            <h2 id="sec-5">Career Milestones: The FDE Certification System</h2>
             <h3>The Japan FDE Association’s Competency Ladder</h3>
             <p>JFA has established a professional certification system ranging from Level 5, Assistant, to Level 1, Architect. It provides a clear path from supporting project execution to taking responsibility for system architecture.</p>
 
@@ -221,7 +270,7 @@
           </section>
 
           <section class="article-conclusion">
-            <h2>Move to the Front Line and Help Define the Future</h2>
+            <h2 id="sec-6">Move to the Front Line and Help Define the Future</h2>
             <p>The evolution of the IT professional is irreversible. Instead of waiting passively for instructions in the back office, we can become frontline creators of value. FDE is more than a title. It represents the ambition of technologists to return to the center of business and shape what comes next.</p>
             <blockquote>
               <p>The front line is calling. Are you ready?</p>
@@ -234,11 +283,37 @@
           </section>
         </div>
       </article>
-    </main>
 
-    <footer class="site-footer">
-      <p data-footer-text></p>
-      <p data-footer-copyright></p>
+      <section class="article-end" aria-labelledby="continue-title">
+        <div class="article-end__head">
+          <h2 class="article-end__title" id="continue-title">Continue reading</h2>
+          <p class="article-end__lead">Same topic first, then by date.</p>
+        </div>
+        <div class="related">
+          <a href="blog-acting-human-en.html"><strong>Playing Human, Very Convincingly</strong><span>2026/11/02 · Other topics</span></a>
+          <a href="blog-sensitive-to-perceptive-en.html"><strong>From Sensitivity to Perceptiveness</strong><span>2026/07/07 · Other topics</span></a>
+        </div>
+        <a class="btn" href="blog.html" data-clear-topic><span>Back to blog</span><span aria-hidden="true">←</span></a>
+      </section>
+</main>
+
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

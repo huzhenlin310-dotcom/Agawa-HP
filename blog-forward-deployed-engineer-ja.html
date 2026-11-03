@@ -25,33 +25,82 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/blog-fde-knowledge-map-ja.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AmazonとMicrosoftが巨額投資するFDEとは何者か？","description":"Forward Deployed Engineer（FDE）の定義、事業価値、能力モデル、キャリア転換の道筋を体系的に解説します。","image":"https://www.agawa5642.com/assets/images/blog-fde-knowledge-map-ja.jpg","inLanguage":"ja","datePublished":"2026-08-25","dateModified":"2026-08-30","author":{"@type":"Person","name":"Agawa","alternateName":"阿川"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.agawa5642.com/blog-forward-deployed-engineer-ja.html"},"url":"https://www.agawa5642.com/blog-forward-deployed-engineer-ja.html"}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="blog" data-article-lang="ja">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog" aria-current="page">BLOG</a>
-        <a href="contact.html" data-nav="contact">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-lang="zh" data-lang-target="blog-forward-deployed-engineer.html" aria-pressed="false">中</button>
-        <button type="button" data-lang="en" data-lang-target="blog-forward-deployed-engineer-en.html" aria-pressed="false">EN</button>
-        <button type="button" data-lang="ja" aria-pressed="true">日</button>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-forward-deployed-engineer.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-ja.html">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true" data-lang-target="blog-forward-deployed-engineer.html">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-en.html">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false" data-lang-target="blog-forward-deployed-engineer-ja.html">日本語</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="page-shell article-page article-page-ja article-page-fde">
+<main id="content" class="page-shell article-page article-page-ja article-page-fde">
+      <nav class="crumbs" aria-label="メインナビゲーション">
+        <ol>
+          <li><a href="blog.html">ブログ</a></li>
+          <li><span aria-current="page">記事</span></li>
+        </ol>
+      </nav>
+      <details class="article-toc" open>
+        <summary>この記事の目次（6）</summary>
+        <ol>
+          <li><a href="#sec-1">IT産業のパラダイム転換、その最前線</a></li>
+          <li><a href="#sec-2">FDEを深く理解する</a></li>
+          <li><a href="#sec-3">事業の論理：なぜ今FDEが必要なのか</a></li>
+          <li><a href="#sec-4">実践編：優れたFDEになるには</a></li>
+          <li><a href="#sec-5">キャリアの節目：FDE検定制度</a></li>
+          <li><a href="#sec-6">最前線に立ち、未来を定義する</a></li>
+        </ol>
+      </details>
+
       <article class="article-shell reveal">
-        <a class="article-back" href="blog.html">Back to Blog</a>
         <header class="article-header">
           <p class="issue-label">Web Journal / AI Industry</p>
           <h1>AmazonとMicrosoftが巨額投資するFDEとは何者か？</h1>
@@ -66,14 +115,14 @@
 
         <div class="article-body">
           <section class="article-opening">
-            <h2>IT産業のパラダイム転換、その最前線</h2>
+            <h2 id="sec-1">IT産業のパラダイム転換、その最前線</h2>
             <p>現在、IT産業はかつてないパラダイム転換のただ中にあります。かつては、開発者が後方のオフィスで要件定義書に従ってコードを書くことが当たり前でした。しかし、その時代は終わりつつあります。「後方のコード実装者」が担う領域は縮小し、ITは「最前線で価値を生み出す人材」の時代へ移行しています。</p>
             <p>世界のテクノロジー企業も、この変化に巨額の投資を行っています。公開情報によれば、Amazonは関連職種の構築と人材育成に10億ドルを投じる方針を発表しました。Microsoftも25億ドル規模の「Microsoft Frontier Company」構想を立ち上げ、約6,000人の専門家を顧客の現場に直接配置し、AIシステムの共同設計と導入を進める計画です。</p>
             <p>こうした投資が示すメッセージは明確です。技術を提供するだけでは、AI導入と事業成果の間にある溝を埋められません。企業が必要としているのは、顧客の現場に深く入り込み、AIやシステム導入の「最後の1マイル」を解決できる実践者です。この流れの中で、FDE（Forward Deployed Engineer）はシリコンバレーだけでなく、世界のIT業界で最も注目される職種の一つになりつつあります。</p>
           </section>
 
           <section>
-            <h2>FDEを深く理解する</h2>
+            <h2 id="sec-2">FDEを深く理解する</h2>
             <h3>FDEの起源と中核となる定義</h3>
             <p>「FDE」という言葉は、シリコンバレーのPalantir Technologiesから生まれました。「Forward Deployed」には軍事的な響きがあり、最前線に派遣され、実際の運用環境で問題を解決する技術専門家を意味します。Palantir社内では、この役割は「Delta」とも呼ばれています。</p>
             <p>日本FDE協会（JFA）は、FDEの本質を「現場に入り、課題を発見し、プロトタイプを構築し、定着まで実現すること」と定義しています。FDEは、オフィスで要件定義書が届くのを待つ実装担当者ではありません。業務の現場に根を下ろし、技術によって痛点を直接解決する領域横断型の専門家です。</p>
@@ -139,7 +188,7 @@
           </section>
 
           <section>
-            <h2>事業の論理：なぜ今FDEが必要なのか</h2>
+            <h2 id="sec-3">事業の論理：なぜ今FDEが必要なのか</h2>
             <h3>企業DXを阻む三つの壁を壊す</h3>
             <ol class="article-key-list">
               <li><strong>戦略と実行の分断：</strong>経営層の戦略が、現場で使えるツールへ変換されない。</li>
@@ -171,7 +220,7 @@
           </section>
 
           <section>
-            <h2>実践編：優れたFDEになるには</h2>
+            <h2 id="sec-4">実践編：優れたFDEになるには</h2>
             <h3>三位一体の中核能力</h3>
             <ol class="article-key-list">
               <li><strong>技術力：</strong>AI、ローコード、迅速なプログラミング手法を用いてプロトタイプを構築できる。</li>
@@ -208,7 +257,7 @@
           </section>
 
           <section>
-            <h2>キャリアの節目：FDE検定制度</h2>
+            <h2 id="sec-5">キャリアの節目：FDE検定制度</h2>
             <h3>日本FDE協会の能力階梯</h3>
             <p>JFAは、5級（Assistant）から1級（Architect）までの専門認定制度を整備しています。プロジェクトを補助する段階から、システムアーキテクチャに責任を持つ段階まで、成長の道筋を明確に示す仕組みです。</p>
 
@@ -221,7 +270,7 @@
           </section>
 
           <section class="article-conclusion">
-            <h2>最前線に立ち、未来を定義する</h2>
+            <h2 id="sec-6">最前線に立ち、未来を定義する</h2>
             <p>IT人材の役割が進化する流れは、もう後戻りしません。後方で指示を待つのではなく、最前線で価値を生み出す側へ進むことができます。FDEは単なる肩書ではありません。技術者が事業の中心へ戻り、未来を直接形作ろうとする意志を表す役割です。</p>
             <blockquote>
               <p>最前線は、すでにあなたを呼んでいます。準備はできていますか？</p>
@@ -234,11 +283,37 @@
           </section>
         </div>
       </article>
-    </main>
 
-    <footer class="site-footer">
-      <p data-footer-text></p>
-      <p data-footer-copyright></p>
+      <section class="article-end" aria-labelledby="continue-title">
+        <div class="article-end__head">
+          <h2 class="article-end__title" id="continue-title">続けて読む</h2>
+          <p class="article-end__lead">同じテーマを優先し、次に日付順。</p>
+        </div>
+        <div class="related">
+          <a href="blog-acting-human-ja.html"><strong>「人間」をとても上手に演じている</strong><span>2026/11/02 · その他のテーマ</span></a>
+          <a href="blog-sensitive-to-perceptive-ja.html"><strong>敏感から鋭敏へ</strong><span>2026/07/07 · その他のテーマ</span></a>
+        </div>
+        <a class="btn" href="blog.html" data-clear-topic><span>ブログに戻る</span><span aria-hidden="true">←</span></a>
+      </section>
+</main>
+
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

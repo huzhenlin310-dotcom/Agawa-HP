@@ -19,63 +19,124 @@
     <meta name="twitter:image" content="https://www.agawa5642.com/assets/images/og-default.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact · 阿川","description":"联系阿川，交流 AI、人机共创、网站制作、研究与合作想法。","url":"https://www.agawa5642.com/contact.html","inLanguage":["zh","en","ja"]}</script>
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/styles.css?v=private-blog-20260902">
-    <script src="assets/js/main.js?v=private-blog-20260902" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=ux-20261103">
+    <script src="assets/js/main.js?v=ux-20261103" defer></script>
   </head>
   <body data-page="contact">
+    <a class="skip-link" href="#content" data-ui="a11y.skip">跳到正文</a>
     <div class="reading-progress" aria-hidden="true"><span></span></div>
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark">+1</span>
-        <span class="brand-text">Lab</span>
-      </a>
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="index.html" data-nav="home">HOME</a>
-        <a href="about.html" data-nav="about">ABOUT</a>
-        <a href="works.html" data-nav="works">WORKS</a>
-        <a href="blog.html" data-nav="blog">BLOG</a>
-        <a href="contact.html" data-nav="contact" aria-current="page">CONTACT</a>
-      </nav>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-lang="zh" aria-pressed="true">中</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" data-lang="ja" aria-pressed="false">日</button>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html" aria-label="Home">+1<span>Lab</span></a>
+
+        <nav class="nav-main" aria-label="主要导航" data-aria="a11y.primaryNav">
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+        </nav>
+
+        <div class="lang-menu">
+          <button class="lang-menu__button" id="lang-button" type="button" aria-expanded="false" aria-controls="lang-panel">
+            <span data-lang-current>中文</span>
+            <span class="lang-menu__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-menu__panel" id="lang-panel" hidden>
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="works.html" data-nav="works">项目</a>
+          <a href="blog.html" data-nav="blog">博客</a>
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="菜单">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-toggle__text">菜单</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="menu-panel" hidden>
+        <div class="menu-panel__inner">
+          <p class="menu-panel__title" data-ui="menu.title">网站导航</p>
+          <a href="index.html" data-nav="home">首页</a>
+          <a href="about.html" data-nav="about">关于我</a>
+          <a href="contact.html" data-nav="contact">联系</a>
+          <p class="menu-panel__title" data-ui="menu.language">语言</p>
+          <div class="menu-lang">
+          <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+          <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="page-shell contact-page">
-      <section class="contact-grid reveal">
-        <p class="issue-label" data-ui="backPage">Back page</p>
+    <main id="content" class="shell contact-page">
+      <section class="page-head">
+        <p class="kicker" data-ui="contact.kicker">尾页</p>
         <h1 class="page-title" data-contact-title>联系我</h1>
         <p class="page-lead" data-contact-intro></p>
-        <figure class="contact-figure">
-          <img src="assets/images/contact-desk.jpg" alt="" width="1600" height="1100" loading="lazy">
-          <figcaption data-ui="deskCaption">Letters, notes, and open channels.</figcaption>
-        </figure>
-        <div class="contact-directory" aria-label="Contact directory">
+      </section>
+
+      <section class="section" aria-labelledby="contact-facts-title">
+        <div class="section__head">
           <div>
-            <p class="section-kicker" data-ui="emailLabel">Email</p>
-            <a class="large-link" data-contact-email href="mailto:hello@example.com">hello@example.com</a>
+            <h2 class="section__title" id="contact-facts-title" data-ui="contact.directTitle">直接联系</h2>
+            <p class="section__lead" data-ui="contact.directLead"></p>
+          </div>
+        </div>
+        <div class="contact-facts">
+          <div>
+            <p class="kicker" data-ui="contact.emailLabel">邮箱</p>
+            <a class="btn btn--solid" data-contact-email href="mailto:huzhenlin@jaist.ac.jp">huzhenlin@jaist.ac.jp</a>
           </div>
           <div>
-            <p class="section-kicker" data-ui="locationLabel">Location</p>
+            <p class="kicker" data-ui="contact.locationLabel">所在地</p>
             <p data-contact-location></p>
           </div>
           <div>
-            <p class="section-kicker" data-ui="socialLabel">Social</p>
-            <ul class="link-list" data-contact-socials></ul>
+            <p class="kicker" data-ui="contact.socialLabel">社交</p>
+            <ul class="plain-list" data-contact-socials></ul>
           </div>
           <div>
-            <p class="section-kicker" data-ui="collaborationLabel">Collaboration</p>
+            <p class="kicker" data-ui="contact.collaborationLabel">合作方向</p>
             <ul class="plain-list" data-contact-collaboration></ul>
           </div>
         </div>
       </section>
+
+      <section class="section" aria-labelledby="contact-next-title">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title" id="contact-next-title" data-ui="contact.nextTitle">也可以先看这些</h2>
+            <p class="section__lead" data-ui="contact.nextLead"></p>
+          </div>
+        </div>
+        <div class="hero__cta" data-contact-entries></div>
+      </section>
     </main>
 
-    <footer class="site-footer">
-      <p data-footer-text></p>
-      <p data-footer-copyright></p>
+    <footer class="colophon">
+      <div class="colophon__inner">
+        <div>
+          <p class="colophon__title" data-ui="footer.title">主要页面</p>
+          <nav class="colophon__nav" aria-label="页脚主要页面" data-aria="a11y.footerNav">
+            <a href="index.html" data-nav="home">首页</a>
+            <a href="works.html" data-nav="works">项目</a>
+            <a href="blog.html" data-nav="blog">博客</a>
+            <a href="about.html" data-nav="about">关于我</a>
+            <a href="contact.html" data-nav="contact">联系</a>
+          </nav>
+        </div>
+        <div>
+          <p class="colophon__copy" data-footer-text></p>
+          <p class="colophon__copy" data-footer-copyright></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
